@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'add_money.dart';
 
 void main() {
@@ -68,7 +67,11 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: const Text('給料明細'),
       ),
-      body: ListView.builder(
+      body:
+
+      (todoList.isNotEmpty) ?
+
+      ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
           return Dismissible(
@@ -100,9 +103,20 @@ class _TodoListPageState extends State<TodoListPage> {
             ),
           );
         },
+      ) :
+      const Center(
+        child: Text(
+          '給料の記録がありません。\n'
+              '＋ボタンで追加してください。',
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async{
+        onPressed: () async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return TodoAddPage();
