@@ -21,7 +21,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
     }
   }
 
-
   void delete() {
     setState(() {
       if(expression.isEmpty) {}
@@ -69,7 +68,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
                           fontSize: 30,
                         ),
                       ),
-
                       Text(
                         expression,
                         style: const TextStyle(
@@ -117,9 +115,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 10),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -245,9 +241,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 10),
-
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 60),
                   child: SizedBox(
