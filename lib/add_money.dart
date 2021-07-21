@@ -15,7 +15,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   bool cancel = false;
 
   void numClick(String text) {
-    if (expression.length >= 9) {}
+    if (expression.length >= 8) {}
     else{
       setState(() => expression += text);
     }
@@ -43,7 +43,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
         child: SingleChildScrollView(
           reverse: true,
           child: Container(
-            padding: const EdgeInsets.only(top: 50, left: 30,right: 30),
+            padding: const EdgeInsets.only(top: 50),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
@@ -51,7 +51,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   width: MediaQuery.of(context).size.width * 0.9,
                   padding: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.red),
+                    border: Border.all(color: Colors.black),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -75,8 +75,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                       Container(
                         margin: const EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
                         child: SizedBox(
-                          width: 73,
-                          height: 73,
+                          width: 80,
+                          height: 80,
                           child: HoldDetector(
                             onHold: () {
                               delete();
@@ -111,6 +111,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     ],
                   ),
                 ),
+
+                const SizedBox(height: 10),
+
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -217,49 +220,55 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   ],
                 ),
                 const SizedBox(height: 8),
-                SizedBox(
-                  width: double.infinity,
-                  height: 50,
-                  child: ElevatedButton(
-                    onPressed: () {
-
-                      var now = new DateTime.now();
-                      //var formatter = DateFormat('yyyy/MM/dd  HH:mm');
-                      // String formattedDate = formatter.format(now); // 2016-01-25
-                      final post = '\n'
-                      // '$formattedDate \n'
-                          '\n'
-                          '$expression';
-                      Navigator.of(context).pop(post);
-                    },
-                    child: const Text(
-                      'リスト追加',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 50,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        var now = new DateTime.now();
+                        //var formatter = DateFormat('yyyy/MM/dd  HH:mm');
+                        // String formattedDate = formatter.format(now); // 2016-01-25
+                        final post = '\n'
+                        // '$formattedDate \n'
+                            '\n'
+                            '$expression';
+                        Navigator.of(context).pop(post);
+                      },
+                      child: const Text(
+                        'リスト追加',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
                       ),
                     ),
                   ),
                 ),
 
-                const SizedBox(height: 8),
+                const SizedBox(height: 10),
 
-                SizedBox(
-                  width: double.infinity,
-                  height: 40,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: const Text(
-                      'キャンセル',
-                      style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.blue,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: SizedBox(
+                    width: double.infinity,
+                    height: 40,
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                      child: const Text(
+                        'キャンセル',
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ),
                 ),
+                const SizedBox(height: 20),
               ],
             ),
           ),

@@ -22,8 +22,8 @@ class NumberCalcButton extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
       child: SizedBox(
-        width: 73,
-        height: 73,
+        width: 80,
+        height: 80,
         child: Theme(
           data: ThemeData(splashColor: Colors.white),
           child: Material(
