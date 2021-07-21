@@ -34,31 +34,45 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   List<String> todoList = [];
+  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  int count = 0;
 
-  Future<void> setPreference() async {
-    Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+  Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
     prefs.setStringList('key', todoList);
   }
 
-  getPreference() async {
+  getPreferenceString() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       todoList = prefs.getStringList('key') ?? [];
     });
   }
 
+  Future<void> setPreferenceInt() async {
+    final SharedPreferences prefs = await _prefs;
+    prefs.setInt('key2', count);
+  }
+
+  getPreferenceInt() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      count = prefs.getInt('key2') ?? 0;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
-    getPreference();
+    getPreferenceString();
   }
 
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
     setState(() {
-      setPreference();
+      setPreferenceString();
     });
   }
 
@@ -87,17 +101,19 @@ class _TodoListPageState extends State<TodoListPage> {
             },
             child: Column(
               children: [
-                Text('◯月◯日時点の合計額： 4000円'),
-                SizedBox(
-                  height: 100,
-                  child: Card(
-                    child: ListTile(
-                      title: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(todoList[index]),
-                        ],
-                      ),
+                Text('◯月◯日時点の合計額： 4000円',
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.black,
+                  ),
+                ),
+                Card(
+                  child: ListTile(
+                    title: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Center(child: Text('￥' + todoList[index])),
+                      ],
                     ),
                   ),
                 ),
