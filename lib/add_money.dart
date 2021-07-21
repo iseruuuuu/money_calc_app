@@ -32,6 +32,12 @@ class _TodoAddPageState extends State<TodoAddPage> {
     });
   }
 
+  void allDelete(String text) {
+    setState(() {
+      expression = '';
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -214,26 +220,19 @@ class _TodoAddPageState extends State<TodoAddPage> {
                       textSize: 25,
                       fillColor: 0xff424242,
                       textColor: 0xFFFFFFFF,
-                      //TODO 「AC」を削除する。
-                      callback: numClick,
+                      callback: allDelete,
                     ),
                   ],
                 ),
                 const SizedBox(height: 8),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 50),
+                  padding: const EdgeInsets.symmetric(horizontal: 60),
                   child: SizedBox(
                     width: double.infinity,
                     height: 50,
                     child: ElevatedButton(
                       onPressed: () {
-                        var now = new DateTime.now();
-                        //var formatter = DateFormat('yyyy/MM/dd  HH:mm');
-                        // String formattedDate = formatter.format(now); // 2016-01-25
-                        final post = '\n'
-                        // '$formattedDate \n'
-                            '\n'
-                            '$expression';
+                        final post = '$expression';
                         Navigator.of(context).pop(post);
                       },
                       child: const Text(
@@ -250,7 +249,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 const SizedBox(height: 10),
 
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 60),
                   child: SizedBox(
                     width: double.infinity,
                     height: 40,
