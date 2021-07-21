@@ -31,9 +31,7 @@ class TodoListPage extends StatefulWidget {
   _TodoListPageState createState() => _TodoListPageState();
 }
 
-
 class _TodoListPageState extends State<TodoListPage> {
-  // Todoリストのデータ
   List<String> todoList = [];
 
   Future<void> sharePrefrence() async {
@@ -41,7 +39,6 @@ class _TodoListPageState extends State<TodoListPage> {
     final SharedPreferences prefs = await _prefs;
     prefs.setStringList('key', todoList);
   }
-
 
   _getPrefItems() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -59,7 +56,6 @@ class _TodoListPageState extends State<TodoListPage> {
 
   @override
   void setState(VoidCallback fn) {
-    // TODO: implement setState
     super.setState(fn);
     setState(() {
       sharePrefrence();
@@ -70,40 +66,40 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('リスト一覧'),
+        title: const Text('給料明細'),
       ),
       body: ListView.builder(
-          itemCount: todoList.length,
-          itemBuilder: (context, index) {
-            return Dismissible(
-              key: Key(todoList[index]),
-              onDismissed: (direction) {
-                setState(() {
-                  todoList.removeAt(index);
-                });
-                if (direction == DismissDirection.endToStart) {
-                  Scaffold.of(context).showSnackBar(
-                      SnackBar(content: Text("削除しました"))
-                  );
-                }
-              },
+        itemCount: todoList.length,
+        itemBuilder: (context, index) {
+          return Dismissible(
+            key: Key(todoList[index]),
+            onDismissed: (direction) {
+              setState(() {
+                todoList.removeAt(index);
+              });
+              if (direction == DismissDirection.endToStart) {
+                Scaffold.of(context).showSnackBar(
+                  const SnackBar(content: Text("削除しました"),
+                  ),
+                );
+              }
+            },
 
-              child: SizedBox(
-                //TODO 折り畳みが理想。
-                height: 300,
-                child: Card(
-                  child: ListTile(
-                    title: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(todoList[index]),
-                      ],
-                    ),
+            child: SizedBox(
+              height: 300,
+              child: Card(
+                child: ListTile(
+                  title: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(todoList[index]),
+                    ],
                   ),
                 ),
               ),
-            );
-          }
+            ),
+          );
+        },
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async{
@@ -118,10 +114,8 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
-        child: Icon(Icons.add),
+        child: const Icon(Icons.add),
       ),
     );
   }
 }
-
-
