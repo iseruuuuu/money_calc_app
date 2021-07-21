@@ -3,10 +3,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'add_money.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       home: GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
-        child :TodoListPage(),
+        child :const TodoListPage(),
       ),
     );
   }
@@ -33,15 +35,14 @@ class TodoListPage extends StatefulWidget {
 class _TodoListPageState extends State<TodoListPage> {
   List<String> todoList = [];
 
-  Future<void> sharePrefrence() async {
+  Future<void> setPreference() async {
     Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
     final SharedPreferences prefs = await _prefs;
     prefs.setStringList('key', todoList);
   }
 
-  _getPrefItems() async {
+  getPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    // 以下の「counter」がキー名。見つからなければ０を返す
     setState(() {
       todoList = prefs.getStringList('key') ?? [];
     });
@@ -50,14 +51,14 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    _getPrefItems();
+    getPreference();
   }
 
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
     setState(() {
-      sharePrefrence();
+      setPreference();
     });
   }
 
@@ -67,10 +68,7 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: AppBar(
         title: const Text('給料明細'),
       ),
-      body:
-
-      (todoList.isNotEmpty) ?
-
+      body: (todoList.isNotEmpty) ?
       ListView.builder(
         itemCount: todoList.length,
         itemBuilder: (context, index) {
@@ -87,19 +85,23 @@ class _TodoListPageState extends State<TodoListPage> {
                 );
               }
             },
-
-            child: SizedBox(
-              height: 300,
-              child: Card(
-                child: ListTile(
-                  title: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(todoList[index]),
-                    ],
+            child: Column(
+              children: [
+                Text('◯月◯日時点の合計額： 4000円'),
+                SizedBox(
+                  height: 100,
+                  child: Card(
+                    child: ListTile(
+                      title: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(todoList[index]),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
           );
         },

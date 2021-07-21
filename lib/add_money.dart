@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
+import 'cal/number_calc_button.dart';
 
 class TodoAddPage extends StatefulWidget {
 
@@ -8,8 +11,13 @@ class TodoAddPage extends StatefulWidget {
 
 class _TodoAddPageState extends State<TodoAddPage> {
 
-  String _text = '';
+  String expression = '';
   bool cancel = false;
+
+  void numClick(String text) {
+    setState(() => expression += text);
+  }
+
 
 
   @override
@@ -28,122 +36,122 @@ class _TodoAddPageState extends State<TodoAddPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 const SizedBox(height: 8,),
-                Container(
-                  height: 300,
-                  color: const Color(0xffeeeeee),
-                  padding: const EdgeInsets.all(10.0),
-                  child: ConstrainedBox(
-                    constraints: const BoxConstraints(
-                      maxHeight: 200.0,
+                Text(expression),
+
+
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    NumberCalcButton(
+                      text: '7',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
                     ),
-                    child: Scrollbar(
-                      child: SingleChildScrollView(
-                        scrollDirection: Axis.vertical,
-                        reverse: true,
-                        child: SizedBox(
-                          height: 190.0,
-                          child: TextField(
-                            maxLines: 10,
-                            decoration: const InputDecoration(
-                              border: InputBorder.none,
-                            ),
-                            onChanged: (String value) {
-                              setState(() {
-                                _text  = value;
-                              });
-                            },
-                          ),
-                        ),
-                      ),
+                    NumberCalcButton(
+                      text: '8',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
                     ),
-                  ),
+                    NumberCalcButton(
+                      text: '9',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    NumberCalcButton(
+                      text: '4',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: '5',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: '6',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    NumberCalcButton(
+                      text: '1',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: '2',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: '3',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                  ],
                 ),
                 const SizedBox(height: 8),
                 SizedBox(
-                  // 横幅いっぱいに広げる
                   width: double.infinity,
-                  // リスト追加ボタン
                   child: ElevatedButton(
                     onPressed: () {
-                      if (cancel == true) {
-                        var now = new DateTime.now();
-                        //var formatter = DateFormat('yyyy/MM/dd  HH:mm');
-                        // String formattedDate = formatter.format(now); // 2016-01-25
-                        final post = '\n'
-                        // '$formattedDate \n'
-                            '\n'
-                            '$_text';
-                        Navigator.of(context).pop(post);
-                      }else{
-                        showDialog(
-                          context: context,
-                          builder: (_) {
-                            return AlertDialog(
-                              title: const Center(
-                                  child: Text(
-                                    "\n"
-                                        "ツイートしましたか？",style: TextStyle(color: Colors.black),)),
-                              content: const Text("リストの追加の前にツイートしておくことをオススメします。"),
-                              actions: <Widget>[
-                                // ボタン領域
-                                Center(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 20,left: 0),
-                                        child: TextButton(
-                                          child: const Text("ツイートする",style: TextStyle(fontSize: 15),
-                                          ),
-                                          onPressed: () => Navigator.pop(context),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(right: 0,left: 20),
-                                        child: TextButton(
-                                          child: Text("リストに追加",style: const TextStyle(fontSize: 15),),
-                                          onPressed: () {
-                                            cancel = true;
-                                            Navigator.pop(context);
-                                          },
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
-                        );
-                      }
+
+                      var now = new DateTime.now();
+                      //var formatter = DateFormat('yyyy/MM/dd  HH:mm');
+                      // String formattedDate = formatter.format(now); // 2016-01-25
+                      final post = '\n'
+                      // '$formattedDate \n'
+                          '\n'
+                          '$expression';
+                      Navigator.of(context).pop(post);
                     },
                     child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
                   ),
                 ),
                 const SizedBox(height: 8),
-                Container(
+                SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 20),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(width: 10.0),
-                        ],
-                      ),
+                    onPressed: () {
+
+                    },
+                    child: const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 20),
+                      child: SizedBox(width: 10.0),
                     ),
                   ),
                 ),
                 SizedBox(
-                  // 横幅いっぱいに広げる
                   width: double.infinity,
-                  // キャンセルボタン
                   child: TextButton(
-                    // ボタンをクリックした時の処理
                     onPressed: () {
-                      //TODO キャンセルダイアログを出す
                       Navigator.of(context).pop();
                     },
                     child: const Text('キャンセル'),
