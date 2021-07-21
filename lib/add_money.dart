@@ -15,7 +15,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   bool cancel = false;
 
   void numClick(String text) {
-    if (expression.length >= 11) {}
+    if (expression.length >= 9) {}
     else{
       setState(() => expression += text);
     }
@@ -57,14 +57,21 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
+                      const Text(
+                        '￥',
+                        style: TextStyle(
+                          fontSize: 30,
+                        ),
+                      ),
+
                       Text(
                         expression,
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 40,
                         ),
-                        maxLines: 1,
                       ),
+                      const Spacer(),
                       Container(
                         margin: const EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
                         child: SizedBox(
