@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:math_expressions/math_expressions.dart';
+import 'package:flutter/services.dart';
 import 'add_money.dart';
 
 void main() {
@@ -36,7 +38,7 @@ class _TodoListPageState extends State<TodoListPage> {
   List<String> todoList = [];
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int count = 0;
-
+  String amount = '';
 
   Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
@@ -66,15 +68,31 @@ class _TodoListPageState extends State<TodoListPage> {
   void initState() {
     super.initState();
     getPreferenceString();
+    sumMoney();
   }
 
   @override
   void setState(VoidCallback fn) {
+    sumMoney();
     super.setState(fn);
     setState(() {
       setPreferenceString();
     });
   }
+
+  void sumMoney() {
+    //Parser p = Parser();
+   // Expression exp = p.parse(amount);
+   // ContextModel cm = ContextModel();
+   // print(todoList);
+   // print(todoList.join('+'));
+    amount = todoList.join('+');
+
+    //final _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
+
+    //print(_exp);
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -101,8 +119,8 @@ class _TodoListPageState extends State<TodoListPage> {
             },
             child: Column(
               children: [
-                Text('◯月◯日時点の合計額： 4000円',
-                  style: TextStyle(
+                Text('◯月◯日時点の合計額：' + '$todoList' '円',
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.black,
                   ),
