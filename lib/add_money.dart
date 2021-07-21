@@ -189,6 +189,33 @@ class _TodoAddPageState extends State<TodoAddPage> {
                     ),
                   ],
                 ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    NumberCalcButton(
+                      text: '0',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: '00',
+                      textSize: 30,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: numClick,
+                    ),
+                    NumberCalcButton(
+                      text: 'AC',
+                      textSize: 25,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      //TODO 「AC」を削除する。
+                      callback: numClick,
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 8),
                 SizedBox(
                   width: double.infinity,
