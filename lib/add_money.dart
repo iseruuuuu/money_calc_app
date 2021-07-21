@@ -15,18 +15,20 @@ class _TodoAddPageState extends State<TodoAddPage> {
   bool cancel = false;
 
   void numClick(String text) {
-    setState(() => expression += text);
+    if (expression.length >= 11) {}
+    else{
+      setState(() => expression += text);
+    }
   }
 
 
   void delete() {
     setState(() {
-      //配列ができた。。。
-//      cal.removeAt(cal.length - 1);
-
-
-      final pos = expression.length - 1;
-      expression = expression.substring(0, pos);
+      if(expression.isEmpty) {}
+      else{
+        final pos = expression.length - 1;
+        expression = expression.substring(0, pos);
+      }
     });
   }
 
@@ -46,70 +48,52 @@ class _TodoAddPageState extends State<TodoAddPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 Container(
+                  width: MediaQuery.of(context).size.width * 0.9,
                   padding: const EdgeInsets.all(5.0),
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.red),
                     borderRadius: BorderRadius.circular(10),
                   ),
-                  child: Text(
-                    expression,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 40,
-                    ),
-                  ),
-                ),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-
-                    NumberCalcButton(
-                      text: '',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: (){},
-                    ),
-                    NumberCalcButton(
-                      text: '',
-                      textSize: 40,
-                      fillColor: 0xff424242,
-                      textColor: 0xFFFFFFFF,
-                      callback: (){},
-                    ),
-
-                    Container(
-                      margin: EdgeInsets.only(
-                          top: 1, bottom: 1, right: 0, left: 0),
-                      child: SizedBox(
-                        width: 73,
-                        height: 73,
-                        //width: 65,
-                        //height: 65,
-                        child: HoldDetector(
-                          onHold: () {
-                            delete();
-                            HapticFeedback.mediumImpact();
-                          },
-                          child: Theme(
-                            data: ThemeData(splashColor: Colors.white),
-                            child: Material(
-                              elevation: 0,
-                              clipBehavior: Clip.hardEdge,
-                              color: Colors.transparent,
-                              child: FlatButton(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(50),
-                                ),
-                                onPressed: () {
-                                  delete();
-                                  HapticFeedback.selectionClick();
-                                },
-                                child: const Text('⌫',
-                                  style: TextStyle(
-                                    fontSize: 40,
-                                    // fontSize: 50,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        expression,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 40,
+                        ),
+                        maxLines: 1,
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
+                        child: SizedBox(
+                          width: 73,
+                          height: 73,
+                          child: HoldDetector(
+                            onHold: () {
+                              delete();
+                              HapticFeedback.mediumImpact();
+                            },
+                            child: Theme(
+                              data: ThemeData(splashColor: Colors.white),
+                              child: Material(
+                                elevation: 0,
+                                clipBehavior: Clip.hardEdge,
+                                color: Colors.transparent,
+                                child: FlatButton(
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(50),
+                                  ),
+                                  onPressed: () {
+                                    delete();
+                                    HapticFeedback.selectionClick();
+                                  },
+                                  child: const Text('⌫',
+                                    style: TextStyle(
+                                      fontSize: 40,
+                                      // fontSize: 50,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -117,10 +101,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
-
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
@@ -202,6 +185,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 const SizedBox(height: 8),
                 SizedBox(
                   width: double.infinity,
+                  height: 50,
                   child: ElevatedButton(
                     onPressed: () {
 
@@ -214,29 +198,32 @@ class _TodoAddPageState extends State<TodoAddPage> {
                           '$expression';
                       Navigator.of(context).pop(post);
                     },
-                    child: const Text('リスト追加', style: TextStyle(color: Colors.white)),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                SizedBox(
-                  width: double.infinity,
-                  child: TextButton(
-                    onPressed: () {
-
-                    },
-                    child: const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 20),
-                      child: SizedBox(width: 10.0),
+                    child: const Text(
+                      'リスト追加',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
                     ),
                   ),
                 ),
+
+                const SizedBox(height: 8),
+
                 SizedBox(
                   width: double.infinity,
+                  height: 40,
                   child: TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text('キャンセル'),
+                    child: const Text(
+                      'キャンセル',
+                      style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.blue,
+                      ),
+                    ),
                   ),
                 ),
               ],
