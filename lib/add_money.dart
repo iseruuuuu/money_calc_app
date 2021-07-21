@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
 import 'cal/number_calc_button.dart';
+import 'package:holding_gesture/holding_gesture.dart';
 
 class TodoAddPage extends StatefulWidget {
 
@@ -19,6 +19,16 @@ class _TodoAddPageState extends State<TodoAddPage> {
   }
 
 
+  void delete() {
+    setState(() {
+      //配列ができた。。。
+//      cal.removeAt(cal.length - 1);
+
+
+      final pos = expression.length - 1;
+      expression = expression.substring(0, pos);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +45,81 @@ class _TodoAddPageState extends State<TodoAddPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                const SizedBox(height: 8,),
-                Text(expression),
+                Container(
+                  padding: const EdgeInsets.all(5.0),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.red),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Text(
+                    expression,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 40,
+                    ),
+                  ),
+                ),
 
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+
+                    NumberCalcButton(
+                      text: '',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: (){},
+                    ),
+                    NumberCalcButton(
+                      text: '',
+                      textSize: 40,
+                      fillColor: 0xff424242,
+                      textColor: 0xFFFFFFFF,
+                      callback: (){},
+                    ),
+
+                    Container(
+                      margin: EdgeInsets.only(
+                          top: 1, bottom: 1, right: 0, left: 0),
+                      child: SizedBox(
+                        width: 73,
+                        height: 73,
+                        //width: 65,
+                        //height: 65,
+                        child: HoldDetector(
+                          onHold: () {
+                            delete();
+                            HapticFeedback.mediumImpact();
+                          },
+                          child: Theme(
+                            data: ThemeData(splashColor: Colors.white),
+                            child: Material(
+                              elevation: 0,
+                              clipBehavior: Clip.hardEdge,
+                              color: Colors.transparent,
+                              child: FlatButton(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50),
+                                ),
+                                onPressed: () {
+                                  delete();
+                                  HapticFeedback.selectionClick();
+                                },
+                                child: const Text('⌫',
+                                  style: TextStyle(
+                                    fontSize: 40,
+                                    // fontSize: 50,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
