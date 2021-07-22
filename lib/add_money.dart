@@ -41,6 +41,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red,
         title: const Text('リスト追加'),
       ),
       body:  GestureDetector(
@@ -226,9 +227,9 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   height: 50,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30),
-                        )
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
                     onPressed: () {
                       final post = '$expression';

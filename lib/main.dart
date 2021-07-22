@@ -121,95 +121,58 @@ class _TodoListPageState extends State<TodoListPage> {
       SafeArea(
         child: Column(
           children: [
-
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(color: Colors.white70, width: 1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ListTile(
-                  title: Center(
-                    child: Column(
-                      children: [
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                           const Text(
-                              '合計',
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
-                            ),
-                            Text( _exp + '円',
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            const Text(
-                              '残り',
-                              style: TextStyle(
-                                fontSize: 30,
-                              ),
-                            ),
-                            Text( _exp2 + '円',
-                              style: const TextStyle(
-                                fontSize: 30,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 20),
-                      ],
-                    ),
+            Container(
+              color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 40),
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    side: const BorderSide(color: Colors.white70, width: 1),
+                    borderRadius: BorderRadius.circular(10),
                   ),
-                ),
-              ),
-            ),
-
-
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(color: Colors.white70, width: 1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ListTile(
-                  title: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-
-                        const SizedBox(height: 40),
-
-                        Container(
-                          width: 1000,
-                          color: Colors.red,
-                          child: Text(''),
-                        ),
-
-                        const SizedBox(height: 40),
-
-                        Container(
-                          width: 100,
-                          color: Colors.grey,
-                          child: Text(''),
-                        ),
-
-                        const SizedBox(height: 40),
-                      ],
+                  child: ListTile(
+                    title: Center(
+                      child: Column(
+                        children: [
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                             const Text(
+                                '合計',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                ),
+                              ),
+                              Text( _exp + '円',
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              const Text(
+                                '残り',
+                                style: TextStyle(
+                                  fontSize: 30,
+                                ),
+                              ),
+                              Text( _exp2 + '円',
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(height: 20),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -218,10 +181,7 @@ class _TodoListPageState extends State<TodoListPage> {
             // CircularProgressIndicator(),
             // LinearProgressIndicator(),
 
-
-
-
-
+            const SizedBox(height: 40),
 
             Expanded(
               child: ListView.builder(
@@ -241,7 +201,7 @@ class _TodoListPageState extends State<TodoListPage> {
                       }
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 70,vertical: 5),
                       child: Card(
                         shape: RoundedRectangleBorder(
                           side: const BorderSide(color: Colors.white70, width: 1),
