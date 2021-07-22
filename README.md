@@ -5,7 +5,8 @@
 TODOリスト
 ・追加画面の作成  
 ・リスト画面の作成  
-・保存する（shared_preferences）  
+・保存する（shared_preferences)  
+・読み込み画面を追加
   
 TOBEリスト  
 ・MVCで作成する  

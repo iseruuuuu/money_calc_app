@@ -58,13 +58,13 @@ class _TodoListPageState extends State<TodoListPage> {
 
   Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
-    prefs.setInt('key2', count);
+    prefs.setString('key2', _exp);
   }
 
   getPreferenceString() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      count = prefs.getInt('key2') ?? 0;
+      _exp = prefs.getString('key2') ?? '';
     });
   }
 
@@ -72,6 +72,7 @@ class _TodoListPageState extends State<TodoListPage> {
   void initState() {
     super.initState();
     getPreferenceList();
+    getPreferenceString();
   }
 
   @override
@@ -79,8 +80,9 @@ class _TodoListPageState extends State<TodoListPage> {
     super.setState(fn);
     setState(() {
       setPreferenceList();
+      setPreferenceString();
+      sumMoney();
     });
-    sumMoney();
   }
 
   void sumMoney() {
@@ -88,10 +90,7 @@ class _TodoListPageState extends State<TodoListPage> {
     Parser p = Parser();
     Expression exp = p.parse(amount);
     ContextModel cm = ContextModel();
-    setState(() {
       _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
-      print(_exp);
-    });
   }
 
 
@@ -133,8 +132,8 @@ class _TodoListPageState extends State<TodoListPage> {
           },
         ),
       ) :
-      SafeArea(
-        child: const Center(
+      const SafeArea(
+        child: Center(
           child: Text(
             '給料の記録がありません。\n'
                 '＋ボタンで追加してください。',
@@ -163,6 +162,8 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
+
+
 
         child: const Icon(Icons.add),
       ),
