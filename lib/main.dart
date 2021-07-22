@@ -121,17 +121,99 @@ class _TodoListPageState extends State<TodoListPage> {
       SafeArea(
         child: Column(
           children: [
-            Text('合計金額：' +  _exp + '円',
-              style: const TextStyle(
-                fontSize: 25,
+
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(color: Colors.white70, width: 1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListTile(
+                  title: Center(
+                    child: Row(
+                      children: [
+                        const Icon(Icons.monetization_on,
+                          size: 40,
+                          color: Colors.yellow,
+                        ),
+                        Text('合計金額' +  _exp + '円',
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ),
             ),
 
-            Text('103万まで残り：' + _exp2 + '円',
-              style: const TextStyle(
-                fontSize: 25,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(color: Colors.white70, width: 1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListTile(
+                  title: Center(
+                    child: Text('103万まで残り：' + _exp2 + '円',
+                      style: const TextStyle(
+                        fontSize: 25,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
+                ),
               ),
             ),
+
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
+              child: Card(
+                shape: RoundedRectangleBorder(
+                  side: const BorderSide(color: Colors.white70, width: 1),
+                  borderRadius: BorderRadius.circular(10),
+                ),
+                child: ListTile(
+                  title: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+
+                        const SizedBox(height: 40),
+
+                        Container(
+                          width: 1000,
+                          color: Colors.red,
+                          child: Text(''),
+                        ),
+
+                        const SizedBox(height: 40),
+
+                        Container(
+                          width: 100,
+                          color: Colors.grey,
+                          child: Text(''),
+                        ),
+
+                        const SizedBox(height: 40),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+           // CircularProgressIndicator(),
+           // LinearProgressIndicator(),
+
+
+
+
+
 
             Expanded(
               child: ListView.builder(
