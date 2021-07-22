@@ -87,10 +87,11 @@ class _TodoListPageState extends State<TodoListPage> {
 
   void sumMoney() {
     amount = todoList.join('+');
+    print(amount);
     Parser p = Parser();
     Expression exp = p.parse(amount);
     ContextModel cm = ContextModel();
-      _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
+    _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
   }
 
 
@@ -123,7 +124,15 @@ class _TodoListPageState extends State<TodoListPage> {
                   title: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Center(child: Text('￥' + todoList[index])),
+                      Center(
+                        child: Text(
+                          '￥' + todoList[index],
+                          style: const TextStyle(
+                            fontSize: 30,
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -161,12 +170,12 @@ class _TodoListPageState extends State<TodoListPage> {
           }
         },
         icon: const Icon(
-            Icons.add,
+          Icons.add,
           size: 30,
 
         ),
         label: const Text(
-            '給料を追加',
+          '給料を追加',
           style: TextStyle(
             fontSize: 20,
             color: Colors.white,
