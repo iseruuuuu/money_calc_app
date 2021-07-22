@@ -152,21 +152,28 @@ class _TodoListPageState extends State<TodoListPage> {
                         );
                       }
                     },
-                    child: Card(
-                      child: ListTile(
-                        title: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Center(
-                              child: Text(
-                                '￥' + todoList[index],
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  color: Colors.black,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                      child: Card(
+                        shape: RoundedRectangleBorder(
+                          side: BorderSide(color: Colors.white70, width: 1),
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: ListTile(
+                          title: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Center(
+                                child: Text(
+                                  '￥' + todoList[index],
+                                  style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.black,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),
