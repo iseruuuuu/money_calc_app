@@ -145,11 +145,9 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: ()
         // {sumMoney();},
-
-
         async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
@@ -162,11 +160,20 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
+        icon: const Icon(
+            Icons.add,
+          size: 30,
 
-
-
-        child: const Icon(Icons.add),
+        ),
+        label: const Text(
+            '給料を追加',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.white,
+          ),
+        ),
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }
