@@ -20,9 +20,7 @@ class MyApp extends StatelessWidget {
       ),
       home: GestureDetector(
         // onTap: () => FocusScope.of(context).unfocus(),
-        onTap: () {
-
-        },
+        onTap: () {},
         child :const TodoListPage(),
       ),
     );
@@ -138,7 +136,7 @@ class _TodoListPageState extends State<TodoListPage> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                             const Text(
+                              const Text(
                                 '合計',
                                 style: TextStyle(
                                   fontSize: 30,
