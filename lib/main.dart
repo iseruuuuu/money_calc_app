@@ -132,18 +132,45 @@ class _TodoListPageState extends State<TodoListPage> {
                 ),
                 child: ListTile(
                   title: Center(
-                    child: Row(
+                    child: Column(
                       children: [
-                        const Icon(Icons.monetization_on,
-                          size: 40,
-                          color: Colors.yellow,
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                           const Text(
+                              '合計',
+                              style: TextStyle(
+                                fontSize: 30,
+                              ),
+                            ),
+                            Text( _exp + '円',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
-                        Text('合計金額' +  _exp + '円',
-                          style: const TextStyle(
-                            fontSize: 30,
-                            color: Colors.black,
-                          ),
+                        const SizedBox(height: 20),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            const Text(
+                              '残り',
+                              style: TextStyle(
+                                fontSize: 30,
+                              ),
+                            ),
+                            Text( _exp2 + '円',
+                              style: const TextStyle(
+                                fontSize: 30,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ],
                         ),
+                        const SizedBox(height: 20),
                       ],
                     ),
                   ),
@@ -151,25 +178,6 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             ),
 
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  side: const BorderSide(color: Colors.white70, width: 1),
-                  borderRadius: BorderRadius.circular(10),
-                ),
-                child: ListTile(
-                  title: Center(
-                    child: Text('103万まで残り：' + _exp2 + '円',
-                      style: const TextStyle(
-                        fontSize: 25,
-                        color: Colors.black,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
-            ),
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 10),
@@ -207,8 +215,8 @@ class _TodoListPageState extends State<TodoListPage> {
                 ),
               ),
             ),
-           // CircularProgressIndicator(),
-           // LinearProgressIndicator(),
+            // CircularProgressIndicator(),
+            // LinearProgressIndicator(),
 
 
 
