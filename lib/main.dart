@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'package:flutter/services.dart';
 import 'add_money.dart';
 
 void main() {
@@ -111,18 +110,17 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('合計金額：' + _exp + '円' '　' + '残り：' + _exp2 + '円',
-          style: const TextStyle(
-            fontSize: 18,
-          ),
+      backgroundColor: Colors.grey.shade100,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0.0),
+        child: AppBar(
+          backgroundColor: Colors.red,
         ),
       ),
       body: (todoList.isNotEmpty) ?
       SafeArea(
         child: Column(
           children: [
-
             Text('合計金額：' +  _exp + '円',
               style: const TextStyle(
                 fontSize: 25,
@@ -153,11 +151,11 @@ class _TodoListPageState extends State<TodoListPage> {
                       }
                     },
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 10),
                       child: Card(
                         shape: RoundedRectangleBorder(
-                          side: BorderSide(color: Colors.white70, width: 1),
-                          borderRadius: BorderRadius.circular(30),
+                          side: const BorderSide(color: Colors.white70, width: 1),
+                          borderRadius: BorderRadius.circular(10),
                         ),
                         child: ListTile(
                           title: Column(
