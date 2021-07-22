@@ -42,7 +42,9 @@ class _TodoListPageState extends State<TodoListPage> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int count = 0;
   String amount = '';
+  String amount2 = '';
   String _exp = '';
+  String _exp2 = '';
 
   Future<void> setPreferenceList() async {
     final SharedPreferences prefs = await _prefs;
@@ -59,12 +61,14 @@ class _TodoListPageState extends State<TodoListPage> {
   Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
     prefs.setString('key2', _exp);
+    prefs.setString('key3', _exp2);
   }
 
   getPreferenceString() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       _exp = prefs.getString('key2') ?? '';
+      _exp2 = prefs.getString('key3') ?? '';
     });
   }
 
@@ -87,11 +91,20 @@ class _TodoListPageState extends State<TodoListPage> {
 
   void sumMoney() {
     amount = todoList.join('+');
-    print(amount);
+
     Parser p = Parser();
     Expression exp = p.parse(amount);
     ContextModel cm = ContextModel();
     _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
+
+    amount2 = todoList.join('+');
+    final sum = '1030000-(' + amount2 + ')';
+
+    Parser p2 = Parser();
+    Expression exp2 = p2.parse(sum);
+    ContextModel cm2 = ContextModel();
+    _exp2 = exp2.evaluate(EvaluationType.REAL, cm2).toString();
+
   }
 
 
@@ -99,46 +112,69 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('103万まで残り：' + '$_exp' + '円'),
+        title: Text('合計金額：' + _exp + '円' '　' + '残り：' + _exp2 + '円',
+          style: const TextStyle(
+            fontSize: 18,
+          ),
+        ),
       ),
       body: (todoList.isNotEmpty) ?
       SafeArea(
-        child: ListView.builder(
-          itemCount: todoList.length,
-          itemBuilder: (context, index) {
-            return Dismissible(
-              key: Key(todoList[index]),
-              onDismissed: (direction) {
-                setState(() {
-                  todoList.removeAt(index);
-                });
-                if (direction == DismissDirection.endToStart) {
-                  Scaffold.of(context).showSnackBar(
-                    const SnackBar(content: Text("削除しました"),
-                    ),
-                  );
-                }
-              },
-              child: Card(
-                child: ListTile(
-                  title: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Center(
-                        child: Text(
-                          '￥' + todoList[index],
-                          style: const TextStyle(
-                            fontSize: 30,
-                            color: Colors.black,
+        child: Column(
+          children: [
+
+            Text('合計金額：' +  _exp + '円',
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+            ),
+
+            Text('103万まで残り：' + _exp2 + '円',
+              style: const TextStyle(
+                fontSize: 25,
+              ),
+            ),
+
+            Expanded(
+              child: ListView.builder(
+                itemCount: todoList.length,
+                itemBuilder: (context, index) {
+                  return Dismissible(
+                    key: Key(todoList[index]),
+                    onDismissed: (direction) {
+                      setState(() {
+                        todoList.removeAt(index);
+                      });
+                      if (direction == DismissDirection.endToStart) {
+                        Scaffold.of(context).showSnackBar(
+                          const SnackBar(content: Text("削除しました"),
                           ),
+                        );
+                      }
+                    },
+                    child: Card(
+                      child: ListTile(
+                        title: Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Center(
+                              child: Text(
+                                '￥' + todoList[index],
+                                style: const TextStyle(
+                                  fontSize: 30,
+                                  color: Colors.black,
+                                ),
+                              ),
+                            ),
+                          ],
                         ),
                       ),
-                    ],
-                  ),
-                ),
+                    ),
+                  );
+                },
               ),
-            );
-          },
+            ),
+          ],
         ),
       ) :
       const SafeArea(
