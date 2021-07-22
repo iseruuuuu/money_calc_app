@@ -20,7 +20,10 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: GestureDetector(
-        onTap: () => FocusScope.of(context).unfocus(),
+        // onTap: () => FocusScope.of(context).unfocus(),
+        onTap: () {
+
+        },
         child :const TodoListPage(),
       ),
     );
@@ -39,25 +42,26 @@ class _TodoListPageState extends State<TodoListPage> {
   Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int count = 0;
   String amount = '';
+  String _exp = '';
 
-  Future<void> setPreferenceString() async {
+  Future<void> setPreferenceList() async {
     final SharedPreferences prefs = await _prefs;
     prefs.setStringList('key', todoList);
   }
 
-  getPreferenceString() async {
+  getPreferenceList() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       todoList = prefs.getStringList('key') ?? [];
     });
   }
 
-  Future<void> setPreferenceInt() async {
+  Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
     prefs.setInt('key2', count);
   }
 
-  getPreferenceInt() async {
+  getPreferenceString() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
       count = prefs.getInt('key2') ?? 0;
@@ -67,30 +71,27 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
-    getPreferenceString();
-    sumMoney();
+    getPreferenceList();
   }
 
   @override
   void setState(VoidCallback fn) {
-    sumMoney();
     super.setState(fn);
     setState(() {
-      setPreferenceString();
+      setPreferenceList();
     });
+    sumMoney();
   }
 
   void sumMoney() {
-    //Parser p = Parser();
-   // Expression exp = p.parse(amount);
-   // ContextModel cm = ContextModel();
-   // print(todoList);
-   // print(todoList.join('+'));
     amount = todoList.join('+');
-
-    //final _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
-
-    //print(_exp);
+    Parser p = Parser();
+    Expression exp = p.parse(amount);
+    ContextModel cm = ContextModel();
+    setState(() {
+      _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
+      print(_exp);
+    });
   }
 
 
@@ -98,61 +99,59 @@ class _TodoListPageState extends State<TodoListPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('給料明細'),
+        title: Text('103万まで残り：' + '$_exp' + '円'),
       ),
       body: (todoList.isNotEmpty) ?
-      ListView.builder(
-        itemCount: todoList.length,
-        itemBuilder: (context, index) {
-          return Dismissible(
-            key: Key(todoList[index]),
-            onDismissed: (direction) {
-              setState(() {
-                todoList.removeAt(index);
-              });
-              if (direction == DismissDirection.endToStart) {
-                Scaffold.of(context).showSnackBar(
-                  const SnackBar(content: Text("削除しました"),
-                  ),
-                );
-              }
-            },
-            child: Column(
-              children: [
-                Text('◯月◯日時点の合計額：' + '$todoList' '円',
-                  style: const TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
-                Card(
-                  child: ListTile(
-                    title: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Center(child: Text('￥' + todoList[index])),
-                      ],
+      SafeArea(
+        child: ListView.builder(
+          itemCount: todoList.length,
+          itemBuilder: (context, index) {
+            return Dismissible(
+              key: Key(todoList[index]),
+              onDismissed: (direction) {
+                setState(() {
+                  todoList.removeAt(index);
+                });
+                if (direction == DismissDirection.endToStart) {
+                  Scaffold.of(context).showSnackBar(
+                    const SnackBar(content: Text("削除しました"),
                     ),
+                  );
+                }
+              },
+              child: Card(
+                child: ListTile(
+                  title: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Center(child: Text('￥' + todoList[index])),
+                    ],
                   ),
                 ),
-              ],
-            ),
-          );
-        },
+              ),
+            );
+          },
+        ),
       ) :
-      const Center(
-        child: Text(
-          '給料の記録がありません。\n'
-              '＋ボタンで追加してください。',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize: 20,
-            color: Colors.black,
+      SafeArea(
+        child: const Center(
+          child: Text(
+            '給料の記録がありません。\n'
+                '＋ボタンで追加してください。',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+            ),
           ),
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
+        onPressed: ()
+        // {sumMoney();},
+
+
+        async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return TodoAddPage();
@@ -164,6 +163,7 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
+
         child: const Icon(Icons.add),
       ),
     );
