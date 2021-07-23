@@ -143,131 +143,131 @@ class _TodoListPageState extends State<TodoListPage> {
         fit: StackFit.expand,
         overflow: Overflow.clip,
         children: <Widget>[
-         SafeArea(
-          child: Column(
-            children: [
-              Container(
-                color: Colors.red,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 40),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      side: const BorderSide(color: Colors.white70, width: 1),
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    child: ListTile(
-                      title: Center(
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Text(
-                                  '合計',
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                Text( _exp + '円',
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                const Text(
-                                  '残り',
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                  ),
-                                ),
-                                Text( _exp2 + '円',
-                                  style: const TextStyle(
-                                    fontSize: 30,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 20),
-                          ],
-                        ),
+          SafeArea(
+            child: Column(
+              children: [
+                Container(
+                  color: Colors.red,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 40),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        side: const BorderSide(color: Colors.white70, width: 1),
+                        borderRadius: BorderRadius.circular(10),
                       ),
-                    ),
-                  ),
-                ),
-              ),
-              const SizedBox(height: 20),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  const Text(
-                      '給料記録',
-                    style: TextStyle(
-                      fontSize: 15,
-                      color: Colors.black,
-                    ),
-                  ),
-                  Container(),
-                  Container(),
-                ],
-              ),
-              const SizedBox(height: 10),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: todoList.length,
-                  itemBuilder: (context, index) {
-                    return Dismissible(
-                      key: Key(todoList[index]),
-                      onDismissed: (direction) {
-                        setState(() {
-                          todoList.removeAt(index);
-                        });
-                        if (direction == DismissDirection.endToStart) {
-                          Scaffold.of(context).showSnackBar(
-                            const SnackBar(content: Text("削除しました"),
-                            ),
-                          );
-                        }
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 70,vertical: 5),
-                        child: Card(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: Colors.white70, width: 1),
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                          child: ListTile(
-                            title: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Center(
-                                  child: Text(
-                                    '￥' + todoList[index],
+                      child: ListTile(
+                        title: Center(
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    '合計',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                    ),
+                                  ),
+                                  Text( _exp + '円',
                                     style: const TextStyle(
                                       fontSize: 30,
                                       color: Colors.black,
                                     ),
                                   ),
-                                ),
-                              ],
-                            ),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    '残り',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                    ),
+                                  ),
+                                  Text( _exp2 + '円',
+                                    style: const TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 20),
+                            ],
                           ),
                         ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            ],
+                const SizedBox(height: 20),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    const Text(
+                      '給料記録',
+                      style: TextStyle(
+                        fontSize: 15,
+                        color: Colors.black,
+                      ),
+                    ),
+                    Container(),
+                    Container(),
+                  ],
+                ),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: todoList.length,
+                    itemBuilder: (context, index) {
+                      return Dismissible(
+                        key: Key(todoList[index]),
+                        onDismissed: (direction) {
+                          setState(() {
+                            todoList.removeAt(index);
+                          });
+                          if (direction == DismissDirection.endToStart) {
+                            Scaffold.of(context).showSnackBar(
+                              const SnackBar(content: Text("削除しました"),
+                              ),
+                            );
+                          }
+                        },
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 70,vertical: 5),
+                          child: Card(
+                            shape: RoundedRectangleBorder(
+                              side: const BorderSide(color: Colors.white70, width: 1),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: ListTile(
+                              title: Column(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      '￥' + todoList[index],
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
           OverlayLoadingMolecules(visible: visibleLoading),
         ],
       )
@@ -286,10 +286,7 @@ class _TodoListPageState extends State<TodoListPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: onPressMyButton,
-       /*
-        onPressed:
-        () async {
+        onPressed: () async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return TodoAddPage();
@@ -301,13 +298,10 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
-
-        */
-
         icon: const Icon(
           Icons.add,
           size: 30,
-
+          color: Colors.white,
         ),
         label: const Text(
           '給料を追加',
