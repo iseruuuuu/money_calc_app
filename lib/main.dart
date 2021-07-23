@@ -61,17 +61,22 @@ class _TodoListPageState extends State<TodoListPage> {
     setState(() {
       setPreferenceList();
       setPreferenceString();
-      sumMoney();
+      //sumMoney();
     });
   }
+
+
+
 
   onPressMyButton() async {
     //ローディングを表示
     setState(() {
       visibleLoading = true;
     });
+
     //２秒待つ
-    await Future.delayed(const Duration(milliseconds: 2000), () {});
+    await Future.delayed(const Duration(milliseconds: 200), () {});
+
     //ローディングを非表示
     setState(() {
       visibleLoading = false;
@@ -281,7 +286,10 @@ class _TodoListPageState extends State<TodoListPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton.extended(
-        onPressed: () async {
+        onPressed: onPressMyButton,
+       /*
+        onPressed:
+        () async {
           final newListText = await Navigator.of(context).push(
             MaterialPageRoute(builder: (context) {
               return TodoAddPage();
@@ -293,6 +301,9 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
+
+        */
+
         icon: const Icon(
           Icons.add,
           size: 30,
