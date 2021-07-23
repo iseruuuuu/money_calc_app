@@ -213,7 +213,6 @@ class _TodoListPageState extends State<TodoListPage> {
                   Container(),
                 ],
               ),
-
               const SizedBox(height: 10),
               Expanded(
                 child: ListView.builder(

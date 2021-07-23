@@ -15,7 +15,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
   bool cancel = false;
 
   void numClick(String text) {
-    if (expression.length >= 8) {}
+    if (expression.length >= 7) {}
     else{
       setState(() => expression += text);
     }
@@ -221,7 +221,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               ),
               const SizedBox(height: 8),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 70),
                 child: SizedBox(
                   width: double.infinity,
                   height: 50,
@@ -232,8 +232,18 @@ class _TodoAddPageState extends State<TodoAddPage> {
                       ),
                     ),
                     onPressed: () {
-                      final post = '$expression';
-                      Navigator.of(context).pop(post);
+                      if(expression == '' ) {
+                      }else if (expression == '0'){
+                      }else if (expression == '00'){
+                      }else if (expression == '000'){
+                      }else if (expression == '0000'){
+                      }else if (expression == '00000'){
+                      }else if (expression == '000000'){
+                      }else if (expression == '0000000'){
+                      }else{
+                        final post = '$expression';
+                        Navigator.of(context).pop(post);
+                      }
                     },
                     child: const Text(
                       'リスト追加',
@@ -247,7 +257,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
               ),
               const SizedBox(height: 10),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 60),
+                padding: const EdgeInsets.symmetric(horizontal: 70),
                 child: SizedBox(
                   width: double.infinity,
                   height: 40,
