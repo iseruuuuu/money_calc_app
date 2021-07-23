@@ -198,7 +198,23 @@ class _TodoListPageState extends State<TodoListPage> {
                   ),
                 ),
               ),
-              const SizedBox(height: 40),
+              const SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  const Text(
+                      '給料記録',
+                    style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black,
+                    ),
+                  ),
+                  Container(),
+                  Container(),
+                ],
+              ),
+
+              const SizedBox(height: 10),
               Expanded(
                 child: ListView.builder(
                   itemCount: todoList.length,
