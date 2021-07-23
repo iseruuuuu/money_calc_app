@@ -198,11 +198,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   ),
                 ),
               ),
-              // CircularProgressIndicator(),
-              // LinearProgressIndicator(),
-
               const SizedBox(height: 40),
-
               Expanded(
                 child: ListView.builder(
                   itemCount: todoList.length,
