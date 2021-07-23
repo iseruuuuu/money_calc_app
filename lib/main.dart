@@ -245,7 +245,6 @@ class _TodoListPageState extends State<TodoListPage> {
               ],
             ),
           ),
-          OverlayLoadingMolecules(visible: visibleLoading),
         ],
       )
           :
