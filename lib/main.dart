@@ -184,6 +184,7 @@ class _TodoListPageState extends State<TodoListPage> {
                           ),
                         ),
                       ),
+                      const SizedBox(height: 20),
                       Expanded(
                         child: ListView.builder(
                           itemCount: todoList.length,
