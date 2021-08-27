@@ -38,10 +38,8 @@ class _TodoListPageState extends State<TodoListPage> {
   String amount2 = '';
   String _exp = '';
   String _exp2 = '';
-
   String amount3 = '';
   String amount4 = '';
-
   String _exp3 = '';
   String _exp4 = '';
 
@@ -93,12 +91,9 @@ class _TodoListPageState extends State<TodoListPage> {
     amount3 = amount + '/' + '10';
     Parser p = Parser();
     ContextModel cm = ContextModel();
-
     Expression exp = p.parse(amount3);
-
     _exp3 = exp.evaluate(EvaluationType.REAL, cm).toString();
     _exp = _exp3.replaceAll('.', '');
-
     amount2 = todoList.join('+');
     final sum = '( 1030000-(' + amount2 + ') ) / 10';
     Parser p2 = Parser();
