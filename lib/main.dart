@@ -162,7 +162,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 5),
+                              const SizedBox(height: 10),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
