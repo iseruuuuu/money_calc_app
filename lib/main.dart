@@ -133,7 +133,7 @@ class _TodoListPageState extends State<TodoListPage> {
                     child: Card(
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
-                          color: Colors.orange,
+                          color: Colors.white,
                           width: 5,
                         ),
                         borderRadius: BorderRadius.circular(20),
