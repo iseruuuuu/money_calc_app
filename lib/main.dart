@@ -46,8 +46,14 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   void initState() {
     super.initState();
+
+    //TODO 読み込む間に、Loading画面を入れたい。
     getPreferenceList();
     getPreferenceString();
+  }
+
+  void loading() {
+
   }
 
   @override
@@ -113,10 +119,9 @@ class _TodoListPageState extends State<TodoListPage> {
           backgroundColor: Colors.red,
         ),
       ),
-      body: (todoList.isNotEmpty)
-          ? Stack(
+      body: (todoList.isNotEmpty) ?
+      Stack(
         fit: StackFit.expand,
-        overflow: Overflow.clip,
         children: <Widget>[
           SafeArea(
             child: Column(
@@ -124,13 +129,14 @@ class _TodoListPageState extends State<TodoListPage> {
                 Container(
                   color: Colors.red,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         side: const BorderSide(
-                            color: Colors.white70, width: 1),
-                        borderRadius: BorderRadius.circular(10),
+                          color: Colors.orange,
+                          width: 5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
                       ),
                       child: ListTile(
                         title: Center(
@@ -138,13 +144,13 @@ class _TodoListPageState extends State<TodoListPage> {
                             children: [
                               const SizedBox(height: 20),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
                                     '合計',
                                     style: TextStyle(
                                       fontSize: 30,
+                                      color: Colors.black,
                                     ),
                                   ),
                                   Text(
@@ -156,7 +162,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 5),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
@@ -164,6 +170,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                     '残り',
                                     style: TextStyle(
                                       fontSize: 30,
+                                      color: Colors.black,
                                     ),
                                   ),
                                   Text(
