@@ -116,7 +116,7 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
         child: AppBar(
-          backgroundColor: Colors.red,
+          backgroundColor: const Color(0xFFFF4C4B),
         ),
       ),
       body: (todoList.isNotEmpty) ?
@@ -127,7 +127,7 @@ class _TodoListPageState extends State<TodoListPage> {
             child: Column(
               children: [
                 Container(
-                  color: Colors.red,
+                  color: const Color(0xFFEA6762),
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
                     child: Card(
@@ -272,18 +272,14 @@ class _TodoListPageState extends State<TodoListPage> {
             });
           }
         },
-        icon: const Icon(
-          Icons.add,
-          size: 30,
-          color: Colors.white,
-        ),
         label: const Text(
           '給料を追加',
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 25,
             color: Colors.white,
           ),
         ),
+        backgroundColor: const Color(0xFFEA6762),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
