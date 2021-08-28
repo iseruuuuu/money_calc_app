@@ -142,7 +142,7 @@ class _TodoListPageState extends State<TodoListPage> {
                         title: Center(
                           child: Column(
                             children: [
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 15),
                               Row(
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
@@ -182,7 +182,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 20),
+                              const SizedBox(height: 15),
                             ],
                           ),
                         ),
