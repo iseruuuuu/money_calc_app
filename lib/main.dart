@@ -208,13 +208,6 @@ class _TodoListPageState extends State<TodoListPage> {
                           setState(() {
                             todoList.removeAt(index);
                           });
-                          if (direction == DismissDirection.endToStart) {
-                            Scaffold.of(context).showSnackBar(
-                              const SnackBar(
-                                content: Text("削除しました"),
-                              ),
-                            );
-                          }
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
