@@ -51,7 +51,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
         ),
       ),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
@@ -228,7 +228,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
             padding: const EdgeInsets.symmetric(horizontal: 70),
             child: SizedBox(
               width: double.infinity,
-              height: 50,
+              height: MediaQuery.of(context).size.width / 7,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: AppColor.red2,
@@ -254,7 +254,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   'リスト追加',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 25,
                   ),
                 ),
               ),
