@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_calc_app/component/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'add_money.dart';
@@ -114,7 +115,8 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
         child: AppBar(
-          backgroundColor: const Color(0xFFFF4C4B),
+          backgroundColor: AppColor.red2,
+          elevation: 0,
         ),
       ),
       body: (todoList.isNotEmpty)
@@ -125,7 +127,7 @@ class _TodoListPageState extends State<TodoListPage> {
                   child: Column(
                     children: [
                       Container(
-                        color: const Color(0xFFEA6762),
+                        color: AppColor.red2,
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 20, vertical: 40),
