@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'component/color.dart';
-import 'number_calc_button.dart';
+import '../model/color.dart';
+import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
 class TodoAddPage extends StatefulWidget {

@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:money_calc_app/component/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'add_money.dart';
+import '../model/color.dart';
 
 void main() {
   runApp(const MyApp());

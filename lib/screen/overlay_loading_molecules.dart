@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
 class OverlayLoadingMolecules extends StatelessWidget {
-  OverlayLoadingMolecules({required this.visible});
+  const OverlayLoadingMolecules({
+    Key? key,
+    required this.visible,
+  }) : super(key: key);
 
   final bool visible;
 
@@ -14,13 +17,13 @@ class OverlayLoadingMolecules extends StatelessWidget {
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          const CircularProgressIndicator(
+        children: const <Widget>[
+          CircularProgressIndicator(
             valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
           ),
         ],
       ),
     )
-   : Container();
+        : Container();
   }
 }
