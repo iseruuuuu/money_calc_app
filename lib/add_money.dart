@@ -53,6 +53,7 @@ class _TodoAddPageState extends State<TodoAddPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          const SizedBox(height: 40),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
             padding: const EdgeInsets.all(5.0),

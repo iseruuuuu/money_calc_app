@@ -122,7 +122,7 @@ class _TodoListPageState extends State<TodoListPage> {
       PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
         child: AppBar(
-          backgroundColor: AppColor.grey3,
+          backgroundColor: AppColor.white,
           elevation: 0,
         ),
       ),
@@ -172,8 +172,7 @@ class _TodoListPageState extends State<TodoListPage> {
                               ),
                               const SizedBox(height: 10),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
                                     '残り',
@@ -217,28 +216,23 @@ class _TodoListPageState extends State<TodoListPage> {
                             vertical: 5,
                           ),
                           child: Card(
+                            color: AppColor.white,
                             shape: RoundedRectangleBorder(
-                              side: const BorderSide(
-                                color: Colors.white70,
+                              side: BorderSide(
+                                color: AppColor.grey3,
                                 width: 1,
                               ),
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: ListTile(
-                              title: Column(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Center(
-                                    child: Text(
-                                      '￥' + todoList[index],
-                                      style: const TextStyle(
-                                        fontSize: 30,
-                                        color: Colors.black,
-                                      ),
-                                    ),
+                              title: Center(
+                                child: Text(
+                                  '￥' + todoList[index],
+                                  style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.black,
                                   ),
-                                ],
+                                ),
                               ),
                             ),
                           ),
@@ -280,10 +274,9 @@ class _TodoListPageState extends State<TodoListPage> {
                   Icons.add_circle_outline,
                   size: 30,
                   color: Colors.black,
-
                 ),
                 Text(
-                    'で追加してください',
+                  'で追加してください',
                   style: TextStyle(
                     fontSize: 25,
                     color: Colors.black,
@@ -304,8 +297,11 @@ class _TodoListPageState extends State<TodoListPage> {
           onPressed: () async {
             final newListText = await Navigator.of(context).push(
               MaterialPageRoute(builder: (context) {
-                return TodoAddPage();
-              }),
+                return const TodoAddPage();
+              },
+                fullscreenDialog: true,
+              ),
+
             );
             if (newListText != null) {
               setState(() {

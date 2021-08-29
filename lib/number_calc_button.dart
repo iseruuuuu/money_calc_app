@@ -23,12 +23,12 @@ class NumberCalcButton extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(40),
+        borderRadius: BorderRadius.circular(70),
         color: AppColor.grey3,
       ),
       child: SizedBox(
-        width: 80,
-        height: 80,
+        width: MediaQuery.of(context).size.width / 4.5,
+        height: MediaQuery.of(context).size.width / 4.5,
         child: Theme(
           data: ThemeData(splashColor: Colors.white),
           child: Material(
