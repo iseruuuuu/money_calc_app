@@ -1,4 +1,6 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:money_calc_app/component/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -250,17 +252,47 @@ class _TodoListPageState extends State<TodoListPage> {
           ),
         ],
       ) :
-      const SafeArea(
-        child: Center(
-          child: Text(
-            '給料の記録がありません。\n'
-                '＋ボタンで追加してください。',
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.black,
+      SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SizedBox(
+              width: MediaQuery.of(context).size.width / 2,
+              height: MediaQuery.of(context).size.width / 2,
+              child: Image.asset('assets/images/3.png'),
             ),
-          ),
+            const SizedBox(height: 30),
+            const Center(
+              child: Text(
+                '給料の記録がありません',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.add_circle_outline,
+                  size: 30,
+                  color: Colors.black,
+
+                ),
+                Text(
+                    'で追加してください',
+                  style: TextStyle(
+                    fontSize: 25,
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+          ],
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
