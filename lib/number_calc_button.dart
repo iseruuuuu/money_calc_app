@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:money_calc_app/component/color.dart';
 
 class NumberCalcButton extends StatelessWidget {
   final String text;
@@ -20,7 +21,11 @@ class NumberCalcButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+      margin: const EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(40),
+        color: AppColor.grey3,
+      ),
       child: SizedBox(
         width: 80,
         height: 80,
