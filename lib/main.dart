@@ -13,13 +13,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const TodoListPage(),
+      home: TodoListPage(),
     );
   }
 }
@@ -33,7 +29,7 @@ class TodoListPage extends StatefulWidget {
 
 class _TodoListPageState extends State<TodoListPage> {
   List<String> todoList = [];
-  Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   int count = 0;
   String amount = '';
   String amount2 = '';
@@ -92,6 +88,7 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   void sumMoney() {
+    //TODO １桁の場合は、０１とかになる。
     amount = todoList.join('+');
     amount3 = amount + '/' + '10';
     Parser p = Parser();
@@ -111,7 +108,7 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.white,
+      backgroundColor: AppColor.grey3,
       appBar: (todoList.isNotEmpty) ?
       PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
@@ -123,7 +120,7 @@ class _TodoListPageState extends State<TodoListPage> {
       PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
         child: AppBar(
-          backgroundColor: AppColor.white,
+          backgroundColor: AppColor.grey3,
           elevation: 0,
         ),
       ),
@@ -137,7 +134,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 Container(
                   color: AppColor.red2,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
@@ -221,7 +218,9 @@ class _TodoListPageState extends State<TodoListPage> {
                         },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 30, vertical: 5),
+                            horizontal: 30,
+                            vertical: 5,
+                          ),
                           child: Card(
                             shape: RoundedRectangleBorder(
                               side: const BorderSide(
