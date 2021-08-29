@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'component/color.dart';
 import 'number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
@@ -41,9 +42,13 @@ class _TodoAddPageState extends State<TodoAddPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.red,
-        title: const Text('リスト追加'),
+      backgroundColor: AppColor.grey3,
+      appBar: PreferredSize(
+        preferredSize: const Size.fromHeight(0.0),
+        child: AppBar(
+          backgroundColor: AppColor.grey3,
+          elevation: 0,
+        ),
       ),
       body:  GestureDetector(
         onTap: () => FocusScope.of(context).unfocus(),
