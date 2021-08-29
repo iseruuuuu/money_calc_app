@@ -4,6 +4,7 @@ import 'number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
 class TodoAddPage extends StatefulWidget {
+  const TodoAddPage({Key? key}) : super(key: key);
 
   @override
   _TodoAddPageState createState() => _TodoAddPageState();
