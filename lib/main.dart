@@ -111,159 +111,166 @@ class _TodoListPageState extends State<TodoListPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
-      appBar: PreferredSize(
+      backgroundColor: AppColor.white,
+      appBar: (todoList.isNotEmpty) ?
+      PreferredSize(
         preferredSize: const Size.fromHeight(0.0),
         child: AppBar(
           backgroundColor: AppColor.red2,
           elevation: 0,
         ),
+      ) :
+      PreferredSize(
+        preferredSize: const Size.fromHeight(0.0),
+        child: AppBar(
+          backgroundColor: AppColor.white,
+          elevation: 0,
+        ),
       ),
-      body: (todoList.isNotEmpty)
-          ? Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                SafeArea(
-                  child: Column(
-                    children: [
-                      Container(
-                        color: AppColor.red2,
+      body: (todoList.isNotEmpty) ?
+      Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          SafeArea(
+            child: Column(
+              children: [
+                Container(
+                  color: AppColor.red2,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                          color: AppColor.white,
+                          width: 5,
+                        ),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: ListTile(
+                        title: Center(
+                          child: Column(
+                            children: [
+                              const SizedBox(height: 15),
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    '合計',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    _exp + '円',
+                                    style: const TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  const Text(
+                                    '残り',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Text(
+                                    _exp2 + '円',
+                                    style: const TextStyle(
+                                      fontSize: 30,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 15),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: todoList.length,
+                    itemBuilder: (context, index) {
+                      return Dismissible(
+                        key: Key(todoList[index]),
+                        onDismissed: (direction) {
+                          setState(() {
+                            todoList.removeAt(index);
+                          });
+                          if (direction == DismissDirection.endToStart) {
+                            Scaffold.of(context).showSnackBar(
+                              const SnackBar(
+                                content: Text("削除しました"),
+                              ),
+                            );
+                          }
+                        },
                         child: Padding(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 40),
+                              horizontal: 30, vertical: 5),
                           child: Card(
                             shape: RoundedRectangleBorder(
                               side: const BorderSide(
-                                color: Colors.white,
-                                width: 5,
+                                color: Colors.white70,
+                                width: 1,
                               ),
-                              borderRadius: BorderRadius.circular(20),
+                              borderRadius: BorderRadius.circular(10),
                             ),
                             child: ListTile(
-                              title: Center(
-                                child: Column(
-                                  children: [
-                                    const SizedBox(height: 15),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        const Text(
-                                          '合計',
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          _exp + '円',
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
+                              title: Column(
+                                mainAxisAlignment:
+                                MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Center(
+                                    child: Text(
+                                      '￥' + todoList[index],
+                                      style: const TextStyle(
+                                        fontSize: 30,
+                                        color: Colors.black,
+                                      ),
                                     ),
-                                    const SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        const Text(
-                                          '残り',
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          _exp2 + '円',
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                    const SizedBox(height: 15),
-                                  ],
-                                ),
+                                  ),
+                                ],
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      const SizedBox(height: 20),
-                      Expanded(
-                        child: ListView.builder(
-                          itemCount: todoList.length,
-                          itemBuilder: (context, index) {
-                            return Dismissible(
-                              key: Key(todoList[index]),
-                              onDismissed: (direction) {
-                                setState(() {
-                                  todoList.removeAt(index);
-                                });
-                                if (direction == DismissDirection.endToStart) {
-                                  Scaffold.of(context).showSnackBar(
-                                    const SnackBar(
-                                      content: Text("削除しました"),
-                                    ),
-                                  );
-                                }
-                              },
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 30, vertical: 5),
-                                child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    side: const BorderSide(
-                                      color: Colors.white70,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: ListTile(
-                                    title: Column(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Center(
-                                          child: Text(
-                                            '￥' + todoList[index],
-                                            style: const TextStyle(
-                                              fontSize: 30,
-                                              color: Colors.black,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                      );
+                    },
                   ),
                 ),
               ],
-            )
-          : const SafeArea(
-              child: Center(
-                child: Text(
-                  '給料の記録がありません。\n'
-                  '＋ボタンで追加してください。',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
             ),
+          ),
+        ],
+      ) :
+      const SafeArea(
+        child: Center(
+          child: Text(
+            '給料の記録がありません。\n'
+                '＋ボタンで追加してください。',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+      ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
         width: MediaQuery.of(context).size.width / 5,
