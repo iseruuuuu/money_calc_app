@@ -286,8 +286,8 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width / 5,
-        height: MediaQuery.of(context).size.width / 5,
+        width: MediaQuery.of(context).size.width / 6,
+        height: MediaQuery.of(context).size.width / 6,
         child: FloatingActionButton(
           backgroundColor: const Color(0xFFEA6762),
           onPressed: () async {
@@ -313,7 +313,7 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFFEA6762),
-        notchMargin: 10.0,
+        notchMargin: 8.0,
         shape: const AutomaticNotchedShape(
           RoundedRectangleBorder(),
           StadiumBorder(
@@ -324,8 +324,8 @@ class _TodoListPageState extends State<TodoListPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[
-            SizedBox(height: 60, child: Text('')),
-            SizedBox(height: 60, child: Text('')),
+            SizedBox(height: 45, child: Text('')),
+            SizedBox(height: 45, child: Text('')),
           ],
         ),
       ),
