@@ -15,14 +15,14 @@ import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-class PasswordScreen extends StatefulWidget {
-  const PasswordScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
-  _PasswordScreenState createState() => _PasswordScreenState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _PasswordScreenState extends State<PasswordScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
 
   String expression = '';
   bool cancel = false;
@@ -256,18 +256,11 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         fullscreenDialog: true,
                       ),
                     );
-
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(builder: (context) => TodoListPage(),
-                    //     )
-                    // );
-
                   }else{
                   }
                 },
                 child: const Text(
-                  'ログイン',
+                  '登録',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
