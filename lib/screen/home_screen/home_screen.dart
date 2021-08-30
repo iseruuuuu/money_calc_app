@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 import '../add_money.dart';
-import '../overlay_loading_molecules.dart';
+import '../loading_view/overlay_loading_molecules.dart';
 
 
 class TodoListPage extends StatefulWidget {

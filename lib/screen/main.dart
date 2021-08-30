@@ -8,7 +8,7 @@ import 'package:math_expressions/math_expressions.dart';
 import 'add_money.dart';
 import '../model/color.dart';
 import 'home_screen/home_screen.dart';
-import 'overlay_loading_molecules.dart';
+import 'loading_view/overlay_loading_molecules.dart';
 
 void main() {
   runApp(const MyApp());
