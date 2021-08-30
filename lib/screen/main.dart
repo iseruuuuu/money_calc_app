@@ -198,7 +198,7 @@ class _TodoListPageState extends State<TodoListPage> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 10),
                 Expanded(
                   child: ListView.builder(
                     itemCount: todoList.length,
@@ -211,10 +211,11 @@ class _TodoListPageState extends State<TodoListPage> {
                           });
                         },
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 30,
-                            vertical: 5,
-                          ),
+                          // padding: const EdgeInsets.symmetric(
+                          //   horizontal: 30,
+                          //   vertical: 5,
+                          // ),
+                          padding: const EdgeInsets.only(bottom: 5,right: 30,left: 30),
                           child: Card(
                             color: AppColor.white,
                             shape: RoundedRectangleBorder(
