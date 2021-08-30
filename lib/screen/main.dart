@@ -328,8 +328,8 @@ class _TodoListPageState extends State<TodoListPage> {
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: const <Widget>[
-            SizedBox(height: 50, child: Text('')),
-            SizedBox(height: 50, child: Text('')),
+            SizedBox(height: 60, child: Text('')),
+            SizedBox(height: 60, child: Text('')),
           ],
         ),
       ),
