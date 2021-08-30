@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'add_money.dart';
 import '../model/color.dart';
+import 'overlay_loading_molecules.dart';
 
 void main() {
   runApp(const MyApp());
@@ -42,16 +43,43 @@ class _TodoListPageState extends State<TodoListPage> {
   String _exp3 = '';
   String _exp4 = '';
 
+  bool visibleLoading = false;
+
   @override
   void initState() {
     super.initState();
-
     //TODO 読み込む間に、Loading画面を入れたい。
+    // loading();
+    // loading2();
     getPreferenceList();
     getPreferenceString();
   }
 
-  void loading() {}
+  Future<void> loading() async {
+    // setState(() {
+    //   visibleLoading = true;
+    // });
+    await Future.delayed(const Duration(milliseconds: 2000), () {});
+    setState(() {
+      visibleLoading = false;
+    });
+  }
+
+  Future<void> loading2() async {
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      transitionDuration: const Duration(milliseconds: 250), // ダイアログフェードインmsec
+      barrierColor: Colors.black.withOpacity(0.5), // 画面マスクの透明度
+      pageBuilder: (BuildContext context, Animation animation,
+          Animation secondaryAnimation) {
+        return const Center(
+          child: CircularProgressIndicator(),
+        );
+      },
+    );
+  }
+
 
   @override
   void setState(VoidCallback fn) {
@@ -240,6 +268,7 @@ class _TodoListPageState extends State<TodoListPage> {
               ],
             ),
           ),
+          OverlayLoadingMolecules(visible: visibleLoading),
         ],
       ) :
       SafeArea(
