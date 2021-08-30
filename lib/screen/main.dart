@@ -136,7 +136,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 Container(
                   color: AppColor.red2,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: Card(
                       shape: RoundedRectangleBorder(
                         side: BorderSide(
@@ -151,8 +151,7 @@ class _TodoListPageState extends State<TodoListPage> {
                             children: [
                               const SizedBox(height: 15),
                               Row(
-                                mainAxisAlignment:
-                                MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   const Text(
                                     '合計',
