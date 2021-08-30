@@ -50,6 +50,11 @@ dev_dependencies:
   math_expressions:
   enum_to_string:
 
+  freezed:
+  flutter_state_notifier:
+  state_notifier:
+  build_runner:
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

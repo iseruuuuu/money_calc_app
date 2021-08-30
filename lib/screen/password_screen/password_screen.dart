@@ -11,18 +11,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:money_calc_app/screen/main.dart';
-import '../model/color.dart';
-import '../component/number_calc_button.dart';
+import '../../model/color.dart';
+import '../../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+import '../home_screen/home_screen.dart';
+
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({Key? key}) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _PasswordScreenState createState() => _PasswordScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _PasswordScreenState extends State<PasswordScreen> {
 
   String expression = '';
   bool cancel = false;
@@ -248,7 +250,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
                   //TODO 正解 => 画面遷移
 
-                  if(expression == '1000') {
+                  if(expression == '100') {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) {
                         return const TodoListPage();
@@ -260,7 +262,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 },
                 child: const Text(
-                  '登録',
+                  'ログイン',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,
