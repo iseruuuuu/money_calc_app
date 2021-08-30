@@ -248,7 +248,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
 
                   //TODO 正解 => 画面遷移
 
-                  if(expression == '1000') {
+                  if(expression == '100') {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) {
                         return const TodoListPage();
@@ -256,13 +256,6 @@ class _PasswordScreenState extends State<PasswordScreen> {
                         fullscreenDialog: true,
                       ),
                     );
-
-                    // Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(builder: (context) => TodoListPage(),
-                    //     )
-                    // );
-
                   }else{
                   }
                 },

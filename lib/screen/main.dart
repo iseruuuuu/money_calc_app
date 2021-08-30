@@ -344,7 +344,7 @@ class _TodoListPageState extends State<TodoListPage> {
       ),
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFFEA6762),
-        notchMargin: 8.0,
+        notchMargin: 10.0,
         shape: const AutomaticNotchedShape(
           RoundedRectangleBorder(),
           StadiumBorder(
