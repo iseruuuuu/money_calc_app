@@ -210,10 +210,6 @@ class _TodoListPageState extends State<TodoListPage> {
                           });
                         },
                         child: Padding(
-                          // padding: const EdgeInsets.symmetric(
-                          //   horizontal: 30,
-                          //   vertical: 5,
-                          // ),
                           padding: const EdgeInsets.only(bottom: 5,right: 30,left: 30),
                           child: Card(
                             color: AppColor.white,
