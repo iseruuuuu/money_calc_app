@@ -5,6 +5,7 @@ import 'package:money_calc_app/screen/password_screen/password_screen.dart';
 import 'package:money_calc_app/screen/register_screen/register_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
+import '../home_scroll_view.dart';
 import 'add_money.dart';
 import '../model/color.dart';
 import 'home_screen/home_screen.dart';
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       // home: PasswordScreen(),
-      // home: TodoListPage(),
-      home: RegisterScreen(),
+      home: TodoListPage(),
+      // home: RegisterScreen(),
     );
   }
 }
