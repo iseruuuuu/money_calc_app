@@ -22,7 +22,7 @@ class NumberCalcButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 2,bottom: 2,right: 0,left: 0),
+      margin: const EdgeInsets.only(top: 2, bottom: 2, right: 0, left: 0),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(70),
         color: AppColor.grey3,
@@ -39,7 +39,7 @@ class NumberCalcButton extends StatelessWidget {
             child: InkWell(
               child: FlatButton(
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius .circular(50),
+                  borderRadius: BorderRadius.circular(50),
                 ),
                 onPressed: () {
                   callback(text);
@@ -48,7 +48,9 @@ class NumberCalcButton extends StatelessWidget {
                 child: Text(
                   text,
                   style: TextStyle(
+                    color: Colors.black,
                     fontSize: textSize,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
