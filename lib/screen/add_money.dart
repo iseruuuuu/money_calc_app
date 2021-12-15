@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
@@ -12,21 +14,20 @@ class TodoAddPage extends StatefulWidget {
 }
 
 class _TodoAddPageState extends State<TodoAddPage> {
-
   String expression = '';
   bool cancel = false;
 
   void numClick(String text) {
-    if (expression.length >= 7) {}
-    else{
+    if (expression.length >= 7) {
+    } else {
       setState(() => expression += text);
     }
   }
 
   void delete() {
     setState(() {
-      if(expression.isEmpty) {}
-      else{
+      if (expression.isEmpty) {
+      } else {
         final pos = expression.length - 1;
         expression = expression.substring(0, pos);
       }
@@ -37,6 +38,15 @@ class _TodoAddPageState extends State<TodoAddPage> {
     setState(() {
       expression = '';
     });
+  }
+
+  void alertSnackBar() {
+    showTopSnackBar(
+      context,
+      const CustomSnackBar.error(
+        message: "０以上の入力をお願いします!!",
+      ),
+    );
   }
 
   @override
@@ -79,7 +89,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                 ),
                 const Spacer(),
                 Container(
-                  margin: const EdgeInsets.only(top: 1, bottom: 1, right: 0, left: 0),
+                  margin: const EdgeInsets.only(
+                      top: 1, bottom: 1, right: 0, left: 0),
                   child: SizedBox(
                     width: 80,
                     height: 80,
@@ -102,7 +113,8 @@ class _TodoAddPageState extends State<TodoAddPage> {
                               delete();
                               HapticFeedback.selectionClick();
                             },
-                            child: const Text('⌫',
+                            child: const Text(
+                              '⌫',
                               style: TextStyle(
                                 fontSize: 40,
                                 // fontSize: 50,
@@ -117,8 +129,6 @@ class _TodoAddPageState extends State<TodoAddPage> {
               ],
             ),
           ),
-
-
           const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -238,15 +248,22 @@ class _TodoAddPageState extends State<TodoAddPage> {
                   ),
                 ),
                 onPressed: () {
-                  if(expression == '' ) {
-                  }else if (expression == '0'){
-                  }else if (expression == '00'){
-                  }else if (expression == '000'){
-                  }else if (expression == '0000'){
-                  }else if (expression == '00000'){
-                  }else if (expression == '000000'){
-                  }else if (expression == '0000000'){
-                  }else{
+                  if (expression == '') {
+                  } else if (expression == '0') {
+                    alertSnackBar();
+                  } else if (expression == '00') {
+                    alertSnackBar();
+                  } else if (expression == '000') {
+                    alertSnackBar();
+                  } else if (expression == '0000') {
+                    alertSnackBar();
+                  } else if (expression == '00000') {
+                    alertSnackBar();
+                  } else if (expression == '000000') {
+                    alertSnackBar();
+                  } else if (expression == '0000000') {
+                    alertSnackBar();
+                  } else {
                     final post = '$expression';
                     Navigator.of(context).pop(post);
                   }
