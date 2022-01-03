@@ -2,10 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:money_calc_app/model/color.dart';
-import 'package:money_calc_app/screen/password_screen/password_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
-
+import 'package:money_calc_app/model/admob.dart';
+import 'package:admob_flutter/admob_flutter.dart';
 import '../add_money.dart';
 import '../loading_view/overlay_loading_molecules.dart';
 
@@ -26,10 +26,11 @@ class _TodoListPageState extends State<TodoListPage> {
   String _exp2 = '';
   String amount3 = '';
   String amount4 = '';
-  String _exp3 = '';
-  String _exp4 = '';
 
   bool visibleLoading = false;
+
+  //admob
+  //List<BannerAd> bannerAds = [];
 
   @override
   void initState() {
@@ -152,6 +153,14 @@ class _TodoListPageState extends State<TodoListPage> {
                 SafeArea(
                   child: Column(
                     children: [
+                      AdmobBanner(
+                        adUnitId: AdMob().getBannerAdUnitId(),
+                        adSize: AdmobBannerSize(
+                          width: MediaQuery.of(context).size.width.toInt(),
+                          height: AdMob().getHeight(context).toInt(),
+                          name: 'SMART_BANNER',
+                        ),
+                      ),
                       Container(
                         color: AppColor.red2,
                         child: Padding(
@@ -353,42 +362,6 @@ class _TodoListPageState extends State<TodoListPage> {
           ],
         ),
       ),
-
-      // floatingActionButton: Container(
-      //   width: 120,
-      //   height: 120,
-      //   child: FloatingActionButton.extended(
-      //     onPressed: () async {
-      //       final newListText = await Navigator.of(context).push(
-      //         MaterialPageRoute(builder: (context) {
-      //           return TodoAddPage();
-      //         }),
-      //       );
-      //       if (newListText != null) {
-      //         setState(() {
-      //           todoList.add(newListText);
-      //         });
-      //       }
-      //     },
-      //     label: Column(
-      //       children: const [
-      //         Icon(
-      //           Icons.add_circle_outline,
-      //           size: 40,
-      //         ),
-      //         Text(
-      //           '給料を追加',
-      //           style: TextStyle(
-      //             fontSize: 20,
-      //             color: Colors.white,
-      //           ),
-      //         ),
-      //       ],
-      //     ),
-      //     backgroundColor: const Color(0xFFEA6762),
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
     );
   }
 }

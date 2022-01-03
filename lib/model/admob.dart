@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 
 class AdMob {
-  String? getBannerAdUnitId() {
+  String getBannerAdUnitId() {
     if (Platform.isAndroid) {
-      return null;
-    } else if (Platform.isIOS) {
       return '';
+    } else if (Platform.isIOS) {
+     //return 'ca-app-pub-4066682931432506/4038530394';
+     return 'ca-app-pub-3940256099942544/2934735716';
     }
-    return null;
+    return '';
   }
 
   double getHeight(BuildContext context) {

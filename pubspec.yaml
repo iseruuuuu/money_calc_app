@@ -27,6 +27,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   top_snackbar_flutter: ^1.0.2
 
+  admob_flutter: ^2.0.0
+
+  #admob
+  #google_mobile_ads: ^1.0.1
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -35,7 +40,7 @@ dev_dependencies:
   holding_gesture:
   math_expressions:
   enum_to_string:
-  admob_flutter:
+
   app_tracking_transparency:
 
   freezed:
