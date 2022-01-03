@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
+import 'package:money_calc_app/component/floating_action_button_items.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -318,50 +320,24 @@ class _TodoListPageState extends State<TodoListPage> {
               ),
             ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width / 6,
-        height: MediaQuery.of(context).size.width / 6,
-        child: FloatingActionButton(
-          backgroundColor: const Color(0xFFEA6762),
-          onPressed: () async {
-            final newListText = await Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) {
-                  return const TodoAddPage();
-                },
-                fullscreenDialog: true,
-              ),
-            );
-            if (newListText != null) {
-              setState(() {
-                todoList.add(newListText);
-              });
-            }
-          },
-          child: const Icon(
-            Icons.add,
-            size: 40,
-          ),
-        ),
+      floatingActionButton: FloatingActionButtonItems(
+        onTap: () async {
+          final newListText = await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return const TodoAddPage();
+              },
+              fullscreenDialog: true,
+            ),
+          );
+          if (newListText != null) {
+            setState(() {
+              todoList.add(newListText);
+            });
+          }
+        },
       ),
-      bottomNavigationBar: BottomAppBar(
-        color: const Color(0xFFEA6762),
-        notchMargin: 10.0,
-        shape: const AutomaticNotchedShape(
-          RoundedRectangleBorder(),
-          StadiumBorder(
-            side: BorderSide(),
-          ),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const <Widget>[
-            SizedBox(height: 45, child: Text('')),
-            SizedBox(height: 45, child: Text('')),
-          ],
-        ),
-      ),
+      bottomNavigationBar: const BottomNavigationBarItems(),
     );
   }
 }
