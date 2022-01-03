@@ -107,21 +107,22 @@ class _TodoListPageState extends State<TodoListPage> {
   void sumMoney() {
     //TODO １桁の場合は、０１とかになる。
     amount = todoList.join('+');
-    // amount3 = amount + '/' + '10';
     Parser p = Parser();
     ContextModel cm = ContextModel();
     Expression exp = p.parse(amount);
-    _exp = exp.evaluate(EvaluationType.REAL, cm).toString();
-    // _exp = _exp3.replaceAll('.', '');
+
+    double count1 = exp.evaluate(EvaluationType.REAL, cm);
+    int b = count1.toInt();
+    _exp = b.toString();
+
     amount2 = todoList.join('+');
-    // final sum = '( 1030000-(' + amount2 + ') ) / 10';
     final sum = '1030000-(' + amount2 + ')';
     Parser p2 = Parser();
     Expression exp2 = p2.parse(sum);
     ContextModel cm2 = ContextModel();
-    _exp2 = exp2.evaluate(EvaluationType.REAL, cm2).toString();
-    // _exp2 = _exp4.replaceAll('.', '');
-
+    double count2 = exp2.evaluate(EvaluationType.REAL, cm2);
+    int b2 = count2.toInt();
+    _exp2 = b2.toString();
     int.parse(_exp2);
   }
 
