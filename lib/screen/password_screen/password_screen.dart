@@ -253,7 +253,7 @@ class _PasswordScreenState extends State<PasswordScreen> {
                   if(expression == '100') {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) {
-                        return const TodoListPage();
+                        return const HomeScreen();
                       },
                         fullscreenDialog: true,
                       ),

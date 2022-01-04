@@ -8,14 +8,14 @@ import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-class TodoAddPage extends StatefulWidget {
-  const TodoAddPage({Key? key}) : super(key: key);
+class AddScreen extends StatefulWidget {
+  const AddScreen({Key? key}) : super(key: key);
 
   @override
-  _TodoAddPageState createState() => _TodoAddPageState();
+  _AddScreenState createState() => _AddScreenState();
 }
 
-class _TodoAddPageState extends State<TodoAddPage> {
+class _AddScreenState extends State<AddScreen> {
   String expression = '';
   bool cancel = false;
 

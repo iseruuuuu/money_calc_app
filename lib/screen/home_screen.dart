@@ -10,40 +10,34 @@ import 'package:money_calc_app/component/no_list.dart';
 import 'package:money_calc_app/component/reset_button.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/screen/add_money.dart';
+import 'package:money_calc_app/screen/add_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/model/admob.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 
-class TodoListPage extends StatefulWidget {
-  const TodoListPage({Key? key}) : super(key: key);
+class HomeScreen extends StatefulWidget {
+  const HomeScreen({Key? key}) : super(key: key);
 
   @override
-  _TodoListPageState createState() => _TodoListPageState();
+  _HomeScreenState createState() => _HomeScreenState();
 }
 
-class _TodoListPageState extends State<TodoListPage> {
+class _HomeScreenState extends State<HomeScreen> {
   List<String> todoList = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  int count = 0;
   String amount = '';
   String amount2 = '';
-  String _exp = '';
-  String _exp2 = '';
-  String amount3 = '';
-  String amount4 = '';
-  Parser p = Parser();
-  Parser p2 = Parser();
-  bool visibleLoading = false;
-
+  String expression = '';
+  String expression2 = '';
+  Parser parse = Parser();
+  Parser parse2 = Parser();
   final preference = Preference();
   bool isFirst = false;
 
   @override
   void initState() {
     super.initState();
-    //TODO 読み込む間に、Loading画面を入れたい。
     getPreferenceList();
     getPreferenceString();
 
@@ -79,15 +73,15 @@ class _TodoListPageState extends State<TodoListPage> {
 
   Future<void> setPreferenceString() async {
     final SharedPreferences prefs = await _prefs;
-    prefs.setString('key2', _exp);
-    prefs.setString('key3', _exp2);
+    prefs.setString('key2', expression);
+    prefs.setString('key3', expression2);
   }
 
   getPreferenceString() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      _exp = prefs.getString('key2') ?? '';
-      _exp2 = prefs.getString('key3') ?? '';
+      expression = prefs.getString('key2') ?? '';
+      expression2 = prefs.getString('key3') ?? '';
     });
   }
 
@@ -95,18 +89,18 @@ class _TodoListPageState extends State<TodoListPage> {
     if (todoList.isNotEmpty) {
       amount = todoList.join('+');
       ContextModel cm = ContextModel();
-      Expression exp = p.parse(amount);
+      Expression exp = parse.parse(amount);
       double count1 = exp.evaluate(EvaluationType.REAL, cm);
       int b = count1.toInt();
-      _exp = b.toString();
+      expression = b.toString();
       amount2 = todoList.join('+');
       final sum = '1030000-(' + amount2 + ')';
-      Expression exp2 = p2.parse(sum);
+      Expression exp2 = parse2.parse(sum);
       ContextModel cm2 = ContextModel();
       double count2 = exp2.evaluate(EvaluationType.REAL, cm2);
       int b2 = count2.toInt();
-      _exp2 = b2.toString();
-      int.parse(_exp2);
+      expression2 = b2.toString();
+      int.parse(expression2);
     }
   }
 
@@ -189,13 +183,13 @@ class _TodoListPageState extends State<TodoListPage> {
                                       padding: const EdgeInsets.only(
                                           top: 15, bottom: 10),
                                       child: MoneyLabel(
-                                          title: '合計', exp: _exp + '円'),
+                                          title: '合計', exp: expression + '円'),
                                     ),
                                     Padding(
                                       padding:
                                           const EdgeInsets.only(bottom: 15),
                                       child: MoneyLabel(
-                                          title: '残り', exp: _exp2 + '円'),
+                                          title: '残り', exp: expression2 + '円'),
                                     ),
                                   ],
                                 ),
@@ -229,28 +223,37 @@ class _TodoListPageState extends State<TodoListPage> {
                     ],
                   ),
                 ),
-                // OverlayLoadingMolecules(visible: visibleLoading),
               ],
             )
           : const SafeArea(child: NoList()),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButtonItems(
-        onTap: () async {
-          final newListText = await Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return const TodoAddPage();
-              },
-              fullscreenDialog: true,
-            ),
-          );
-          if (newListText != null) {
-            setState(() {
-              todoList.add(newListText);
-            });
-          }
-        },
-      ),
+      floatingActionButton: FloatingActionButtonItems(onTap: () async {
+        //TODO 遷移をModalShowDialogにしたい
+        // final newListText = showCupertinoModalBottomSheet(
+        //   context: context,
+        //   builder: (context) => const TodoAddPage(),
+        //   expand: true,
+        // );
+        // if (newListText != null) {
+        //   setState(() {
+        //     todoList.add(newListText.toString());
+        //   });
+        // }
+
+        final newListText = await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) {
+              return const AddScreen();
+            },
+            fullscreenDialog: true,
+          ),
+        );
+        if (newListText != null) {
+          setState(() {
+            todoList.add(newListText);
+          });
+        }
+      }),
       bottomNavigationBar: const BottomNavigationBarItems(),
     );
   }

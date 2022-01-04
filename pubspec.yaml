@@ -28,6 +28,7 @@ dependencies:
   top_snackbar_flutter: ^1.0.2
 
   admob_flutter: ^2.0.0
+  modal_bottom_sheet: ^2.0.0
 
   #admob
   #google_mobile_ads: ^1.0.1
