@@ -127,12 +127,12 @@ class _TodoListPageState extends State<TodoListPage> {
           CupertinoDialogAction(
             child: const Text('OK'),
             onPressed: () async {
-              //TODO 削除する
               Navigator.of(context).pop();
               isFirst = await preference.getBool(PreferenceKey.isDelete);
               setState(() {
                 preference.setBool(PreferenceKey.isDelete, true);
                 isFirst = true;
+                todoList.clear();
               });
             },
           )
