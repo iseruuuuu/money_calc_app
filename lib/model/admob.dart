@@ -6,8 +6,10 @@ class AdMob {
     if (Platform.isAndroid) {
       return '';
     } else if (Platform.isIOS) {
-     //return 'ca-app-pub-4066682931432506/4038530394';
-     return 'ca-app-pub-3940256099942544/2934735716';
+      //本番id
+      //return 'ca-app-pub-4066682931432506/4038530394';
+      //テスト広告
+      return 'ca-app-pub-3940256099942544/2934735716';
     }
     return '';
   }

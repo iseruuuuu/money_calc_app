@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'home_screen/home_screen.dart';
+import 'home_screen.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 
 void main() {

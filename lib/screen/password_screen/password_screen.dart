@@ -15,7 +15,7 @@ import '../../model/color.dart';
 import '../../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-import '../home_screen/home_screen.dart';
+import '../home_screen.dart';
 
 class PasswordScreen extends StatefulWidget {
   const PasswordScreen({Key? key}) : super(key: key);

@@ -1,7 +1,9 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
+import '../model/admob.dart';
 import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
@@ -63,6 +65,14 @@ class _TodoAddPageState extends State<TodoAddPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
+          AdmobBanner(
+            adUnitId: AdMob().getBannerAdUnitId(),
+            adSize: AdmobBannerSize(
+              width: MediaQuery.of(context).size.width.toInt(),
+              height: AdMob().getHeight(context).toInt(),
+              name: 'SMART_BANNER',
+            ),
+          ),
           const SizedBox(height: 40),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,

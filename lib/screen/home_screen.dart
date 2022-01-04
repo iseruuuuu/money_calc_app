@@ -1,16 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:money_calc_app/component/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/floating_action_button_items.dart';
+import 'package:money_calc_app/component/list_item.dart';
 import 'package:money_calc_app/component/money_label.dart';
+import 'package:money_calc_app/component/no_list.dart';
 import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/screen/add_money.dart';
+import 'package:money_calc_app/screen/loading_view/overlay_loading_molecules.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/model/admob.dart';
 import 'package:admob_flutter/admob_flutter.dart';
-import '../add_money.dart';
-import '../loading_view/overlay_loading_molecules.dart';
 
 class TodoListPage extends StatefulWidget {
   const TodoListPage({Key? key}) : super(key: key);
@@ -29,11 +32,9 @@ class _TodoListPageState extends State<TodoListPage> {
   String _exp2 = '';
   String amount3 = '';
   String amount4 = '';
-
+  Parser p = Parser();
+  Parser p2 = Parser();
   bool visibleLoading = false;
-
-  //admob
-  //List<BannerAd> bannerAds = [];
 
   @override
   void initState() {
@@ -81,17 +82,13 @@ class _TodoListPageState extends State<TodoListPage> {
 
   void sumMoney() {
     amount = todoList.join('+');
-    Parser p = Parser();
     ContextModel cm = ContextModel();
     Expression exp = p.parse(amount);
-
     double count1 = exp.evaluate(EvaluationType.REAL, cm);
     int b = count1.toInt();
     _exp = b.toString();
-
     amount2 = todoList.join('+');
     final sum = '1030000-(' + amount2 + ')';
-    Parser p2 = Parser();
     Expression exp2 = p2.parse(sum);
     ContextModel cm2 = ContextModel();
     double count2 = exp2.evaluate(EvaluationType.REAL, cm2);
@@ -107,18 +104,10 @@ class _TodoListPageState extends State<TodoListPage> {
       appBar: (todoList.isNotEmpty)
           ? PreferredSize(
               preferredSize: const Size.fromHeight(0.0),
-              child: AppBar(
-                backgroundColor: AppColor.red2,
-                elevation: 0,
-              ),
-            )
+              child: AppBarItem(color: AppColor.red2))
           : PreferredSize(
               preferredSize: const Size.fromHeight(0.0),
-              child: AppBar(
-                backgroundColor: AppColor.white,
-                elevation: 0,
-              ),
-            ),
+              child: AppBarItem(color: AppColor.white)),
       body: (todoList.isNotEmpty)
           ? Stack(
               fit: StackFit.expand,
@@ -151,11 +140,18 @@ class _TodoListPageState extends State<TodoListPage> {
                               title: Center(
                                 child: Column(
                                   children: [
-                                    const SizedBox(height: 15),
-                                    MoneyLabel(title: '合計', exp: _exp + '円'),
-                                    const SizedBox(height: 10),
-                                    MoneyLabel(title: '残り', exp: _exp2 + '円'),
-                                    const SizedBox(height: 15),
+                                    Padding(
+                                      padding: const EdgeInsets.only(
+                                          top: 15, bottom: 10),
+                                      child: MoneyLabel(
+                                          title: '合計', exp: _exp + '円'),
+                                    ),
+                                    Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 15),
+                                      child: MoneyLabel(
+                                          title: '残り', exp: _exp2 + '円'),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -175,31 +171,7 @@ class _TodoListPageState extends State<TodoListPage> {
                                   todoList.removeAt(index);
                                 });
                               },
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                    bottom: 5, right: 30, left: 30),
-                                child: Card(
-                                  color: AppColor.white,
-                                  shape: RoundedRectangleBorder(
-                                    side: BorderSide(
-                                      color: AppColor.grey3,
-                                      width: 1,
-                                    ),
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  child: ListTile(
-                                    title: Center(
-                                      child: Text(
-                                        '￥' + todoList[index],
-                                        style: const TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.black,
-                                        ),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              child: ListItem(title: '￥' + todoList[index]),
                             );
                           },
                         ),
@@ -210,48 +182,7 @@ class _TodoListPageState extends State<TodoListPage> {
                 OverlayLoadingMolecules(visible: visibleLoading),
               ],
             )
-          : SafeArea(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    height: MediaQuery.of(context).size.width / 2,
-                    child: Image.asset('assets/images/3.png'),
-                  ),
-                  const SizedBox(height: 30),
-                  const Center(
-                    child: Text(
-                      '給料の記録がありません',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 25,
-                        color: Colors.black,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
-                      Icon(
-                        Icons.add_circle_outline,
-                        size: 30,
-                        color: Colors.black,
-                      ),
-                      Text(
-                        'で追加してください',
-                        style: TextStyle(
-                          fontSize: 25,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+          : const SafeArea(child: NoList()),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButtonItems(
         onTap: () async {
