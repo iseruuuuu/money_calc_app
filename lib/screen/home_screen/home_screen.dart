@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/floating_action_button_items.dart';
+import 'package:money_calc_app/component/money_label.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
@@ -38,37 +39,8 @@ class _TodoListPageState extends State<TodoListPage> {
   void initState() {
     super.initState();
     //TODO 読み込む間に、Loading画面を入れたい。
-    // loading();
-    // loading2();
     getPreferenceList();
     getPreferenceString();
-  }
-
-  Future<void> loading() async {
-    // setState(() {
-    //   visibleLoading = true;
-    // });
-    await Future.delayed(const Duration(milliseconds: 2000), () {});
-    setState(() {
-      visibleLoading = false;
-    });
-  }
-
-  Future<void> loading2() async {
-    showGeneralDialog(
-      context: context,
-      barrierDismissible: false,
-      transitionDuration: const Duration(milliseconds: 250),
-      // ダイアログフェードインmsec
-      barrierColor: Colors.black.withOpacity(0.5),
-      // 画面マスクの透明度
-      pageBuilder: (BuildContext context, Animation animation,
-          Animation secondaryAnimation) {
-        return const Center(
-          child: CircularProgressIndicator(),
-        );
-      },
-    );
   }
 
   @override
@@ -108,7 +80,6 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   void sumMoney() {
-    //TODO １桁の場合は、０１とかになる。
     amount = todoList.join('+');
     Parser p = Parser();
     ContextModel cm = ContextModel();
@@ -181,47 +152,9 @@ class _TodoListPageState extends State<TodoListPage> {
                                 child: Column(
                                   children: [
                                     const SizedBox(height: 15),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        const Text(
-                                          '合計',
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          _exp + '円',
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    MoneyLabel(title: '合計', exp: _exp + '円'),
                                     const SizedBox(height: 10),
-                                    Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceEvenly,
-                                      children: [
-                                        const Text(
-                                          '残り',
-                                          style: TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                        Text(
-                                          _exp2 + '円',
-                                          style: const TextStyle(
-                                            fontSize: 30,
-                                            color: Colors.black,
-                                          ),
-                                        ),
-                                      ],
-                                    ),
+                                    MoneyLabel(title: '残り', exp: _exp2 + '円'),
                                     const SizedBox(height: 15),
                                   ],
                                 ),
