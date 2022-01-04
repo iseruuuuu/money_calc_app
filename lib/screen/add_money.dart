@@ -65,14 +65,15 @@ class _TodoAddPageState extends State<TodoAddPage> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          AdmobBanner(
-            adUnitId: AdMob().getBannerAdUnitId(),
-            adSize: AdmobBannerSize(
-              width: MediaQuery.of(context).size.width.toInt(),
-              height: AdMob().getHeight(context).toInt(),
-              name: 'SMART_BANNER',
-            ),
-          ),
+          //TODO 次のアプデにする。
+          // AdmobBanner(
+          //   adUnitId: AdMob().getBannerAdUnitId(),
+          //   adSize: AdmobBannerSize(
+          //     width: MediaQuery.of(context).size.width.toInt(),
+          //     height: AdMob().getHeight(context).toInt(),
+          //     name: 'SMART_BANNER',
+          //   ),
+          // ),
           const SizedBox(height: 40),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,

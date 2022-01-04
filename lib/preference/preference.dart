@@ -4,6 +4,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 enum PreferenceKey {
   //パスワード
   password,
+
+  //記録を消去したかどうか
+  isDelete,
 }
 
 class Preference {
@@ -29,6 +32,17 @@ class Preference {
     final pref = await preference;
     final value = pref.getStringList(EnumToString.convertToString(key)) ?? [];
     return value;
+  }
+
+  Future<bool> getBool(PreferenceKey key) async {
+    final pref = await preference;
+    final value = pref.getBool(EnumToString.convertToString(key)) ?? false;
+    return value;
+  }
+
+  Future<void> setBool(PreferenceKey key, bool value) async {
+    final pref = await preference;
+    await pref.setBool(EnumToString.convertToString(key), value);
   }
 
 }

@@ -7,9 +7,10 @@ import 'package:money_calc_app/component/floating_action_button_items.dart';
 import 'package:money_calc_app/component/list_item.dart';
 import 'package:money_calc_app/component/money_label.dart';
 import 'package:money_calc_app/component/no_list.dart';
+import 'package:money_calc_app/component/reset_button.dart';
 import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_money.dart';
-import 'package:money_calc_app/screen/loading_view/overlay_loading_molecules.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/model/admob.dart';
@@ -36,12 +37,22 @@ class _TodoListPageState extends State<TodoListPage> {
   Parser p2 = Parser();
   bool visibleLoading = false;
 
+  final preference = Preference();
+  bool isFirst = false;
+
   @override
   void initState() {
     super.initState();
     //TODO 読み込む間に、Loading画面を入れたい。
     getPreferenceList();
     getPreferenceString();
+
+    checkPreference();
+  }
+
+  Future<void> checkPreference() async {
+    isFirst = await preference.getBool(PreferenceKey.isDelete);
+    print(isFirst);
   }
 
   @override
@@ -81,20 +92,53 @@ class _TodoListPageState extends State<TodoListPage> {
   }
 
   void sumMoney() {
-    amount = todoList.join('+');
-    ContextModel cm = ContextModel();
-    Expression exp = p.parse(amount);
-    double count1 = exp.evaluate(EvaluationType.REAL, cm);
-    int b = count1.toInt();
-    _exp = b.toString();
-    amount2 = todoList.join('+');
-    final sum = '1030000-(' + amount2 + ')';
-    Expression exp2 = p2.parse(sum);
-    ContextModel cm2 = ContextModel();
-    double count2 = exp2.evaluate(EvaluationType.REAL, cm2);
-    int b2 = count2.toInt();
-    _exp2 = b2.toString();
-    int.parse(_exp2);
+    if (todoList.isNotEmpty) {
+      amount = todoList.join('+');
+      ContextModel cm = ContextModel();
+      Expression exp = p.parse(amount);
+      double count1 = exp.evaluate(EvaluationType.REAL, cm);
+      int b = count1.toInt();
+      _exp = b.toString();
+      amount2 = todoList.join('+');
+      final sum = '1030000-(' + amount2 + ')';
+      Expression exp2 = p2.parse(sum);
+      ContextModel cm2 = ContextModel();
+      double count2 = exp2.evaluate(EvaluationType.REAL, cm2);
+      int b2 = count2.toInt();
+      _exp2 = b2.toString();
+      int.parse(_exp2);
+    }
+  }
+
+  void reset() {
+    showDialog(
+      context: context,
+      builder: (_) => CupertinoAlertDialog(
+        title: const Text("更新の確認"),
+        content: const Text("給料の記録を2022年版に更新します。"),
+        actions: [
+          CupertinoDialogAction(
+            child: const Text('キャンセル'),
+            isDestructiveAction: true,
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          CupertinoDialogAction(
+            child: const Text('OK'),
+            onPressed: () async {
+              //TODO 削除する
+              Navigator.of(context).pop();
+              isFirst = await preference.getBool(PreferenceKey.isDelete);
+              setState(() {
+                preference.setBool(PreferenceKey.isDelete, true);
+                isFirst = true;
+              });
+            },
+          )
+        ],
+      ),
+    );
   }
 
   @override
@@ -107,7 +151,7 @@ class _TodoListPageState extends State<TodoListPage> {
               child: AppBarItem(color: AppColor.red2))
           : PreferredSize(
               preferredSize: const Size.fromHeight(0.0),
-              child: AppBarItem(color: AppColor.white)),
+              child: AppBarItem(color: AppColor.grey3)),
       body: (todoList.isNotEmpty)
           ? Stack(
               fit: StackFit.expand,
@@ -115,14 +159,15 @@ class _TodoListPageState extends State<TodoListPage> {
                 SafeArea(
                   child: Column(
                     children: [
-                      AdmobBanner(
-                        adUnitId: AdMob().getBannerAdUnitId(),
-                        adSize: AdmobBannerSize(
-                          width: MediaQuery.of(context).size.width.toInt(),
-                          height: AdMob().getHeight(context).toInt(),
-                          name: 'SMART_BANNER',
-                        ),
-                      ),
+                      //TODO 次のアプデにする。
+                      // AdmobBanner(
+                      //   adUnitId: AdMob().getBannerAdUnitId(),
+                      //   adSize: AdmobBannerSize(
+                      //     width: MediaQuery.of(context).size.width.toInt(),
+                      //     height: AdMob().getHeight(context).toInt(),
+                      //     name: 'SMART_BANNER',
+                      //   ),
+                      // ),
                       Container(
                         color: AppColor.red2,
                         child: Padding(
@@ -159,6 +204,11 @@ class _TodoListPageState extends State<TodoListPage> {
                           ),
                         ),
                       ),
+                      // (isFirst) ? Container() : ResetButton(onTap: reset),
+
+                      Visibility(
+                          visible: !isFirst, child: ResetButton(onTap: reset)),
+
                       const SizedBox(height: 10),
                       Expanded(
                         child: ListView.builder(
@@ -179,7 +229,7 @@ class _TodoListPageState extends State<TodoListPage> {
                     ],
                   ),
                 ),
-                OverlayLoadingMolecules(visible: visibleLoading),
+                // OverlayLoadingMolecules(visible: visibleLoading),
               ],
             )
           : const SafeArea(child: NoList()),
