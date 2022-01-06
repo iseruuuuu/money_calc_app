@@ -46,7 +46,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
   Future<void> checkPreference() async {
     isFirst = await preference.getBool(PreferenceKey.isDelete);
-    print(isFirst);
+    if (todoList.isEmpty) {
+      isFirst = true;
+      print(isFirst);
+    }
   }
 
   @override
@@ -154,14 +157,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       //TODO 次のアプデにする。
-                      // AdmobBanner(
-                      //   adUnitId: AdMob().getBannerAdUnitId(),
-                      //   adSize: AdmobBannerSize(
-                      //     width: MediaQuery.of(context).size.width.toInt(),
-                      //     height: AdMob().getHeight(context).toInt(),
-                      //     name: 'SMART_BANNER',
-                      //   ),
-                      // ),
+                      AdmobBanner(
+                        adUnitId: AdMob().getBannerAdUnitId(),
+                        adSize: AdmobBannerSize(
+                          width: MediaQuery.of(context).size.width.toInt(),
+                          height: AdMob().getHeight(context).toInt(),
+                          name: 'SMART_BANNER',
+                        ),
+                      ),
                       Container(
                         color: AppColor.red2,
                         child: Padding(
@@ -199,10 +202,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                       // (isFirst) ? Container() : ResetButton(onTap: reset),
-
                       Visibility(
                           visible: !isFirst, child: ResetButton(onTap: reset)),
-
                       const SizedBox(height: 10),
                       Expanded(
                         child: ListView.builder(
@@ -229,17 +230,6 @@ class _HomeScreenState extends State<HomeScreen> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButtonItems(onTap: () async {
         //TODO 遷移をModalShowDialogにしたい
-        // final newListText = showCupertinoModalBottomSheet(
-        //   context: context,
-        //   builder: (context) => const TodoAddPage(),
-        //   expand: true,
-        // );
-        // if (newListText != null) {
-        //   setState(() {
-        //     todoList.add(newListText.toString());
-        //   });
-        // }
-
         final newListText = await Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {

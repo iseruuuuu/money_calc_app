@@ -7,6 +7,9 @@ enum PreferenceKey {
 
   //記録を消去したかどうか
   isDelete,
+
+  //初回の記録のため
+  isCheckCount
 }
 
 class Preference {
@@ -44,5 +47,4 @@ class Preference {
     final pref = await preference;
     await pref.setBool(EnumToString.convertToString(key), value);
   }
-
 }
