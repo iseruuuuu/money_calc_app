@@ -14,8 +14,7 @@ class ListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding:
-      const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Card(
         color: AppColor.white,
         shape: RoundedRectangleBorder(
@@ -26,7 +25,13 @@ class ListItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(
-          leading: Text(day),
+          leading: Text(
+            day,
+            style: const TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
           title: Center(
             child: Text(
               //TODO 日付を追加したい。

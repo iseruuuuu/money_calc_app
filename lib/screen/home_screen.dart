@@ -188,8 +188,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 15, bottom: 10),
+                                      padding: const EdgeInsets.only(top: 15, bottom: 10),
                                       child: MoneyLabel(
                                           title: '合計', exp: expression + '円'),
                                     ),
@@ -206,8 +205,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      Visibility(
-                          visible: !isFirst, child: ResetButton(onTap: reset)),
+                      Visibility(visible: !isFirst, child: ResetButton(onTap: reset)),
                       const SizedBox(height: 10),
                       Expanded(
                         child: StreamBuilder<List<Todo>>(

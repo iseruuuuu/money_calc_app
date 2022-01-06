@@ -75,8 +75,6 @@ class _AddScreenState extends State<AddScreen> {
     DateFormat outputFormat = DateFormat('MM/dd');
 
     String date = outputFormat.format(now);
-
-    //widget._newTodo.dueDate = now;
     widget._newTodo.dueDate = date;
   }
 
@@ -129,8 +127,7 @@ class _AddScreenState extends State<AddScreen> {
                 ),
                 const Spacer(),
                 Container(
-                  margin: const EdgeInsets.only(
-                      top: 1, bottom: 1, right: 0, left: 0),
+                  margin: const EdgeInsets.only(bottom: 1),
                   child: SizedBox(
                     width: 80,
                     height: 80,
@@ -305,7 +302,7 @@ class _AddScreenState extends State<AddScreen> {
                     alertSnackBar();
                   } else {
                     final post = '$expression';
-                    if(widget._newTodo.id != null) {
+                    if (widget._newTodo.id != null) {
                       Navigator.of(context).pop(post);
                       widget.todoBloc?.create(widget._newTodo);
                     }
