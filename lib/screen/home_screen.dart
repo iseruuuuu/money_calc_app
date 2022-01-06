@@ -8,13 +8,16 @@ import 'package:money_calc_app/component/list_item.dart';
 import 'package:money_calc_app/component/money_label.dart';
 import 'package:money_calc_app/component/no_list.dart';
 import 'package:money_calc_app/component/reset_button.dart';
+import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/model/admob.dart';
 import 'package:admob_flutter/admob_flutter.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -34,6 +37,8 @@ class _HomeScreenState extends State<HomeScreen> {
   Parser parse2 = Parser();
   final preference = Preference();
   bool isFirst = false;
+  int indexes = 0;
+  late Todo todo;
 
   @override
   void initState() {
@@ -48,7 +53,6 @@ class _HomeScreenState extends State<HomeScreen> {
     isFirst = await preference.getBool(PreferenceKey.isDelete);
     if (todoList.isEmpty) {
       isFirst = true;
-      print(isFirst);
     }
   }
 
@@ -140,6 +144,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final _bloc = Provider.of<TodoBloc>(context, listen: false);
     return Scaffold(
       backgroundColor: AppColor.grey3,
       appBar: (todoList.isNotEmpty)
@@ -157,14 +162,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       //TODO 次のアプデにする。
-                      AdmobBanner(
-                        adUnitId: AdMob().getBannerAdUnitId(),
-                        adSize: AdmobBannerSize(
-                          width: MediaQuery.of(context).size.width.toInt(),
-                          height: AdMob().getHeight(context).toInt(),
-                          name: 'SMART_BANNER',
-                        ),
-                      ),
+                      // AdmobBanner(
+                      //   adUnitId: AdMob().getBannerAdUnitId(),
+                      //   adSize: AdmobBannerSize(
+                      //     width: MediaQuery.of(context).size.width.toInt(),
+                      //     height: AdMob().getHeight(context).toInt(),
+                      //     name: 'SMART_BANNER',
+                      //   ),
+                      // ),
                       Container(
                         color: AppColor.red2,
                         child: Padding(
@@ -201,23 +206,39 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      // (isFirst) ? Container() : ResetButton(onTap: reset),
                       Visibility(
                           visible: !isFirst, child: ResetButton(onTap: reset)),
                       const SizedBox(height: 10),
                       Expanded(
-                        child: ListView.builder(
-                          itemCount: todoList.length,
-                          itemBuilder: (context, index) {
-                            return Dismissible(
-                              key: Key(todoList[index]),
-                              onDismissed: (direction) {
-                                setState(() {
-                                  todoList.removeAt(index);
-                                });
-                              },
-                              child: ListItem(title: '￥' + todoList[index]),
-                            );
+                        child: StreamBuilder<List<Todo>>(
+                          stream: _bloc.todoStream,
+                          builder: (BuildContext context,
+                              AsyncSnapshot<List<Todo>> snapshot) {
+                            if (snapshot.hasData) {
+                              return ListView.builder(
+                                itemCount: todoList.length,
+                                itemBuilder: (context, index) {
+                                  Todo todo = snapshot.data![index];
+                                  indexes = index;
+                                  return Dismissible(
+                                    key: Key(todoList[index]),
+                                    onDismissed: (direction) {
+                                      setState(() {
+                                        todoList.removeAt(index);
+                                        _bloc.delete(todo.id!);
+                                      });
+                                    },
+                                    child: ListItem(
+                                      title: '￥' + todoList[index],
+                                      day: todo.dueDate.toString(),
+                                    ),
+                                  );
+                                },
+                              );
+                            }
+
+                            return const Center(
+                                child: CircularProgressIndicator());
                           },
                         ),
                       ),
@@ -233,7 +254,10 @@ class _HomeScreenState extends State<HomeScreen> {
         final newListText = await Navigator.of(context).push(
           MaterialPageRoute(
             builder: (context) {
-              return const AddScreen();
+              return AddScreen(
+                todo: Todo.newTodo(),
+                todoBloc: _bloc,
+              );
             },
             fullscreenDialog: true,
           ),

@@ -29,6 +29,8 @@ dependencies:
 
   admob_flutter: ^2.0.0
   modal_bottom_sheet: ^2.0.0
+  uuid: ^3.0.5
+  intl: ^0.17.0
 
   #admob
   #google_mobile_ads: ^1.0.1
@@ -41,6 +43,10 @@ dev_dependencies:
   holding_gesture:
   math_expressions:
   enum_to_string:
+
+  sqflite:
+  path_provider:
+  provider:
 
   app_tracking_transparency:
 

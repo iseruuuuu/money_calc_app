@@ -1,15 +1,31 @@
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:money_calc_app/database/todo_bloc.dart';
+import 'package:money_calc_app/model/todo.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../model/admob.dart';
 import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
+import 'package:intl/intl.dart';
 
 class AddScreen extends StatefulWidget {
-  const AddScreen({Key? key}) : super(key: key);
+  final DateFormat _format = DateFormat("yyyy/MM/dd HH:mm");
+  final TodoBloc? todoBloc;
+  final Todo todo;
+  final Todo _newTodo = Todo.newTodo();
+
+  AddScreen({
+    Key? key,
+    this.todoBloc,
+    required this.todo,
+  }) : super(key: key) {
+    //初期値
+    _newTodo.id = todo.id;
+    _newTodo.dueDate = todo.dueDate;
+  }
 
   @override
   _AddScreenState createState() => _AddScreenState();
@@ -49,6 +65,19 @@ class _AddScreenState extends State<AddScreen> {
         message: "０以上の入力をお願いします!!",
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    DateTime now = DateTime.now();
+    DateFormat outputFormat = DateFormat('MM/dd');
+
+    String date = outputFormat.format(now);
+
+    //widget._newTodo.dueDate = now;
+    widget._newTodo.dueDate = date;
   }
 
   @override
@@ -276,7 +305,10 @@ class _AddScreenState extends State<AddScreen> {
                     alertSnackBar();
                   } else {
                     final post = '$expression';
-                    Navigator.of(context).pop(post);
+                    if(widget._newTodo.id != null) {
+                      Navigator.of(context).pop(post);
+                      widget.todoBloc?.create(widget._newTodo);
+                    }
                   }
                 },
                 child: const Text(

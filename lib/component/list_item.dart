@@ -5,9 +5,11 @@ class ListItem extends StatelessWidget {
   const ListItem({
     Key? key,
     required this.title,
+    required this.day,
   }) : super(key: key);
 
   final String title;
+  final String day;
 
   @override
   Widget build(BuildContext context) {
@@ -24,6 +26,7 @@ class ListItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
         ),
         child: ListTile(
+          leading: Text(day),
           title: Center(
             child: Text(
               //TODO 日付を追加したい。
