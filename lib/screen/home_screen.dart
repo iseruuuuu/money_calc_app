@@ -245,7 +245,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onDismissed: (direction) {
                                       setState(() {
                                         todoList.removeAt(index);
-                                        _bloc.delete(todo.id!);
                                       });
                                     },
                                     child: ListItem(
