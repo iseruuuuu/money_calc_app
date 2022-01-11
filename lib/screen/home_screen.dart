@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           stream: _bloc.todoStream,
                           builder: (BuildContext context,
                               AsyncSnapshot<List<Todo>> snapshot) {
-                            if (snapshot.hasData || todoList.isNotEmpty) {
+                            if (snapshot.hasData && todoList.isNotEmpty) {
                               return ListView.builder(
                                 itemCount: todoList.length,
                                 itemBuilder: (context, index) {
