@@ -9,7 +9,12 @@ enum PreferenceKey {
   isDelete,
 
   //初回の記録のため
-  isCheckCount
+  isCheckCount,
+  //アップデートのチェック
+  isUpdateCheck,
+
+  //TODOリスト
+  list,
 }
 
 class Preference {

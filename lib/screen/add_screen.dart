@@ -72,7 +72,7 @@ class _AddScreenState extends State<AddScreen> {
     super.initState();
 
     DateTime now = DateTime.now();
-    DateFormat outputFormat = DateFormat('MM/dd');
+    DateFormat outputFormat = DateFormat('yyyy/MM');
 
     String date = outputFormat.format(now);
     widget._newTodo.dueDate = date;

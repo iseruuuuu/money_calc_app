@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:giff_dialog/giff_dialog.dart';
 import 'package:money_calc_app/component/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/floating_action_button_items.dart';
@@ -29,78 +30,100 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> todoList = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
-  String amount = '';
-  String amount2 = '';
   String expression = '';
   String expression2 = '';
   Parser parse = Parser();
   Parser parse2 = Parser();
   final preference = Preference();
   bool isFirst = false;
+  bool checkUpdate = false;
   int indexes = 0;
-  late Todo todo;
 
   @override
   void initState() {
     super.initState();
-    getPreferenceList();
-    getPreferenceString();
-
+    getPreference();
     checkPreference();
   }
 
   Future<void> checkPreference() async {
     isFirst = await preference.getBool(PreferenceKey.isDelete);
+    checkUpdate = await preference.getBool(PreferenceKey.isUpdateCheck);
     if (todoList.isEmpty) {
       isFirst = true;
     }
+    update();
+  }
+
+  void update() {
+    if (!checkUpdate) {
+      dialogs();
+      checkUpdate = true;
+      preference.setBool(PreferenceKey.isUpdateCheck, true);
+    }
+  }
+
+  void dialogs() {
+    showDialog(
+      context: context,
+      builder: (_) => NetworkGiffDialog(
+        image: Image.asset('assets/images/dialog.gif'),
+        title: const Text(
+          '給料記録の更新を行います',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
+        ),
+        description: const Text(
+          'あけましておめでとうございます\n'
+          '今年も頑張っていきましょう!!\n'
+          'by 製作者',
+          textAlign: TextAlign.center,
+        ),
+        entryAnimation: EntryAnimation.bottomLeft,
+        onlyCancelButton: false,
+        onlyOkButton: true,
+        buttonOkColor: Colors.blueAccent,
+        onOkButtonPressed: () {
+          Navigator.of(context).pop();
+        },
+      ),
+    );
   }
 
   @override
   void setState(VoidCallback fn) {
     super.setState(fn);
     setState(() {
-      setPreferenceList();
-      setPreferenceString();
+      setPreference();
       sumMoney();
     });
   }
 
-  Future<void> setPreferenceList() async {
+  Future<void> setPreference() async {
     final SharedPreferences prefs = await _prefs;
-    prefs.setStringList('key', todoList);
+    prefs.setStringList('ke', todoList);
+    prefs.setString('ke2', expression);
+    prefs.setString('ke3', expression2);
   }
 
-  getPreferenceList() async {
+  getPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     setState(() {
-      todoList = prefs.getStringList('key') ?? [];
-    });
-  }
-
-  Future<void> setPreferenceString() async {
-    final SharedPreferences prefs = await _prefs;
-    prefs.setString('key2', expression);
-    prefs.setString('key3', expression2);
-  }
-
-  getPreferenceString() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      expression = prefs.getString('key2') ?? '';
-      expression2 = prefs.getString('key3') ?? '';
+      todoList = prefs.getStringList('ke') ?? [];
+      expression = prefs.getString('ke2') ?? '';
+      expression2 = prefs.getString('ke3') ?? '';
     });
   }
 
   void sumMoney() {
     if (todoList.isNotEmpty) {
-      amount = todoList.join('+');
+      var amount = todoList.join('+');
       ContextModel cm = ContextModel();
       Expression exp = parse.parse(amount);
       double count1 = exp.evaluate(EvaluationType.REAL, cm);
       int b = count1.toInt();
       expression = b.toString();
-      amount2 = todoList.join('+');
+      var amount2 = todoList.join('+');
       final sum = '1030000-(' + amount2 + ')';
       Expression exp2 = parse2.parse(sum);
       ContextModel cm2 = ContextModel();
@@ -177,10 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               horizontal: 10, vertical: 10),
                           child: Card(
                             shape: RoundedRectangleBorder(
-                              side: BorderSide(
-                                color: AppColor.white,
-                                width: 5,
-                              ),
+                              side: BorderSide(color: AppColor.white, width: 5),
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: ListTile(
@@ -188,7 +208,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 child: Column(
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.only(top: 15, bottom: 10),
+                                      padding: const EdgeInsets.only(
+                                          top: 15, bottom: 10),
                                       child: MoneyLabel(
                                           title: '合計', exp: expression + '円'),
                                     ),
@@ -205,14 +226,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      Visibility(visible: !isFirst, child: ResetButton(onTap: reset)),
+                      Visibility(
+                          visible: !isFirst, child: ResetButton(onTap: reset)),
                       const SizedBox(height: 10),
                       Expanded(
                         child: StreamBuilder<List<Todo>>(
                           stream: _bloc.todoStream,
                           builder: (BuildContext context,
                               AsyncSnapshot<List<Todo>> snapshot) {
-                            if (snapshot.hasData) {
+                            if (snapshot.hasData || todoList.isNotEmpty) {
                               return ListView.builder(
                                 itemCount: todoList.length,
                                 itemBuilder: (context, index) {
@@ -234,9 +256,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 },
                               );
                             }
-
                             return const Center(
-                                child: CircularProgressIndicator());
+                              child: CircularProgressIndicator(),
+                            );
                           },
                         ),
                       ),

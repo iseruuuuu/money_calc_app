@@ -31,6 +31,8 @@ dependencies:
   modal_bottom_sheet: ^2.0.0
   uuid: ^3.0.5
   intl: ^0.17.0
+  giff_dialog: ^1.0.1
+  rxdart: ^0.27.3
 
   #admob
   #google_mobile_ads: ^1.0.1
@@ -58,3 +60,5 @@ flutter:
   uses-material-design: true
   assets:
    - assets/images/3.png
+   - assets/images/gif.gif
+   - assets/images/dialog.gif
