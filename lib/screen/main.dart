@@ -6,8 +6,8 @@ import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  Admob.initialize();
+  // WidgetsFlutterBinding.ensureInitialized();
+  // Admob.initialize();
   runApp(const MyApp());
 }
 
