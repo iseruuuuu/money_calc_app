@@ -5,7 +5,7 @@ import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import '../model/admob.dart';
+import '../admob/admob.dart';
 import '../model/color.dart';
 import '../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';

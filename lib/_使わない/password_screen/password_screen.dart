@@ -10,21 +10,22 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:money_calc_app/screen/home_screen.dart';
 import 'package:money_calc_app/screen/main.dart';
 import '../../model/color.dart';
 import '../../component/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 
-import '../home_screen.dart';
 
-class RegisterScreen extends StatefulWidget {
-  const RegisterScreen({Key? key}) : super(key: key);
+
+class PasswordScreen extends StatefulWidget {
+  const PasswordScreen({Key? key}) : super(key: key);
 
   @override
-  _RegisterScreenState createState() => _RegisterScreenState();
+  _PasswordScreenState createState() => _PasswordScreenState();
 }
 
-class _RegisterScreenState extends State<RegisterScreen> {
+class _PasswordScreenState extends State<PasswordScreen> {
 
   String expression = '';
   bool cancel = false;
@@ -262,7 +263,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   }
                 },
                 child: const Text(
-                  '登録する',
+                  'ログイン',
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 25,

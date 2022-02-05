@@ -1,18 +1,33 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
+import 'package:money_calc_app/notification/date_service.dart';
+import 'package:money_calc_app/preference/shared_preferences.dart';
 import 'home_screen.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
 
-void main() {
-  // WidgetsFlutterBinding.ensureInitialized();
-  // Admob.initialize();
-  runApp(const MyApp());
+final FlutterLocalNotificationsPlugin notifications =
+    FlutterLocalNotificationsPlugin();
+
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPrefs().init();
+  final initFuture = MobileAds.instance.initialize();
+  final adState = AdState(initFuture);
+  runApp(
+    Provider.value(
+      value: adState,
+      builder: (context, child) => const App(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+class App extends StatelessWidget {
+  const App({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

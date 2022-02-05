@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:flutter/services.dart';
 import 'package:giff_dialog/giff_dialog.dart';
+import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/component/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/floating_action_button_items.dart';
@@ -12,16 +15,21 @@ import 'package:money_calc_app/component/reset_button.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/model/todo.dart';
+import 'package:money_calc_app/notification/date_service.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen.dart';
+import 'package:money_calc_app/screen/push_setting/push_setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'package:money_calc_app/model/admob.dart';
+import 'package:money_calc_app/admob/admob.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -44,6 +52,34 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     getPreference();
     checkPreference();
+
+    WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
+  }
+
+  Future<void> initPlugin() async {
+    final status = await AppTrackingTransparency.trackingAuthorizationStatus;
+    if (status == TrackingStatus.notDetermined) {
+      await Future.delayed(const Duration(milliseconds: 200));
+      await AppTrackingTransparency.requestTrackingAuthorization();
+    }
+  }
+
+  late BannerAd banner;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final adState = Provider.of<AdState>(context);
+    adState.initialization.then((status) {
+      setState(() {
+        banner = BannerAd(
+          adUnitId: adState.bannerAdUnitId,
+          size: AdSize.banner,
+          request: const AdRequest(),
+          listener: adState.adListener,
+        )..load();
+      });
+    });
   }
 
   Future<void> checkPreference() async {
@@ -165,6 +201,17 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  void onTapSetting() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PushSettingScreen(
+          currentMonth: DateService().getCurrentMonthNumber(),
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
@@ -172,8 +219,18 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: AppColor.grey3,
       appBar: (todoList.isNotEmpty)
           ? PreferredSize(
-              preferredSize: const Size.fromHeight(0.0),
-              child: AppBarItem(color: AppColor.red2))
+              preferredSize: const Size.fromHeight(35.0),
+              child: AppBarItem(
+                color: AppColor.red2,
+                icon: IconButton(
+                  onPressed: onTapSetting,
+                  icon: const Icon(
+                    Icons.settings,
+                    size: 30,
+                  ),
+                ),
+              ),
+            )
           : PreferredSize(
               preferredSize: const Size.fromHeight(0.0),
               child: AppBarItem(color: AppColor.grey3)),
@@ -185,19 +242,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Column(
                     children: [
                       //TODO 次のアプデにする。
-                      // AdmobBanner(
-                      //   adUnitId: AdMob().getBannerAdUnitId(),
-                      //   adSize: AdmobBannerSize(
-                      //     width: MediaQuery.of(context).size.width.toInt(),
-                      //     height: AdMob().getHeight(context).toInt(),
-                      //     name: 'SMART_BANNER',
-                      //   ),
+                      // SizedBox(
+                      //   height: 50,
+                      //   child: AdWidget(ad: banner),
                       // ),
                       Container(
                         color: AppColor.red2,
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 10),
+                          padding: const EdgeInsets.only(
+                              bottom: 10, right: 10, left: 10, top: 5),
                           child: Card(
                             shape: RoundedRectangleBorder(
                               side: BorderSide(color: AppColor.white, width: 5),

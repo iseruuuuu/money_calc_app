@@ -16,7 +16,7 @@ class ListItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
       child: Card(
-        elevation: 100,
+        elevation: 2,
         color: AppColor.white,
         shape: RoundedRectangleBorder(
           side: BorderSide(
