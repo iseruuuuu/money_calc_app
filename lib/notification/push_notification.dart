@@ -13,6 +13,12 @@
 
 //できたら、通知をする日にちを設定できるようにする。
 
+//TODO 通知がしっかり来るかどうか確認する
+
+//TODO 通知の内容を変更する（通知の内容）
+
+//TODO 毎月、指定した日付に通知が来るようにする。
+
 import 'dart:convert';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:money_calc_app/constants/constants.dart';
@@ -54,8 +60,7 @@ class NotificationService {
   Future selectNotification(String? payload) async {
     UserBirthday userBirthday = getUserBirthdayFromPayload(payload ?? '');
     cancelNotificationForBirthday(userBirthday);
-    scheduleNotificationForBirthday(
-        userBirthday, "has an upcoming birthday!");
+    scheduleNotificationForBirthday(userBirthday, "has an upcoming birthday!");
   }
 
   void showNotification(
@@ -180,7 +185,6 @@ class NotificationService {
   void _rescheduleNotificationFromPayload(String payload) {
     UserBirthday userBirthday = getUserBirthdayFromPayload(payload);
     cancelNotificationForBirthday(userBirthday);
-    scheduleNotificationForBirthday(
-        userBirthday, " has an upcoming birthday!");
+    scheduleNotificationForBirthday(userBirthday, " has an upcoming birthday!");
   }
 }
