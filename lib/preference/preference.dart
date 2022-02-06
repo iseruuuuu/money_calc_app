@@ -17,7 +17,10 @@ enum PreferenceKey {
   list,
 
   //登録したい日にち
-  days
+  days,
+
+  //男性か女性か
+  isSex,
 }
 
 class Preference {

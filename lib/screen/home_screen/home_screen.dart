@@ -4,6 +4,7 @@ import 'package:flutter/painting.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:giff_dialog/giff_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/component/appbar/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
@@ -46,6 +47,7 @@ class _HomeScreenState extends State<HomeScreen> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> _endSideMenuKey = GlobalKey<SideMenuState>();
+  final InAppReview inAppReview = InAppReview.instance;
   String expression = '';
   String expression2 = '';
   Parser parse = Parser();
@@ -55,6 +57,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool checkUpdate = false;
   int indexes = 0;
   bool isOpened = false;
+  final isSex = false;
 
   @override
   void initState() {
@@ -242,8 +245,13 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
-  void onTapStar() {
-
+  void onTapStar() async {
+    if (await inAppReview.isAvailable()) {
+      inAppReview.requestReview();
+    } else {
+      //今はできない。
+      print('できないよ');
+    }
   }
 
   @override
@@ -305,8 +313,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                 bottom: 10, right: 10, left: 10, top: 5),
                             child: Card(
                               shape: RoundedRectangleBorder(
-                                side:
-                                    BorderSide(color: AppColor.white, width: 5),
+                                side: BorderSide(
+                                  color: AppColor.white,
+                                  width: 5,
+                                ),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: ListTile(
