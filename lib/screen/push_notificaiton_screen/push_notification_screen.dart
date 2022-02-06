@@ -118,7 +118,7 @@ class _PushNotificationScreenState extends State<PushNotificationScreen> {
           Expanded(
             flex: 1,
             child: Padding(
-              padding: const EdgeInsets.only(top: 30),
+              padding: const EdgeInsets.only(top: 50),
               child: Text(
                 //登録した日付を登録する。
                 (selectedDays != 0) ? '通知：毎月$selectedDays日' : '未設定',
@@ -134,14 +134,7 @@ class _PushNotificationScreenState extends State<PushNotificationScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Center(
-                child: Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(
-                      color: Colors.black,
-                      width: 5,
-                    ),
-                    borderRadius: BorderRadius.circular(20),
-                  ),
+                child: SizedBox(
                   height: (MediaQuery.of(context).size.height),
                   child: GridView.builder(
                     gridDelegate:

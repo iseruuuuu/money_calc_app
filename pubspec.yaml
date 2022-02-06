@@ -24,6 +24,8 @@ dependencies:
   flutter_local_notifications: ^9.2.0
 
   intl_phone_number_input:
+  shrink_sidemenu: ^2.0.0+2-null-safety
+  in_app_review: ^2.0.4
 
 
   #admob
@@ -53,3 +55,5 @@ flutter:
    - assets/images/3.png
    - assets/images/gif.gif
    - assets/images/dialog.gif
+   - assets/images/icon_man.png
+   - assets/images/icon_woman.png

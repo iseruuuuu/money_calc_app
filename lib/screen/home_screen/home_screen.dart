@@ -25,6 +25,9 @@ import 'package:money_calc_app/admob/admob.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
+import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+
+import 'children/menu_item.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({
@@ -41,6 +44,8 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   List<String> todoList = [];
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+  final GlobalKey<SideMenuState> _sideMenuKey = GlobalKey<SideMenuState>();
+  final GlobalKey<SideMenuState> _endSideMenuKey = GlobalKey<SideMenuState>();
   String expression = '';
   String expression2 = '';
   Parser parse = Parser();
@@ -49,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isFirst = false;
   bool checkUpdate = false;
   int indexes = 0;
+  bool isOpened = false;
 
   @override
   void initState() {
@@ -215,140 +221,183 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+    toggleMenu();
+  }
+
+  toggleMenu([bool end = false]) {
+    if (end) {
+      final _state = _endSideMenuKey.currentState!;
+      if (_state.isOpened) {
+        _state.closeSideMenu();
+      } else {
+        _state.openSideMenu();
+      }
+    } else {
+      final _state = _sideMenuKey.currentState!;
+      if (_state.isOpened) {
+        _state.closeSideMenu();
+      } else {
+        _state.openSideMenu();
+      }
+    }
+  }
+
+  void onTapStar() {
+
   }
 
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
-    return Scaffold(
-      backgroundColor: AppColor.grey3,
-      appBar: (todoList.isNotEmpty)
-          ? PreferredSize(
-              preferredSize: const Size.fromHeight(35.0),
-              child: AppBarItem(
-                color: AppColor.red2,
-                icon: IconButton(
-                  onPressed: onTapSetting,
-                  icon: Icon(
-                    Icons.notifications_active,
-                    size: 30,
-                    color: AppColor.white,
+    return SideMenu(
+      key: _sideMenuKey,
+      type: SideMenuType.slide,
+      // background: Colors.orange.shade300,
+      menu: Padding(
+        padding: const EdgeInsets.only(left: 25.0),
+        child: MenuItem(
+          onTapNotification: onTapSetting,
+          onTapStar: onTapStar,
+        ),
+      ),
+      onChange: (_isOpened) {
+        setState(() {
+          isOpened = _isOpened;
+        });
+      },
+      child: Scaffold(
+        backgroundColor: AppColor.grey3,
+        appBar: (todoList.isNotEmpty)
+            ? PreferredSize(
+                preferredSize: const Size.fromHeight(35.0),
+                child: AppBarItem(
+                  color: AppColor.red2,
+                  icon: IconButton(
+                    //onPressed: onTapSetting,
+                    onPressed: toggleMenu,
+                    icon: Icon(
+                      Icons.menu,
+                      size: 30,
+                      color: AppColor.white,
+                    ),
                   ),
                 ),
-              ),
-            )
-          : PreferredSize(
-              preferredSize: const Size.fromHeight(0.0),
-              child: AppBarItem(color: AppColor.grey3)),
-      body: (todoList.isNotEmpty)
-          ? Stack(
-              fit: StackFit.expand,
-              children: <Widget>[
-                SafeArea(
-                  child: Column(
-                    children: [
-                      //TODO 次のアプデにする。
-                      // SizedBox(
-                      //   height: 50,
-                      //   child: AdWidget(ad: banner),
-                      // ),
-                      Container(
-                        color: AppColor.red2,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: 10, right: 10, left: 10, top: 5),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                              side: BorderSide(color: AppColor.white, width: 5),
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: ListTile(
-                              title: Center(
-                                child: Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.only(
-                                          top: 15, bottom: 10),
-                                      child: MoneyLabel(
-                                          title: '合計', exp: expression + '円'),
-                                    ),
-                                    Padding(
-                                      padding:
-                                          const EdgeInsets.only(bottom: 15),
-                                      child: MoneyLabel(
-                                          title: '残り', exp: expression2 + '円'),
-                                    ),
-                                  ],
+              )
+            : PreferredSize(
+                preferredSize: const Size.fromHeight(0.0),
+                child: AppBarItem(color: AppColor.grey3)),
+        body: (todoList.isNotEmpty)
+            ? Stack(
+                fit: StackFit.expand,
+                children: <Widget>[
+                  SafeArea(
+                    child: Column(
+                      children: [
+                        //TODO 次のアプデにする。
+                        // SizedBox(
+                        //   height: 50,
+                        //   child: AdWidget(ad: banner),
+                        // ),
+                        Container(
+                          color: AppColor.red2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                bottom: 10, right: 10, left: 10, top: 5),
+                            child: Card(
+                              shape: RoundedRectangleBorder(
+                                side:
+                                    BorderSide(color: AppColor.white, width: 5),
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: ListTile(
+                                title: Center(
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(
+                                            top: 15, bottom: 10),
+                                        child: MoneyLabel(
+                                            title: '合計', exp: expression + '円'),
+                                      ),
+                                      Padding(
+                                        padding:
+                                            const EdgeInsets.only(bottom: 15),
+                                        child: MoneyLabel(
+                                            title: '残り',
+                                            exp: expression2 + '円'),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                      // Visibility(
-                      //     visible: !isFirst, child: ResetButton(onTap: reset)),
-                      const SizedBox(height: 10),
-                      Expanded(
-                        child: StreamBuilder<List<Todo>>(
-                          stream: _bloc.todoStream,
-                          builder: (BuildContext context,
-                              AsyncSnapshot<List<Todo>> snapshot) {
-                            if (snapshot.hasData && todoList.isNotEmpty) {
-                              return ListView.builder(
-                                itemCount: todoList.length,
-                                itemBuilder: (context, index) {
-                                  Todo todo = snapshot.data![index];
-                                  indexes = index;
-                                  return Dismissible(
-                                    key: Key(todoList[index]),
-                                    onDismissed: (direction) {
-                                      setState(() {
-                                        todoList.removeAt(index);
-                                      });
-                                    },
-                                    child: ListItem(
-                                      title: '￥' + todoList[index],
-                                      day: todo.dueDate.toString(),
-                                    ),
-                                  );
-                                },
+                        // Visibility(
+                        //     visible: !isFirst, child: ResetButton(onTap: reset)),
+                        const SizedBox(height: 10),
+                        Expanded(
+                          child: StreamBuilder<List<Todo>>(
+                            stream: _bloc.todoStream,
+                            builder: (BuildContext context,
+                                AsyncSnapshot<List<Todo>> snapshot) {
+                              if (snapshot.hasData && todoList.isNotEmpty) {
+                                return ListView.builder(
+                                  itemCount: todoList.length,
+                                  itemBuilder: (context, index) {
+                                    Todo todo = snapshot.data![index];
+                                    indexes = index;
+                                    return Dismissible(
+                                      key: Key(todoList[index]),
+                                      onDismissed: (direction) {
+                                        setState(() {
+                                          todoList.removeAt(index);
+                                        });
+                                      },
+                                      child: ListItem(
+                                        title: '￥' + todoList[index],
+                                        day: todo.dueDate.toString(),
+                                      ),
+                                    );
+                                  },
+                                );
+                              }
+                              return const Center(
+                                child: CircularProgressIndicator(),
                               );
-                            }
-                            return const Center(
-                              child: CircularProgressIndicator(),
-                            );
-                          },
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
-              ],
-            )
-          : const SafeArea(child: NoList()),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButtonItems(
-        onTap: () async {
-          //TODO 遷移をModalShowDialogにしたい
-          final newListText = await Navigator.of(context).push(
-            MaterialPageRoute(
-              builder: (context) {
-                return AddScreen(
-                  todo: Todo.newTodo(),
-                  todoBloc: _bloc,
-                );
-              },
-              fullscreenDialog: true,
-            ),
-          );
-          if (newListText != null) {
-            setState(() {
-              todoList.add(newListText);
-            });
-          }
-        },
+                ],
+              )
+            : const SafeArea(child: NoList()),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        floatingActionButton: FloatingActionButtonItems(
+          onTap: () async {
+            //TODO 遷移をModalShowDialogにしたい
+            final newListText = await Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) {
+                  return AddScreen(
+                    todo: Todo.newTodo(),
+                    todoBloc: _bloc,
+                  );
+                },
+                fullscreenDialog: true,
+              ),
+            );
+            if (newListText != null) {
+              setState(() {
+                todoList.add(newListText);
+              });
+            }
+          },
+        ),
+        bottomNavigationBar: const BottomNavigationBarItems(),
       ),
-      bottomNavigationBar: const BottomNavigationBarItems(),
     );
   }
 }
