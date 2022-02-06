@@ -5,7 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import 'home_screen.dart';
+import 'home_screen/home_screen.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
 
@@ -24,8 +24,7 @@ Future<void> main() async {
   );
 
   //initializationSettingsのオブジェクト作成
-  const InitializationSettings initializationSettings =
-      const InitializationSettings(
+  const InitializationSettings initializationSettings = InitializationSettings(
     iOS: initializationSettingsIOS,
     android: null,
   );

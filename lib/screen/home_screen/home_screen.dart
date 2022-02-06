@@ -16,8 +16,9 @@ import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/model/notification/date_service.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/screen/add_screen.dart';
-import 'package:money_calc_app/screen/push_setting/push_setting_screen.dart';
+import 'package:money_calc_app/screen/add_screen/add_screen.dart';
+import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
+import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_setting/push_setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/admob/admob.dart';
@@ -206,7 +207,10 @@ class _HomeScreenState extends State<HomeScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => PushSettingScreen(
+        // builder: (context) => PushSettingScreen(
+        //   currentMonth: DateService().getCurrentMonthNumber(),
+        // ),
+        builder: (context) => PushNotificationScreen(
           currentMonth: DateService().getCurrentMonthNumber(),
         ),
       ),
@@ -225,10 +229,10 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: AppColor.red2,
                 icon: IconButton(
                   onPressed: onTapSetting,
-                  icon: const Icon(
+                  icon: Icon(
                     Icons.notifications_active,
                     size: 30,
-                    color: Colors.indigo,
+                    color: AppColor.white,
                   ),
                 ),
               ),

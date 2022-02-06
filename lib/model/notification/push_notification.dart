@@ -3,6 +3,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:money_calc_app/constants/constants.dart';
 import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'dart:io' show Platform;
+import 'package:money_calc_app/preference/preference.dart';
 
 class NotificationService {
   static final NotificationService _notificationService =
@@ -40,25 +41,43 @@ class NotificationService {
 
   Future selectNotification(String? payload) async {
     UserBirthday userBirthday = getUserBirthdayFromPayload(payload ?? '');
-    cancel(userBirthday);
-    scheduleNotification(userBirthday, "has an upcoming birthday!");
+    //cancel(userBirthday);
+    cancel();
+    scheduleNotification(
+      userBirthday,
+      "has an upcoming birthday!",
+    );
   }
 
-  void scheduleNotification(
-      UserBirthday userBirthday, String notificationMessage) async {
+  void scheduleNotification(UserBirthday userBirthday, String notificationMessage) async {
     final now = DateTime.now();
     print(now);
+
+    final days = await Preference().getInt(PreferenceKey.days);
+    print(days);
+
+
 
     _wasApplicationLaunchedFromNotification();
 
     for (int i = 0; i < 12; i++) {
       //TODO 通知を出す。 →クリア
       //TODO 通知を1回の実装で何度も出す →クリア
-      //TODO 通知をキャンセルできるようにする。
+      //TODO 通知を1回の処理で12回読んであげる ->クリア
+      //TODO 通知をキャンセルできるようにする。 ->クリア？
+      //TODO 指定した日にちの通知を出す。 -> クリア
+
       //TODO 通知を変更できるようにする。
-      //TODO 指定した日にちの通知を出す。 ->クリア(とりあえず、12ヶ月)
+      //TODO 通知の日にちを1回だけにしたい。
+      //TODO 通知を変更したら、他のものを消す。
+
       int _id = i;
-      DateTime _date = DateTime(now.year, now.month + i, now.day, 14, 30, 00);
+      //DateTime _date = DateTime(now.year, now.month + i, now.day, 14, 30, 00);
+
+      //TODO dayを指定した日にする。
+      DateTime _date = DateTime(now.year, now.month+i, days, 10, 00, 00);
+
+      print(_date);
       const detail = NotificationDetails(
         android: AndroidNotificationDetails(channelId, applicationName),
         iOS: IOSNotificationDetails(),
@@ -73,8 +92,24 @@ class NotificationService {
     }
   }
 
-  void cancel(UserBirthday birthday) async {
-    await flutterLocalNotificationsPlugin.cancel(birthday.hashCode);
+  //void cancel(UserBirthday birthday) async {
+  void cancel() async {
+    //とりあえず、12個の通知を消せる。
+    await flutterLocalNotificationsPlugin.cancel(0);
+    await flutterLocalNotificationsPlugin.cancel(1);
+    await flutterLocalNotificationsPlugin.cancel(2);
+    await flutterLocalNotificationsPlugin.cancel(3);
+    await flutterLocalNotificationsPlugin.cancel(4);
+    await flutterLocalNotificationsPlugin.cancel(5);
+    await flutterLocalNotificationsPlugin.cancel(6);
+    await flutterLocalNotificationsPlugin.cancel(7);
+    await flutterLocalNotificationsPlugin.cancel(8);
+    await flutterLocalNotificationsPlugin.cancel(9);
+    await flutterLocalNotificationsPlugin.cancel(10);
+    await flutterLocalNotificationsPlugin.cancel(11);
+    await flutterLocalNotificationsPlugin.cancel(12);
+
+    //TODO
   }
 
   void cancelAll() async {
@@ -112,9 +147,11 @@ class NotificationService {
   }
 
   void _rescheduleNotificationFromPayload(String payload) {
-    //TODO 変なエラーあり
-    UserBirthday userBirthday = getUserBirthdayFromPayload(payload);
-    cancel(userBirthday);
-    scheduleNotification(userBirthday, " has an upcoming birthday!");
+    //   //TODO 変なエラーあり
+    //   UserBirthday userBirthday = getUserBirthdayFromPayload(payload);
+    //   //cancel(userBirthday);
+    //   cancel();
+    //   scheduleNotification(userBirthday, " has an upcoming birthday!");
+    // }
   }
 }

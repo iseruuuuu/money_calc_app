@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/model/notification/user_birthday.dart';
+import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-
 import '../add/birthday_for_calendar.dart';
 
 class CalendarDay extends StatefulWidget {
@@ -18,6 +18,7 @@ class CalendarDay extends StatefulWidget {
 
 class _CalendarDayState extends State<CalendarDay> {
   List<UserBirthday> _birthdays = [];
+  int days = 0;
 
   @override
   void initState() {
@@ -36,19 +37,25 @@ class _CalendarDayState extends State<CalendarDay> {
       _birthdays = SharedPrefs().getString(widget.date);
     });
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
+        print(widget.date);
+
+        //選択した日付
+        Preference().setInt(PreferenceKey.days, widget.date.day);
+
         Navigator.push(
           context,
           MaterialPageRoute(
-            builder: (context) => BirthdaysForCalendarDayWidget(
-              key: Key(widget.date.toString()),
-              dateOfDay: widget.date,
-              birthdays: _birthdays,
-            ),
+            builder: (context) =>
+                BirthdaysForCalendarDayWidget(
+                  key: Key(widget.date.toString()),
+                  dateOfDay: widget.date,
+                  birthdays: _birthdays,
+                ),
           ),
         ).then((value) => _fetchBirthdaysFromStorage());
       },
@@ -61,7 +68,8 @@ class _CalendarDayState extends State<CalendarDay> {
               height: 100,
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
-                color: (_birthdays.isNotEmpty) ? Colors.indigo : Colors.transparent,
+                color: (_birthdays.isNotEmpty) ? Colors.indigo : Colors
+                    .transparent,
               ),
               child: Center(
                 child: Text(

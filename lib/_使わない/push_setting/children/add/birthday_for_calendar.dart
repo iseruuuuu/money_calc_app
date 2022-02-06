@@ -3,7 +3,7 @@ import 'package:money_calc_app/component/push_notification/add_birthday.dart';
 import 'package:money_calc_app/model/notification/push_notification.dart';
 import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import '../birthday.dart';
+import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_setting/children/birthday.dart';
 
 class BirthdaysForCalendarDayWidget extends StatefulWidget {
   final DateTime dateOfDay;
@@ -76,12 +76,12 @@ class _BirthdaysForCalendarDayWidgetState
                 itemCount: currentBirthdays.length,
                 itemBuilder: (BuildContext context, int index) {
                   return Birthday(
-                    //TODo 様子見 ->今は問題がなさそう。
                   key: Key(currentBirthdays[index].birthdayDate.toString()),
-                   // key: _formKey,
                     birthdayOfPerson: currentBirthdays[index],
                     onDeletePressedCallback: () {
                       remove(currentBirthdays[index]);
+                      //TODO 通知を消す処理を追加する。
+                      NotificationService().cancel();
                     },
                     indexOfBirthday: index,
                   );

@@ -23,18 +23,19 @@ class _BirthdayState extends State<Birthday> {
   bool isNotificationEnabledForPerson = false;
 
   void updateNotificationStatusForBirthday() {
+    print('sa');
     setState(() {
       isNotificationEnabledForPerson = !isNotificationEnabledForPerson;
     });
-    SharedPrefs().updateNotificationStatusForBirthday(
-        widget.birthdayOfPerson, isNotificationEnabledForPerson);
+    SharedPrefs().updateNotificationStatusForBirthday(widget.birthdayOfPerson, isNotificationEnabledForPerson);
     if (!isNotificationEnabledForPerson) {
-      NotificationService()
-          .cancel(widget.birthdayOfPerson);
+     //NotificationService().cancel(widget.birthdayOfPerson);
+      NotificationService().cancel();
     } else {
       NotificationService().scheduleNotification(
           widget.birthdayOfPerson,
           "${widget.birthdayOfPerson.name} has an upcoming birthday!");
+
     }
   }
 
