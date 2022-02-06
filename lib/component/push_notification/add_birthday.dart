@@ -1,23 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:money_calc_app/notification/user_birthday.dart';
+import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
 
-class AddBirthday extends StatefulWidget {
+class NotificationDialog extends StatefulWidget {
   final DateTime dateOfDay;
 
-  const AddBirthday({Key? key, required this.dateOfDay}) : super(key: key);
+  const NotificationDialog({Key? key, required this.dateOfDay}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return AddBirthdayState();
+    return NotificationDialogState();
   }
 }
 
-class AddBirthdayState extends State<AddBirthday> {
+class NotificationDialogState extends State<NotificationDialog> {
   final _formKey = GlobalKey<FormState>();
-  final TextEditingController _birthdayPersonController =
-      TextEditingController();
+  final TextEditingController _birthdayPersonController = TextEditingController();
   List<UserBirthday> birthdaysForDate = [];
 
   @override

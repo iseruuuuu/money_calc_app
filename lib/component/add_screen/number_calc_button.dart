@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-import '../model/color.dart';
+import '../../model/color.dart';
 
 class NumberCalcButton extends StatelessWidget {
   final String text;

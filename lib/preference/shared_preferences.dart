@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
-import 'package:money_calc_app/notification/date_service.dart';
-import 'package:money_calc_app/notification/user_birthday.dart';
+import 'package:money_calc_app/model/notification/date_service.dart';
+import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPrefs {

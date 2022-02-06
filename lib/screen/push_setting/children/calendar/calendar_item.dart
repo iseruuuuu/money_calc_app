@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_calc_app/notification/date_service.dart';
-
+import 'package:money_calc_app/model/notification/date_service.dart';
 import 'calendar_day_item.dart';
 
 class CalendarItem extends StatefulWidget {
@@ -40,8 +39,7 @@ class _CalendarState extends State<CalendarItem> {
       child: SizedBox(
         height: (MediaQuery.of(context).size.height),
         child: GridView.builder(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 5),
           itemCount: _amountOfDaysToPresent,
           shrinkWrap: true,
           itemBuilder: (BuildContext context, int index) {

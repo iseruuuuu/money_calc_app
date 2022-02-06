@@ -1,0 +1,120 @@
+import 'dart:convert';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:money_calc_app/constants/constants.dart';
+import 'package:money_calc_app/model/notification/user_birthday.dart';
+import 'dart:io' show Platform;
+
+class NotificationService {
+  static final NotificationService _notificationService =
+      NotificationService._internal();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+      FlutterLocalNotificationsPlugin();
+
+  factory NotificationService() {
+    return _notificationService;
+  }
+
+  NotificationService._internal();
+
+  static const channelId = "123";
+
+  Future<void> init(
+      Future<dynamic> Function(int, String?, String?, String?)?
+          onDidReceive) async {
+    const AndroidInitializationSettings settingsAndroid =
+        AndroidInitializationSettings(('app_icon'));
+
+    final IOSInitializationSettings settingsIOS =
+        IOSInitializationSettings(onDidReceiveLocalNotification: onDidReceive);
+
+    final InitializationSettings settings = InitializationSettings(
+      android: settingsAndroid,
+      iOS: settingsIOS,
+    );
+
+    await flutterLocalNotificationsPlugin.initialize(
+      settings,
+      onSelectNotification: selectNotification,
+    );
+  }
+
+  Future selectNotification(String? payload) async {
+    UserBirthday userBirthday = getUserBirthdayFromPayload(payload ?? '');
+    cancel(userBirthday);
+    scheduleNotification(userBirthday, "has an upcoming birthday!");
+  }
+
+  void scheduleNotification(
+      UserBirthday userBirthday, String notificationMessage) async {
+    final now = DateTime.now();
+    print(now);
+
+    _wasApplicationLaunchedFromNotification();
+
+    for (int i = 0; i < 12; i++) {
+      //TODO 通知を出す。 →クリア
+      //TODO 通知を1回の実装で何度も出す →クリア
+      //TODO 通知をキャンセルできるようにする。
+      //TODO 通知を変更できるようにする。
+      //TODO 指定した日にちの通知を出す。 ->クリア(とりあえず、12ヶ月)
+      int _id = i;
+      DateTime _date = DateTime(now.year, now.month + i, now.day, 14, 30, 00);
+      const detail = NotificationDetails(
+        android: AndroidNotificationDetails(channelId, applicationName),
+        iOS: IOSNotificationDetails(),
+      );
+      await flutterLocalNotificationsPlugin.schedule(
+        _id,
+        '給料は受け取れましたか？',
+        '忘れないように登録をおすすめします！',
+        _date,
+        detail,
+      );
+    }
+  }
+
+  void cancel(UserBirthday birthday) async {
+    await flutterLocalNotificationsPlugin.cancel(birthday.hashCode);
+  }
+
+  void cancelAll() async {
+    await flutterLocalNotificationsPlugin.cancelAll();
+  }
+
+  void handleApplicationWasLaunchedFromNotification(String payload) async {
+    if (Platform.isIOS) {
+      _rescheduleNotificationFromPayload(payload);
+      return;
+    }
+    final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    if (notificationAppLaunchDetails != null &&
+        notificationAppLaunchDetails.didNotificationLaunchApp) {
+      _rescheduleNotificationFromPayload(
+          notificationAppLaunchDetails.payload ?? "");
+    }
+  }
+
+  UserBirthday getUserBirthdayFromPayload(String payload) {
+    Map<String, dynamic> json = jsonDecode(payload);
+    //TODO 変なエラーあり
+    UserBirthday userBirthday = UserBirthday.fromJson(json);
+    return userBirthday;
+  }
+
+  Future<bool> _wasApplicationLaunchedFromNotification() async {
+    NotificationAppLaunchDetails? notificationAppLaunchDetails =
+        await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+    if (notificationAppLaunchDetails != null) {
+      return notificationAppLaunchDetails.didNotificationLaunchApp;
+    }
+    return false;
+  }
+
+  void _rescheduleNotificationFromPayload(String payload) {
+    //TODO 変なエラーあり
+    UserBirthday userBirthday = getUserBirthdayFromPayload(payload);
+    cancel(userBirthday);
+    scheduleNotification(userBirthday, " has an upcoming birthday!");
+  }
+}

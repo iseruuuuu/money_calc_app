@@ -7,7 +7,7 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 import '../admob/admob.dart';
 import '../model/color.dart';
-import '../component/number_calc_button.dart';
+import '../component/add_screen/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
 import 'package:intl/intl.dart';
 

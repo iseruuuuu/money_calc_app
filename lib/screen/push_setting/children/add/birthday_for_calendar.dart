@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:money_calc_app/notification/date_service.dart';
-import 'package:money_calc_app/notification/push_notification.dart';
-import 'package:money_calc_app/notification/user_birthday.dart';
+import 'package:money_calc_app/component/push_notification/add_birthday.dart';
+import 'package:money_calc_app/model/notification/push_notification.dart';
+import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import '../dialog/add_birthday.dart';
 import '../birthday.dart';
 
 class BirthdaysForCalendarDayWidget extends StatefulWidget {
@@ -28,8 +27,8 @@ class _BirthdaysForCalendarDayWidgetState
 
   void _handleUserInput(UserBirthday userBirthday) {
     _addBirthdayToList(userBirthday);
-    NotificationService().scheduleNotificationForBirthday(
-        userBirthday, " has an upcoming birthday!");
+    NotificationService()
+        .scheduleNotification(userBirthday, " has an upcoming birthday!");
   }
 
   void _addBirthdayToList(UserBirthday userBirthday) {
@@ -39,11 +38,13 @@ class _BirthdaysForCalendarDayWidgetState
     SharedPrefs().setString(widget.dateOfDay, currentBirthdays);
   }
 
-  void _removeBirthdayFromList(UserBirthday birthdayToRemove) {
+  void remove(UserBirthday birthdayToRemove) {
     setState(() {
       currentBirthdays.remove(birthdayToRemove);
     });
     SharedPrefs().setString(widget.dateOfDay, currentBirthdays);
+    print('削除しました');
+    //TODO 通知も消せるようにする、
   }
 
   @override
@@ -76,10 +77,11 @@ class _BirthdaysForCalendarDayWidgetState
                 itemBuilder: (BuildContext context, int index) {
                   return Birthday(
                     //TODo 様子見 ->今は問題がなさそう。
-                    key: Key(currentBirthdays[index].birthdayDate.toString()),
+                  key: Key(currentBirthdays[index].birthdayDate.toString()),
+                   // key: _formKey,
                     birthdayOfPerson: currentBirthdays[index],
                     onDeletePressedCallback: () {
-                      _removeBirthdayFromList(currentBirthdays[index]);
+                      remove(currentBirthdays[index]);
                     },
                     indexOfBirthday: index,
                   );
@@ -93,7 +95,7 @@ class _BirthdaysForCalendarDayWidgetState
         onPressed: () async {
           var result = await showDialog(
               context: context,
-              builder: (_) => AddBirthday(dateOfDay: widget.dateOfDay));
+              builder: (_) => NotificationDialog(dateOfDay: widget.dateOfDay));
           if (result != null) {
             _handleUserInput(result);
           }

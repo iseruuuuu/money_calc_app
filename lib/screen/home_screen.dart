@@ -1,21 +1,20 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:giff_dialog/giff_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:money_calc_app/admob/admob_state.dart';
-import 'package:money_calc_app/component/app_bar_item.dart';
-import 'package:money_calc_app/component/bottom_navigation_bar_items.dart';
-import 'package:money_calc_app/component/floating_action_button_items.dart';
-import 'package:money_calc_app/component/list_item.dart';
-import 'package:money_calc_app/component/money_label.dart';
-import 'package:money_calc_app/component/no_list.dart';
-import 'package:money_calc_app/component/reset_button.dart';
+import 'package:money_calc_app/component/appbar/app_bar_item.dart';
+import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
+import 'package:money_calc_app/component/home_screen/floating_action_button_items.dart';
+import 'package:money_calc_app/component/home_screen/list_item.dart';
+import 'package:money_calc_app/component/home_screen/money_label.dart';
+import 'package:money_calc_app/component/home_screen/no_list.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/model/todo.dart';
-import 'package:money_calc_app/notification/date_service.dart';
+import 'package:money_calc_app/model/notification/date_service.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen.dart';
 import 'package:money_calc_app/screen/push_setting/push_setting_screen.dart';
@@ -27,9 +26,12 @@ import 'package:provider/provider.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({
+  HomeScreen({
     Key? key,
+    required this.flutterLocalNotificationsPlugin,
   }) : super(key: key);
+
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
   _HomeScreenState createState() => _HomeScreenState();
@@ -52,7 +54,6 @@ class _HomeScreenState extends State<HomeScreen> {
     super.initState();
     getPreference();
     checkPreference();
-
     WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
   }
 
@@ -225,8 +226,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 icon: IconButton(
                   onPressed: onTapSetting,
                   icon: const Icon(
-                    Icons.settings,
+                    Icons.notifications_active,
                     size: 30,
+                    color: Colors.indigo,
                   ),
                 ),
               ),
@@ -279,8 +281,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                         ),
                       ),
-                      Visibility(
-                          visible: !isFirst, child: ResetButton(onTap: reset)),
+                      // Visibility(
+                      //     visible: !isFirst, child: ResetButton(onTap: reset)),
                       const SizedBox(height: 10),
                       Expanded(
                         child: StreamBuilder<List<Todo>>(
@@ -321,25 +323,27 @@ class _HomeScreenState extends State<HomeScreen> {
             )
           : const SafeArea(child: NoList()),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButtonItems(onTap: () async {
-        //TODO 遷移をModalShowDialogにしたい
-        final newListText = await Navigator.of(context).push(
-          MaterialPageRoute(
-            builder: (context) {
-              return AddScreen(
-                todo: Todo.newTodo(),
-                todoBloc: _bloc,
-              );
-            },
-            fullscreenDialog: true,
-          ),
-        );
-        if (newListText != null) {
-          setState(() {
-            todoList.add(newListText);
-          });
-        }
-      }),
+      floatingActionButton: FloatingActionButtonItems(
+        onTap: () async {
+          //TODO 遷移をModalShowDialogにしたい
+          final newListText = await Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) {
+                return AddScreen(
+                  todo: Todo.newTodo(),
+                  todoBloc: _bloc,
+                );
+              },
+              fullscreenDialog: true,
+            ),
+          );
+          if (newListText != null) {
+            setState(() {
+              todoList.add(newListText);
+            });
+          }
+        },
+      ),
       bottomNavigationBar: const BottomNavigationBarItems(),
     );
   }

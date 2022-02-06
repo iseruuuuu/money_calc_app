@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:money_calc_app/notification/date_service.dart';
-import 'package:money_calc_app/notification/push_notification.dart';
+import 'package:money_calc_app/model/notification/date_service.dart';
+import 'package:money_calc_app/model/notification/push_notification.dart';
 import 'children/calendar/calendar_item.dart';
 
 class PushSettingScreen extends StatefulWidget {
@@ -22,13 +22,13 @@ class _PushSettingScreenState extends State<PushSettingScreen> {
 
   @override
   void initState() {
+    super.initState();
     monthToPresent = widget.currentMonth;
     month = DateService().convertMonthToWord(monthToPresent);
     NotificationService().init(_onDidReceiveLocalNotification).whenComplete(
           () => NotificationService()
               .handleApplicationWasLaunchedFromNotification(""),
         );
-    super.initState();
   }
 
   int _correctMonthOverflow(int month) {
@@ -61,12 +61,15 @@ class _PushSettingScreenState extends State<PushSettingScreen> {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
-        title: Text(title ?? ''),
-        content: Text(body ?? ''),
+        //Text(title ?? ''),
+        // content: Text(body ?? ''),
+        title: const Text('給料は受け取れましたか？'),
+        content: const Text('忘れないように登録をおすすめします！'),
         actions: [
           TextButton(
             child: const Text("Ok"),
-            onPressed: () async {
+            onPressed: () {
+              print('ss');
               NotificationService()
                   .handleApplicationWasLaunchedFromNotification(payload ?? '');
             },

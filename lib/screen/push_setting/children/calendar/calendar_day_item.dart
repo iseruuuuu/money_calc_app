@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:money_calc_app/notification/user_birthday.dart';
+import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import 'package:money_calc_app/screen/push_setting/children/dialog/add_birthday.dart';
 
 import '../add/birthday_for_calendar.dart';
 
