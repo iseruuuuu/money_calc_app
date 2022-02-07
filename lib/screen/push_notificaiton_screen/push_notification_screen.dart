@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/model/notification/date_service.dart';
 import 'package:money_calc_app/model/notification/push_notification.dart';
 import 'package:money_calc_app/preference/preference.dart';
@@ -55,7 +56,8 @@ class _PushNotificationScreenState extends State<PushNotificationScreen> {
     );
   }
 
-  Future<dynamic> _onDidReceiveLocalNotification(int id, String? title, String? body, String? payload) async {
+  Future<dynamic> _onDidReceiveLocalNotification(
+      int id, String? title, String? body, String? payload) async {
     showDialog(
       context: context,
       builder: (BuildContext context) => AlertDialog(
@@ -111,7 +113,16 @@ class _PushNotificationScreenState extends State<PushNotificationScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: AppColor.red2,
+        title: const Text(
+          '通知設定',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
+      ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
