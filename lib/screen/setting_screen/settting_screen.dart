@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/preference/preference.dart';
+import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/children/license_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -61,6 +62,15 @@ class _SettingScreenState extends State<SettingScreen> {
     );
   }
 
+  void onTapNotification() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const PushNotificationScreen(currentMonth: 1),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -110,7 +120,7 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: Colors.black,
-                onTap: () {},
+                onTap: onTapNotification,
                 leading: const Icon(
                   Icons.notifications_active,
                   size: 35.0,
