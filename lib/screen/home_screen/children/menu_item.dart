@@ -6,10 +6,12 @@ class MenuItem extends StatefulWidget {
     Key? key,
     required this.onTapNotification,
     required this.onTapStar,
+    required this.onTapSetting,
   }) : super(key: key);
 
   final Function() onTapNotification;
   final Function() onTapStar;
+  final Function() onTapSetting;
 
   @override
   _MenuItemState createState() => _MenuItemState();
@@ -110,7 +112,8 @@ class _MenuItemState extends State<MenuItem> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            onTap: () {},
+            //TODO 設定画面をどうしよう
+            onTap: widget.onTapSetting,
             leading: const Icon(
               Icons.settings,
               size: 35.0,

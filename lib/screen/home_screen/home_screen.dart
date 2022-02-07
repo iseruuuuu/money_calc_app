@@ -20,6 +20,7 @@ import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_setting/push_setting_screen.dart';
+import 'package:money_calc_app/screen/setting_screen/settting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/admob/admob.dart';
@@ -212,21 +213,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void onTapSetting() {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        // builder: (context) => PushSettingScreen(
-        //   currentMonth: DateService().getCurrentMonthNumber(),
-        // ),
-        builder: (context) => PushNotificationScreen(
-          currentMonth: DateService().getCurrentMonthNumber(),
-        ),
-      ),
-    );
-    toggleMenu();
-  }
-
   toggleMenu([bool end = false]) {
     if (end) {
       final _state = _endSideMenuKey.currentState!;
@@ -254,6 +240,31 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  void onTapNotification() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        // builder: (context) => PushSettingScreen(
+        //   currentMonth: DateService().getCurrentMonthNumber(),
+        // ),
+        builder: (context) => PushNotificationScreen(
+          currentMonth: DateService().getCurrentMonthNumber(),
+        ),
+      ),
+    );
+    toggleMenu();
+  }
+
+  void onTapSetting() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const SettingScreen(),
+      ),
+    );
+    toggleMenu();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
@@ -264,8 +275,9 @@ class _HomeScreenState extends State<HomeScreen> {
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
         child: MenuItem(
-          onTapNotification: onTapSetting,
+          onTapNotification: onTapNotification,
           onTapStar: onTapStar,
+          onTapSetting: onTapSetting,
         ),
       ),
       onChange: (_isOpened) {

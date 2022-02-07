@@ -26,6 +26,7 @@ dependencies:
   intl_phone_number_input:
   shrink_sidemenu: ^2.0.0+2-null-safety
   in_app_review: ^2.0.4
+  package_info_plus: ^1.2.0
 
 
   #admob
