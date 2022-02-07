@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/setting_screen/children/license_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
@@ -26,9 +27,6 @@ class _SettingScreenState extends State<SettingScreen> {
   void initState() {
     super.initState();
     preference(preference: false);
-    // _getAppVersion();
-    // checkVersion();
-    //_initPackageInfo();
     _initPackageInfo();
   }
 
@@ -47,20 +45,11 @@ class _SettingScreenState extends State<SettingScreen> {
     }
   }
 
-  Future<String> _getAppVersion() async {
-    final packageInfo = await PackageInfo.fromPlatform();
-    return packageInfo.version;
-  }
-
-  void checkVersion() async {}
-
   Future<void> _initPackageInfo() async {
     final info = await PackageInfo.fromPlatform();
     setState(() {
       _packageInfo = info;
     });
-
-    print(_packageInfo.version);
   }
 
   Future _showLicense() async {
@@ -77,7 +66,14 @@ class _SettingScreenState extends State<SettingScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
-        title: const Text('設定画面'),
+        backgroundColor: AppColor.red2,
+        title: const Text(
+          '設定画面',
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 25,
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(vertical: 50.0),
@@ -128,6 +124,11 @@ class _SettingScreenState extends State<SettingScreen> {
                     fontSize: 20,
                   ),
                 ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColor.white,
+                  size: 30,
+                ),
                 textColor: Colors.white,
                 dense: true,
               ),
@@ -150,28 +151,10 @@ class _SettingScreenState extends State<SettingScreen> {
                     fontSize: 20,
                   ),
                 ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: () {},
-                leading: const Icon(
-                  Icons.settings,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Settings",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColor.white,
+                  size: 30,
                 ),
                 textColor: Colors.white,
                 dense: true,
@@ -196,6 +179,11 @@ class _SettingScreenState extends State<SettingScreen> {
                     fontSize: 20,
                   ),
                 ),
+                trailing: Icon(
+                  Icons.all_inclusive,
+                  color: AppColor.white,
+                  size: 30,
+                ),
                 textColor: Colors.white,
                 dense: true,
                 // padding: EdgeInsets.zero,
@@ -218,6 +206,11 @@ class _SettingScreenState extends State<SettingScreen> {
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColor.white,
+                  size: 30,
                 ),
                 textColor: Colors.white,
                 dense: true,

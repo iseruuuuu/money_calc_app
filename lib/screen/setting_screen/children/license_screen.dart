@@ -37,7 +37,6 @@ class _LicenseScreenState extends State<LicenseScreen> {
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
-        foregroundColor: CupertinoColors.systemBackground,
         backgroundColor: AppColor.red2,
         title: const Text(
           'ライセンス情報',
