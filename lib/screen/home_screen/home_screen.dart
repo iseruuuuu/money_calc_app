@@ -20,7 +20,7 @@ import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_setting/push_setting_screen.dart';
-import 'package:money_calc_app/screen/setting_screen/settting_screen.dart';
+import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:math_expressions/math_expressions.dart';
 import 'package:money_calc_app/admob/admob.dart';
@@ -248,7 +248,7 @@ class _HomeScreenState extends State<HomeScreen> {
         //   currentMonth: DateService().getCurrentMonthNumber(),
         // ),
         builder: (context) => PushNotificationScreen(
-          currentMonth: DateService().getCurrentMonthNumber(),
+          // currentMonth: DateService().getCurrentMonthNumber(),
         ),
       ),
     );
