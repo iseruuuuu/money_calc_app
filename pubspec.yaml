@@ -27,6 +27,9 @@ dependencies:
   shrink_sidemenu: ^2.0.0+2-null-safety
   in_app_review: ^2.0.4
   package_info_plus: ^1.2.0
+  url_launcher: ^6.0.18
+  eva_icons_flutter: ^3.0.2
+  webview_flutter: ^3.0.0
 
 
   #admob

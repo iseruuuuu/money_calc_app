@@ -1,9 +1,12 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
+import 'package:money_calc_app/screen/setting_screen/children/contact_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/children/license_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({
@@ -67,6 +70,31 @@ class _SettingScreenState extends State<SettingScreen> {
       context,
       MaterialPageRoute(
         builder: (context) => const PushNotificationScreen(currentMonth: 1),
+      ),
+    );
+  }
+
+  void onTapTwitter() async {
+    const url =
+        'twitter://user?screen_name=isekiryu'; // <-Twitterアプリのユーザープロフ画面を開くURLScheme
+    const secondUrl =
+        'https://twitter.com/isekiryu'; // <-Twitterアプリのユーザープロフ画面を開くURL
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else if (secondUrl != null && await canLaunch(secondUrl)) {
+      // 最初のURLが開けなかった場合かつセカンドURLが有って開けた場合
+      await launch(secondUrl);
+    } else {
+      // 任意のエラー処理
+    }
+  }
+
+  void onTapContact() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ContactScreen(),
       ),
     );
   }
@@ -191,6 +219,64 @@ class _SettingScreenState extends State<SettingScreen> {
                 ),
                 trailing: Icon(
                   Icons.all_inclusive,
+                  color: AppColor.white,
+                  size: 30,
+                ),
+                textColor: Colors.white,
+                dense: true,
+                // padding: EdgeInsets.zero,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                tileColor: Colors.black,
+                onTap: onTapContact,
+                //onTap: () {},
+                leading: const Icon(
+                  Icons.mail_outline,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  "Contact",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
+                  color: AppColor.white,
+                  size: 30,
+                ),
+                textColor: Colors.white,
+                dense: true,
+                // padding: EdgeInsets.zero,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ListTile(
+                tileColor: Colors.black,
+                onTap: onTapTwitter,
+                leading: const Icon(
+                  //Icons.developer_mode,
+                  EvaIcons.twitter,
+                  size: 35.0,
+                  color: Colors.white,
+                ),
+                title: const Text(
+                  "Developer",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),
+                ),
+                trailing: Icon(
+                  Icons.arrow_forward_ios_sharp,
                   color: AppColor.white,
                   size: 30,
                 ),
