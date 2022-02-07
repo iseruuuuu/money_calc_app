@@ -132,13 +132,26 @@ class _SettingScreenState extends State<SettingScreen> {
                         : Image.asset('assets/images/icon_woman.png'),
                   ),
                   const SizedBox(height: 16.0),
-                  Text(
-                    isSex ? "Hello, Man!" : "Hello, Woman!",
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        isSex ? "Hello, Man!  " : "Hello, Woman!",
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
+                      IconButton(
+                        onPressed: onTapChangeSex,
+                        icon: Icon(
+                          Icons.change_circle,
+                          color: AppColor.red2,
+                          size: 35,
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 20.0),
                 ],
@@ -203,36 +216,7 @@ class _SettingScreenState extends State<SettingScreen> {
               padding: const EdgeInsets.all(8.0),
               child: ListTile(
                 tileColor: Colors.black,
-                onTap: onTapChangeSex,
-                leading: const Icon(
-                  Icons.person,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Change",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.all_inclusive,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
                 onTap: onTapContact,
-                //onTap: () {},
                 leading: const Icon(
                   Icons.mail_outline,
                   size: 35.0,
