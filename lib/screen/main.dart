@@ -5,6 +5,7 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
+import 'package:money_calc_app/screen/home_screen/home_less.dart';
 import 'home_screen/home_screen.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
@@ -57,9 +58,10 @@ class App extends StatelessWidget {
       ),
       home: Provider<TodoBloc>(
         create: (context) => TodoBloc(),
-        child: HomeScreen(
-          flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),
-        ),
+        child: HomeLessScreen(flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),),
+        // child: HomeScreen(
+        //   flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),
+        // ),
       ),
     );
   }

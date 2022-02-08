@@ -11,7 +11,7 @@ class PushNotificationScreenController extends GetxController {
   int monthToPresent = -1;
   String month = "";
   int amountOfDaysToPresent = 0;
-  int selectedDays = 0;
+  var selectedDays = 0.obs;
   final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
       FlutterLocalNotificationsPlugin();
   final int currentMonth = DateService().getCurrentMonthNumber();
@@ -35,7 +35,7 @@ class PushNotificationScreenController extends GetxController {
   }
 
   void onTap(DateTime date) {
-      selectedDays = date.day;
+      selectedDays.value = date.day;
 
     //選択した日付
     Preference().setInt(PreferenceKey.days, date.day);
@@ -52,7 +52,7 @@ class PushNotificationScreenController extends GetxController {
 
   getPreference() async {
     final pref = await Preference().getInt(PreferenceKey.days);
-    selectedDays = pref;
+    selectedDays.value = pref;
   }
 
   // @override

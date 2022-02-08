@@ -7,7 +7,7 @@ import 'children/contact_screen.dart';
 import 'children/license_screen.dart';
 
 class SettingScreenController extends GetxController {
-  bool isSex = false;
+  var isSex = false.obs;
   PackageInfo _packageInfo = PackageInfo(
     appName: 'Unknown',
     packageName: 'Unknown',
@@ -25,15 +25,15 @@ class SettingScreenController extends GetxController {
   }
 
   void onTapChangeSex() {
-    isSex = !isSex;
+    isSex.value = !isSex.value;
     preference(preference: true);
   }
 
   Future<void> preference({required bool preference}) async {
     if (preference) {
-      Preference().setBool(PreferenceKey.isSex, isSex);
+      Preference().setBool(PreferenceKey.isSex, isSex.value);
     } else {
-      isSex = await Preference().getBool(PreferenceKey.isSex);
+      isSex.value = await Preference().getBool(PreferenceKey.isSex);
     }
   }
 

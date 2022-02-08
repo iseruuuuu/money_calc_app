@@ -35,26 +35,31 @@ class SettingScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-
                   //TODO 画像だと、GetXの状態管理ができない。
-                  CircleAvatar(
-                    backgroundColor: Colors.white,
-                    radius: 100,
-                    child: controller.isSex
-                        ? Image.asset('assets/images/icon_man.png')
-                        : Image.asset('assets/images/icon_woman.png'),
+                  Obx(
+                    () => CircleAvatar(
+                      backgroundColor: Colors.white,
+                      radius: 100,
+                      child: controller.isSex.value
+                          ? Image.asset('assets/images/icon_man.png')
+                          : Image.asset('assets/images/icon_woman.png'),
+                    ),
                   ),
 
                   const SizedBox(height: 16.0),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
-                        controller.isSex ? "Hello, Man!  " : "Hello, Woman!",
-                        style: const TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                      Obx(
+                        () => Text(
+                          controller.isSex.value
+                              ? "Hello, Man!  "
+                              : "Hello, Woman!",
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 30,
+                          ),
                         ),
                       ),
                       IconButton(
