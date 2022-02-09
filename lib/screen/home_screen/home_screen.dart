@@ -44,6 +44,8 @@ class HomeScreen extends StatelessWidget {
             onTapSetting: controller.onTapSetting,
             onTapChangePhoto: controller.getImage,
             image: controller.image.value,
+            onTapChangeName: controller.onTapChangeName,
+            userName: controller.userName.value,
             AdItem: AdWidget(ad: controller.banner.value),
           ),
         ),

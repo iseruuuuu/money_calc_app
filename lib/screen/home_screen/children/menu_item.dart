@@ -11,6 +11,8 @@ class MenuItem extends StatefulWidget {
     required this.AdItem,
     required this.onTapChangePhoto,
     required this.image,
+    required this.onTapChangeName,
+    required this.userName,
   }) : super(key: key);
 
   final Function() onTapHome;
@@ -20,6 +22,8 @@ class MenuItem extends StatefulWidget {
   final Widget? AdItem;
   final Function() onTapChangePhoto;
   final String image;
+  final Function() onTapChangeName;
+  final String userName;
 
   @override
   _MenuItemState createState() => _MenuItemState();
@@ -63,26 +67,29 @@ class _MenuItemState extends State<MenuItem> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 GestureDetector(
-                  onTap: widget.onTapChangePhoto,
+                  //onTap: widget.onTapChangePhoto,
+                  onTap: onTapChangeSex,
                   child: Container(
                     width: MediaQuery.of(context).size.width / 3.5,
                     height: MediaQuery.of(context).size.width / 3.5,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
+                      color: Colors.white,
                       image: DecorationImage(
                         fit: BoxFit.fill,
                         image: AssetImage(
-                          widget.image == ''
-                              ? 'assets/images/icon_man.png'
-                              : widget.image,
-                        ),
+                            // widget.image == ''
+                            isSex
+                                ? 'assets/images/icon_man.png'
+                                //: widget.image,
+                                : 'assets/images/icon_woman.png'),
                       ),
                     ),
                   ),
                 ),
                 const SizedBox(height: 16.0),
                 Text(
-                  isSex ? "Hello, World!" : "Hello, World!",
+                  widget.userName,
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -168,6 +175,7 @@ class _MenuItemState extends State<MenuItem> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
+            //onTap: widget.onTapChangePhoto,
             onTap: onTapChangeSex,
             leading: const Icon(
               Icons.person,
@@ -175,7 +183,26 @@ class _MenuItemState extends State<MenuItem> {
               color: Colors.white,
             ),
             title: const Text(
-              "Change",
+              "Change Icon",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            textColor: Colors.white,
+            dense: true,
+            // padding: EdgeInsets.zero,
+          ),
+          ListTile(
+            onTap: widget.onTapChangeName,
+            leading: const Icon(
+              Icons.adb,
+              size: 35.0,
+              color: Colors.white,
+            ),
+            title: const Text(
+              "Change Name",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,

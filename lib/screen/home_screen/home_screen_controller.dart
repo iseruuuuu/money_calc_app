@@ -57,6 +57,10 @@ class HomeScreenController extends GetxController {
   var image = ''.obs;
   final ImagePicker imagePicker = ImagePicker();
 
+  //TODO 名前を変更する。
+  final name = ''.obs;
+  final userName = 'Hello World'.obs;
+
   Future getImage() async {
     final pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
     if (pickedFile != null) {
@@ -268,11 +272,75 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapSetting() {
-    Get.to(() => SettingScreen(
-          AdItem: Container(),
-        ));
+    Get.to(
+      () => SettingScreen(
+        AdItem: Container(),
+      ),
+    );
     toggleMenu();
   }
 
-  void onTapSetImage() {}
+  void onTapChangeName() {
+    //print('sa');
+    Get.dialog(
+      AlertDialog(
+        title: const Center(
+          child: Text(
+            '名前の変更',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+              color: Colors.black,
+            ),
+          ),
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            TextField(
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'ユーザー名',
+              ),
+              onChanged: (text) => onChangeName(text: text),
+            ),
+          ],
+        ),
+        actionsAlignment: MainAxisAlignment.spaceAround,
+        actions: [
+          TextButton(
+            child: const Text(
+              "Close",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.red,
+              ),
+            ),
+            onPressed: () => Get.back(),
+          ),
+          TextButton(
+            child: const Text(
+              'OK',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+                color: Colors.indigo,
+              ),
+            ),
+            onPressed: () => onSubmit(),
+          ),
+        ],
+      ),
+    );
+  }
+
+  void onChangeName({required String text}) {
+    name.value = text;
+  }
+
+  void onSubmit() {
+    userName.value = name.value;
+    Get.back();
+  }
 }
