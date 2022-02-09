@@ -18,15 +18,16 @@ class MoneyLabel extends StatelessWidget {
         Text(
           title,
           style: const TextStyle(
-            fontSize: 30,
+            fontSize: 33,
             color: Colors.black,
           ),
         ),
         Text(
           exp,
           style: const TextStyle(
-            fontSize: 30,
+            fontSize: 33,
             color: Colors.black,
+            fontWeight: FontWeight.bold,
           ),
         ),
       ],

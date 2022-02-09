@@ -78,15 +78,12 @@ class HomeScreen extends StatelessWidget {
                           Container(
                             color: AppColor.red2,
                             child: Padding(
-                              padding: const EdgeInsets.only(
-                                  bottom: 10, right: 10, left: 10, top: 5),
+                              padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10, top: 10),
                               child: Card(
                                 elevation: 20,
                                 shape: RoundedRectangleBorder(
                                   side: BorderSide(
-                                    color: AppColor.white,
-                                    width: 5,
-                                  ),
+                                      color: AppColor.white, width: 5),
                                   borderRadius: BorderRadius.circular(20),
                                 ),
                                 child: ListTile(
