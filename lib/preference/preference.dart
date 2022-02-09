@@ -21,6 +21,9 @@ enum PreferenceKey {
 
   //男性か女性か
   isSex,
+
+  //写真の撮影
+  image,
 }
 
 class Preference {

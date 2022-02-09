@@ -9,6 +9,8 @@ class MenuItem extends StatefulWidget {
     required this.onTapStar,
     required this.onTapSetting,
     required this.AdItem,
+    required this.onTapChangePhoto,
+    required this.image,
   }) : super(key: key);
 
   final Function() onTapHome;
@@ -16,6 +18,8 @@ class MenuItem extends StatefulWidget {
   final Function() onTapStar;
   final Function() onTapSetting;
   final Widget? AdItem;
+  final Function() onTapChangePhoto;
+  final String image;
 
   @override
   _MenuItemState createState() => _MenuItemState();
@@ -58,12 +62,23 @@ class _MenuItemState extends State<MenuItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                CircleAvatar(
-                  backgroundColor: Colors.white,
-                  radius: 50,
-                  child: isSex
-                      ? Image.asset('assets/images/icon_man.png')
-                      : Image.asset('assets/images/icon_woman.png'),
+                GestureDetector(
+                  onTap: widget.onTapChangePhoto,
+                  child: Container(
+                    width: MediaQuery.of(context).size.width / 3.5,
+                    height: MediaQuery.of(context).size.width / 3.5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        fit: BoxFit.fill,
+                        image: AssetImage(
+                          widget.image == ''
+                              ? 'assets/images/icon_man.png'
+                              : widget.image,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 16.0),
                 Text(
@@ -171,7 +186,6 @@ class _MenuItemState extends State<MenuItem> {
             dense: true,
             // padding: EdgeInsets.zero,
           ),
-
           const SizedBox(height: 20),
           SizedBox(
             height: 50,

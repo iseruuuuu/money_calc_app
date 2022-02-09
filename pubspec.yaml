@@ -33,6 +33,9 @@ dependencies:
   get: ^4.6.1
 
 
+  image_picker: ^0.8.4+7
+
+
   #admob
   #google_mobile_ads: ^1.0.1
 

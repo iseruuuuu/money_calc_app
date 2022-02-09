@@ -37,12 +37,15 @@ class HomeScreen extends StatelessWidget {
       type: SideMenuType.slide,
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
-        child: MenuItem(
-          onTapHome: controller.onTapHome,
-          onTapNotification: controller.onTapNotification,
-          onTapStar: controller.onTapStar,
-          onTapSetting: controller.onTapSetting,
-          AdItem: AdWidget(ad: controller.banner.value),
+        child: Obx(() => MenuItem(
+            onTapHome: controller.onTapHome,
+            onTapNotification: controller.onTapNotification,
+            onTapStar: controller.onTapStar,
+            onTapSetting: controller.onTapSetting,
+            onTapChangePhoto: controller.getImage,
+            image: controller.image.value,
+            AdItem: AdWidget(ad: controller.banner.value),
+          ),
         ),
       ),
       onChange: (_isOpened) => controller.onChanged(_isOpened),

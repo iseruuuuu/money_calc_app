@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giff_dialog/giff_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
@@ -24,11 +25,11 @@ class HomeScreenController extends GetxController {
 
   RxList<String> todoList = RxList<String>();
 
-
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
   final InAppReview inAppReview = InAppReview.instance;
+
   Parser parse = Parser();
   Parser parse2 = Parser();
   final preference = Preference();
@@ -53,7 +54,22 @@ class HomeScreenController extends GetxController {
     listener: const AdListener(),
   ).obs;
 
+  var image = ''.obs;
+  final ImagePicker imagePicker = ImagePicker();
 
+  Future getImage() async {
+    final pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
+    if (pickedFile != null) {
+      image.value = pickedFile.path;
+      setImage(image: image.value);
+    } else {
+      print('No image selected.');
+    }
+  }
+
+  void setImage({required String image}) {
+    preference.setString(PreferenceKey.image, image);
+  }
 
   @override
   void onInit() {
@@ -76,6 +92,7 @@ class HomeScreenController extends GetxController {
   Future<void> checkPreference() async {
     isFirst.value = await preference.getBool(PreferenceKey.isDelete);
     checkUpdate.value = await preference.getBool(PreferenceKey.isUpdateCheck);
+    image.value = await preference.getString(PreferenceKey.image);
     if (todoList.isEmpty) {
       isFirst.value = true;
     }
@@ -256,4 +273,6 @@ class HomeScreenController extends GetxController {
         ));
     toggleMenu();
   }
+
+  void onTapSetImage() {}
 }
