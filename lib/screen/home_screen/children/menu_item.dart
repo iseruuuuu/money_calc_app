@@ -4,14 +4,18 @@ import 'package:money_calc_app/preference/preference.dart';
 class MenuItem extends StatefulWidget {
   const MenuItem({
     Key? key,
+    required this.onTapHome,
     required this.onTapNotification,
     required this.onTapStar,
     required this.onTapSetting,
+    required this.AdItem,
   }) : super(key: key);
 
+  final Function() onTapHome;
   final Function() onTapNotification;
   final Function() onTapStar;
   final Function() onTapSetting;
+  final Widget? AdItem;
 
   @override
   _MenuItemState createState() => _MenuItemState();
@@ -63,7 +67,7 @@ class _MenuItemState extends State<MenuItem> {
                 ),
                 const SizedBox(height: 16.0),
                 Text(
-                  isSex ? "Hello, Man!" : "Hello, Woman!",
+                  isSex ? "Hello, World!" : "Hello, World!",
                   style: const TextStyle(
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
@@ -73,6 +77,24 @@ class _MenuItemState extends State<MenuItem> {
                 const SizedBox(height: 20.0),
               ],
             ),
+          ),
+          ListTile(
+            onTap: widget.onTapHome,
+            leading: const Icon(
+              Icons.home,
+              size: 35.0,
+              color: Colors.white,
+            ),
+            title: const Text(
+              "Home",
+              style: TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            textColor: Colors.white,
+            dense: true,
           ),
           ListTile(
             onTap: widget.onTapNotification,
@@ -112,7 +134,6 @@ class _MenuItemState extends State<MenuItem> {
             // padding: EdgeInsets.zero,
           ),
           ListTile(
-            //TODO 設定画面をどうしよう
             onTap: widget.onTapSetting,
             leading: const Icon(
               Icons.settings,
@@ -149,6 +170,12 @@ class _MenuItemState extends State<MenuItem> {
             textColor: Colors.white,
             dense: true,
             // padding: EdgeInsets.zero,
+          ),
+
+          const SizedBox(height: 20),
+          SizedBox(
+            height: 50,
+            child: widget.AdItem,
           ),
         ],
       ),

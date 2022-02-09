@@ -1,6 +1,8 @@
+import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:money_calc_app/admob/admob_service.dart';
 import 'package:money_calc_app/model/color.dart';
 
 class LicenseScreen extends StatefulWidget {
@@ -46,35 +48,49 @@ class _LicenseScreenState extends State<LicenseScreen> {
           ),
         ),
       ),
-      body: ListView.builder(
-        itemCount: licenses.length,
-        itemBuilder: (context, index) {
-          final license = licenses[index];
-          return Padding(
-            padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  license[0],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25,
-                    color: Colors.indigo,
-                  ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  license[1],
-                  style: const TextStyle(
-                    fontSize: 13,
-                    fontWeight: FontWeight.normal,
-                  ),
-                )
-              ],
+      body: Column(
+        children: [
+          AdmobBanner(
+            adUnitId: AdMobService().getBannerAdUnitId(),
+            adSize: AdmobBannerSize(
+              width: MediaQuery.of(context).size.width.toInt(),
+              height: AdMobService().getHeight(context).toInt(),
+              name: 'SMART_BANNER',
             ),
-          );
-        },
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: licenses.length,
+              itemBuilder: (context, index) {
+                final license = licenses[index];
+                return Padding(
+                  padding: const EdgeInsets.fromLTRB(10, 20, 10, 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        license[0],
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                          color: Colors.indigo,
+                        ),
+                      ),
+                      const SizedBox(height: 5),
+                      Text(
+                        license[1],
+                        style: const TextStyle(
+                          fontSize: 13,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      )
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
       ),
     );
   }

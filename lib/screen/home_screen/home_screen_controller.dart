@@ -1,10 +1,10 @@
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:giff_dialog/giff_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
-import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
@@ -19,7 +19,12 @@ import 'package:flutter/painting.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreenController extends GetxController {
-  List<String> todoList = [];
+  // List<String> todoList = [].obs;
+  //var todoList = [''].obs;
+
+  RxList<String> todoList = RxList<String>();
+
+
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
@@ -34,6 +39,21 @@ class HomeScreenController extends GetxController {
   var indexes = 0.obs;
   var isOpened = false.obs;
   final isSex = false;
+  final banner = BannerAd(
+    adUnitId: Platform.isAndroid
+        ? 'ca-app-pub-3940256099942544/6300978111'
+        : 'ca-app-pub-3940256099942544/2934735716',
+    // : 'ca-app-pub-4066682931432506/4038530394',
+    //本番id
+    //return 'ca-app-pub-4066682931432506/4038530394';
+    //テスト広告
+    // return 'ca-app-pub-3940256099942544/2934735716';
+    size: AdSize.banner,
+    request: const AdRequest(),
+    listener: const AdListener(),
+  ).obs;
+
+
 
   @override
   void onInit() {
@@ -41,6 +61,7 @@ class HomeScreenController extends GetxController {
     getPreference();
     checkPreference();
     WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
+    banner.value.load();
     setMoney();
   }
 
@@ -51,8 +72,6 @@ class HomeScreenController extends GetxController {
       await AppTrackingTransparency.requestTrackingAuthorization();
     }
   }
-
-  late BannerAd banner;
 
   Future<void> checkPreference() async {
     isFirst.value = await preference.getBool(PreferenceKey.isDelete);
@@ -104,41 +123,21 @@ class HomeScreenController extends GetxController {
     );
   }
 
-  //TODO setMoney
-  // @override
-  // void setState(VoidCallback fn) {
-  //   super.setState(fn);
-  //   setState(() {
-  //     setPreference();
-  //     sumMoney();
-  //   });
-  // }
-
   void setMoney() {
     setPreference();
     sumMoney();
-
-    final adState = Provider.of<AdState>(Get.context!);
-    adState.initialization.then((status) {
-      banner = BannerAd(
-        adUnitId: adState.bannerAdUnitId,
-        size: AdSize.banner,
-        request: const AdRequest(),
-        listener: adState.adListener,
-      )..load();
-    });
   }
 
   Future<void> setPreference() async {
     final SharedPreferences prefs = await preferences;
-    prefs.setStringList('ke', todoList);
+    prefs.setStringList('ke', todoList.value);
     prefs.setString('ke2', expression.value);
     prefs.setString('ke3', expression2.value);
   }
 
   getPreference() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    todoList = prefs.getStringList('ke') ?? [];
+    todoList.value = prefs.getStringList('ke') ?? [];
     expression.value = prefs.getString('ke2') ?? '';
     expression2.value = prefs.getString('ke3') ?? '';
   }
@@ -218,6 +217,10 @@ class HomeScreenController extends GetxController {
     );
   }
 
+  void onTapHome() {
+    toggleMenu();
+  }
+
   toggleMenu([bool end = false]) {
     if (end) {
       final _state = endSideMenuKey.currentState!;
@@ -248,7 +251,9 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapSetting() {
-    Get.to(() => const SettingScreen());
+    Get.to(() => SettingScreen(
+          AdItem: Container(),
+        ));
     toggleMenu();
   }
 }

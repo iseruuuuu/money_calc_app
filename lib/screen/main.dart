@@ -2,11 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+import 'package:money_calc_app/admob/add_settings.dart';
 import 'package:money_calc_app/admob/admob_state.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import 'package:money_calc_app/screen/home_screen/home_less.dart';
-import 'home_screen/home_screen.dart';
+import 'package:money_calc_app/screen/home_screen/home_screen.dart';
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
@@ -35,6 +35,25 @@ Future<void> main() async {
   await SharedPrefs().init();
   final initFuture = MobileAds.instance.initialize();
   final adState = AdState(initFuture);
+
+  final futureMobileAds = MobileAds.instance.initialize();
+  final adSettings = AdSettings(
+      futureMobileAds,
+      testMode: true,
+      //isAmazonApp: kIsAmazonApp
+      );
+
+
+  WidgetsFlutterBinding.ensureInitialized();
+  Admob.initialize();
+
+  //
+  // runApp(
+  //   Provider.value(
+  //     value: adSettings,
+  //     builder: (context, child) => const App(),
+  //   ),
+  // );
   runApp(
     Provider.value(
       value: adState,
@@ -58,10 +77,9 @@ class App extends StatelessWidget {
       ),
       home: Provider<TodoBloc>(
         create: (context) => TodoBloc(),
-        child: HomeLessScreen(flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),),
-        // child: HomeScreen(
-        //   flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),
-        // ),
+        child: HomeScreen(
+          flutterLocalNotificationsPlugin: FlutterLocalNotificationsPlugin(),
+        ),
       ),
     );
   }
