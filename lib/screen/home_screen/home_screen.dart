@@ -35,7 +35,6 @@ class HomeScreen extends StatelessWidget {
     return SideMenu(
       key: controller.sideMenuKey,
       type: SideMenuType.slide,
-      // background: Colors.orange.shade300,
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
         child: MenuItem(
@@ -59,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                       onPressed: controller.toggleMenu,
                       icon: Icon(
                         Icons.menu,
-                        size: 30,
+                        size: 32,
                         color: AppColor.white,
                       ),
                     ),
