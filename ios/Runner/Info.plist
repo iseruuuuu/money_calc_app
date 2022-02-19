@@ -33,14 +33,14 @@
 		<key>NSAllowsArbitraryLoadsInWebContent</key>
 		<true/>
 	</dict>
-	<key>NSUserTrackingUsageDescription</key>
-	<string>表示する広告を適切に選択するためにトラッキングを利用します。</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>アイコンの変更のためカメラを使用します。</string>
 	<key>NSCameraUsageDescription</key>
 	<string>アイコンの変更のためカメラを使用します。</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>アイコンの変更のためカメラを使用します。</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>アイコンの変更のためカメラを使用します。</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>表示する広告を適切に選択するためにトラッキングを利用します。</string>
 	<key>SKAdNetworkItems</key>
 	<array>
 		<dict>
