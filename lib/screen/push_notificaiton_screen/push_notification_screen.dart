@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:glassmorphism/glassmorphism.dart';
+import 'package:money_calc_app/component/add_screen/number_calc_button.dart';
 import 'package:money_calc_app/model/color.dart';
-import 'package:money_calc_app/model/notification/date_service.dart';
-import 'package:money_calc_app/preference/preference.dart';
 import 'package:get/get.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen_controller.dart';
+
+import 'children/numberButton.dart';
 
 class PushNotificationScreen extends StatelessWidget {
   const PushNotificationScreen({
@@ -13,95 +16,266 @@ class PushNotificationScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(PushNotificationScreenController(), tag: '');
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.red2,
-        title: const Text(
-          '通知設定',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
-          ),
-        ),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Expanded(
-            flex: 1,
-            child: Padding(
-              padding: const EdgeInsets.only(top: 50),
-              child: Obx(
-                () => Text(
-                  //登録した日付を登録する。
-                  (controller.selectedDays != 0)
-                      ? '通知：毎月${controller.selectedDays}日'
-                      : '未設定',
-                  style: const TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: Stack(
+          children: [
+            Image.asset(
+              "assets/background.gif",
+              fit: BoxFit.fill,
+              height: double.infinity,
+              width: double.infinity,
+              scale: 1,
             ),
-          ),
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
+            SafeArea(
               child: Center(
-                child: SizedBox(
-                  height: (MediaQuery.of(context).size.height),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 5),
-                    itemCount: controller.amountOfDaysToPresent,
-                    shrinkWrap: true,
-                    itemBuilder: (BuildContext context, int index) {
-                      final date =
-                          DateService().constructDateTimeFromDayAndMonth(
-                        day: (index + 1),
-                        month: controller.currentMonth,
-                      );
-                      return TextButton(
-                        onPressed: () => controller.onTap(date),
-                        child: FittedBox(
-                          fit: BoxFit.fitWidth,
-                          child: Column(
-                            children: [
-                              Container(
-                                width: 100,
-                                height: 100,
-                                decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Colors.black12,
-                                  //TODO 後で色の条件を書く.
-                                  //   color: (_birthdays.isNotEmpty)
-                                  //       ? Colors.indigo
-                                  //       : Colors.transparent,
-                                ),
-                                child: Center(
-                                  child: Text(
-                                    date.day.toString(),
-                                    style: const TextStyle(
-                                      fontSize: 50,
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ),
+                child: GlassmorphicContainer(
+                  width: MediaQuery.of(context).size.width - 20,
+                  height: MediaQuery.of(context).size.height - 70,
+                  borderRadius: 20,
+                  blur: 10,
+                  alignment: Alignment.bottomCenter,
+                  border: 2,
+                  linearGradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        const Color(0xFFffffff).withOpacity(0.1),
+                        const Color(0xFFFFFFFF).withOpacity(0.05),
+                      ],
+                      stops: const [
+                        0.1,
+                        1,
+                      ]),
+                  borderGradient: LinearGradient(
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
+                    colors: [
+                      const Color(0xFFffffff).withOpacity(0.5),
+                      const Color((0xFFFFFFFF)).withOpacity(0.5),
+                    ],
+                  ),
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 50),
+                        child: Obx(
+                          () => Center(
+                            child: Text(
+                              //登録した日付を登録する。
+                              // (controller.selectedDays != 0)
+                              (controller.day != '')
+                                  //(controller.day.value == 0)
+                                  ? '通知：毎月${controller.day.value}日'
+                                  : '未設定',
+                              style: TextStyle(
+                                // fontSize: 24,
+                                fontSize: deviceWidth / 15,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white,
                               ),
-                            ],
+                            ),
                           ),
                         ),
-                      );
-                    },
+                      ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          NumberButton(
+                            number: 7,
+                            text: '7',
+                            //textSize: 40,
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              // controller.numClick(7);
+                              controller.numClick('7');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 8,
+                            text: '8',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            // fillColor: AppColor.transparent,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              // controller.numClick(8);
+                              controller.numClick('8');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 9,
+                            text: '9',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: controller.numClick,
+                            onTap: () {
+                              //controller.numClick(9);
+                              controller.numClick('9');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          NumberButton(
+                            number: 4,
+                            text: '4',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              //controller.numClick(4);
+                              controller.numClick('4');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 5,
+                            text: '5',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              // controller.numClick(5);
+                              controller.numClick('5');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 6,
+                            text: '6',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              //controller.numClick(6);
+                              controller.numClick('6');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          NumberButton(
+                            number: 1,
+                            text: '1',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              //controller.numClick(1);
+                              controller.numClick('1');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 2,
+                            text: '2',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              //controller.numClick(2);
+                              controller.numClick('2');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                          NumberButton(
+                            number: 3,
+                            text: '3',
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              // controller.numClick(3);
+                              controller.numClick('3');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: <Widget>[
+                          NumberButton(
+                            number: 0,
+                            text: '0',
+                            // textSize: 35,
+                            textSize: MediaQuery.of(context).size.width / 9,
+                            fillColor: AppColor.white10,
+                            textColor: AppColor.white,
+                            callback: () {},
+                            onTap: () {
+                              //controller.numClick(0);
+                              controller.numClick('0');
+                              controller.numClick('0');
+                              HapticFeedback.selectionClick();
+                            },
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          TextButton(
+                            onPressed: controller.onTapDelete,
+                            child: Text(
+                              '削除',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                //fontSize: 20,
+                                fontSize: deviceWidth / 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                          TextButton(
+                            onPressed: controller.onTapSubmit,
+                            child: Text(
+                              '反映',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: deviceWidth / 16,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const Spacer(),
+                    ],
                   ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
