@@ -10,8 +10,8 @@ import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
+import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_notification_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
-import 'package:money_calc_app/screen/push_notificaiton_screen/push_notifications_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -241,7 +241,7 @@ class HomeScreenController extends GetxController {
 
   void onTapNotification() {
     //Get.to(() => const PushNotificationScreen());
-    Get.to(() => const PushNotificationsScreen());
+    Get.to(() => const PushNotificationScreen());
     toggleMenu();
   }
 
