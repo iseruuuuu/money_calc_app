@@ -5,7 +5,6 @@ import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import '../../admob/admob.dart';
 import '../../model/color.dart';
 import '../../component/add_screen/number_calc_button.dart';
 import 'package:holding_gesture/holding_gesture.dart';
@@ -52,7 +51,7 @@ class _AddScreenState extends State<AddScreen> {
     });
   }
 
-  void allDelete(String text) {
+  void allDelete() {
     setState(() {
       expression = '';
     });
@@ -101,10 +100,9 @@ class _AddScreenState extends State<AddScreen> {
           //     name: 'SMART_BANNER',
           //   ),
           // ),
-          const SizedBox(height: 40),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
-            padding: const EdgeInsets.all(5.0),
+            padding: const EdgeInsets.all(0.0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.black),
               borderRadius: BorderRadius.circular(10),
@@ -112,25 +110,26 @@ class _AddScreenState extends State<AddScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   '￥',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: MediaQuery.of(context).size.width / 10,
                   ),
                 ),
                 Text(
                   expression,
-                  style: const TextStyle(
+                  style: TextStyle(
                     color: Colors.black,
-                    fontSize: 40,
+                    // fontSize: 40,
+                    fontSize: MediaQuery.of(context).size.width / 10,
                   ),
                 ),
                 const Spacer(),
                 Container(
                   margin: const EdgeInsets.only(bottom: 1),
                   child: SizedBox(
-                    width: 80,
-                    height: 80,
+                    width: MediaQuery.of(context).size.height / 10,
+                    height: MediaQuery.of(context).size.height / 10,
                     child: HoldDetector(
                       onHold: () {
                         delete();
@@ -150,10 +149,11 @@ class _AddScreenState extends State<AddScreen> {
                               delete();
                               HapticFeedback.selectionClick();
                             },
-                            child: const Text(
+                            child: Text(
                               '⌫',
                               style: TextStyle(
-                                fontSize: 40,
+                                fontSize:
+                                    MediaQuery.of(context).size.width / 10,
                                 // fontSize: 50,
                               ),
                             ),
@@ -166,30 +166,48 @@ class _AddScreenState extends State<AddScreen> {
               ],
             ),
           ),
-          const SizedBox(height: 10),
+          // const SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
+                number: 7,
                 text: '7',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                // textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('7');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 8,
                 text: '8',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('8');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 9,
                 text: '9',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('9');
+                  HapticFeedback.selectionClick();
+                },
               ),
             ],
           ),
@@ -197,25 +215,43 @@ class _AddScreenState extends State<AddScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
+                number: 4,
                 text: '4',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('4');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 5,
                 text: '5',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('5');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 6,
                 text: '6',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('6');
+                  HapticFeedback.selectionClick();
+                },
               ),
             ],
           ),
@@ -223,25 +259,43 @@ class _AddScreenState extends State<AddScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
+                number: 1,
                 text: '1',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('1');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 2,
                 text: '2',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('2');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 3,
                 text: '3',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('3');
+                  HapticFeedback.selectionClick();
+                },
               ),
             ],
           ),
@@ -249,24 +303,41 @@ class _AddScreenState extends State<AddScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
+                number: 0,
                 text: '0',
-                textSize: 40,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                // textSize: 40,
+                textSize: MediaQuery.of(context).size.width / 8,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('0');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                number: 0,
                 text: '00',
-                textSize: 35,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 35,
+                textSize: MediaQuery.of(context).size.width / 11,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: numClick,
+                onTap: () {
+                  numClick('00');
+                  HapticFeedback.selectionClick();
+                },
               ),
               NumberCalcButton(
+                onTap: () {
+                  allDelete();
+                },
+                number: 0,
                 text: 'AC',
-                textSize: 30,
-                fillColor: 0xff424242,
-                textColor: 0xFFFFFFFF,
+                //textSize: 30,
+                textSize: MediaQuery.of(context).size.width / 11,
+                fillColor: AppColor.grey3,
+                textColor: Colors.black,
                 callback: allDelete,
               ),
             ],
@@ -276,7 +347,7 @@ class _AddScreenState extends State<AddScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 70),
             child: SizedBox(
               width: double.infinity,
-              height: MediaQuery.of(context).size.width / 7,
+              height: MediaQuery.of(context).size.width / 8,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                   primary: AppColor.red2,
@@ -308,22 +379,21 @@ class _AddScreenState extends State<AddScreen> {
                     }
                   }
                 },
-                child: const Text(
+                child: Text(
                   'リスト追加',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 25,
+                    // fontSize: 25,
+                    fontSize: MediaQuery.of(context).size.width / 20,
                   ),
                 ),
               ),
             ),
           ),
-          const SizedBox(height: 10),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 70),
             child: SizedBox(
               width: double.infinity,
-              height: 40,
               child: TextButton(
                 onPressed: () {
                   Navigator.of(context).pop();
@@ -331,7 +401,8 @@ class _AddScreenState extends State<AddScreen> {
                 child: Text(
                   'キャンセル',
                   style: TextStyle(
-                    fontSize: 20,
+                    // fontSize: 20,
+                    fontSize: MediaQuery.of(context).size.width / 20,
                     color: AppColor.red2,
                   ),
                 ),
