@@ -13,8 +13,10 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
+      padding: EdgeInsets.symmetric(
+          horizontal: deviceWidth / 20, vertical: deviceWidth / 70),
       child: Card(
         elevation: 2,
         color: AppColor.white,
@@ -23,25 +25,29 @@ class ListItem extends StatelessWidget {
             color: AppColor.grey3,
             width: 1,
           ),
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(deviceWidth / 20),
         ),
         child: ListTile(
-          leading: Text(
-            day,
-            style: const TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          title: Center(
-            child: Text(
-              //TODO 日付を追加したい。
-              title,
-              style: const TextStyle(
-                fontSize: 40,
-                color: Colors.black,
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text(
+                day,
+                style: TextStyle(
+                  fontSize: deviceWidth / 14,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
+              Center(
+                child: Text(
+                  title,
+                  style: TextStyle(
+                    fontSize: deviceWidth / 10,
+                    color: Colors.black,
+                  ),
+                ),
+              ),
+            ],
           ),
         ),
       ),
