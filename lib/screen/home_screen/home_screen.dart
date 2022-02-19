@@ -9,11 +9,12 @@ import 'package:money_calc_app/component/appbar/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/home_screen/floating_action_button_items.dart';
 import 'package:money_calc_app/component/home_screen/list_item.dart';
-import 'package:money_calc_app/component/home_screen/money_label.dart';
+import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/money_label.dart';
 import 'package:money_calc_app/component/home_screen/no_list.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:money_calc_app/model/todo.dart';
+import 'package:money_calc_app/screen/home_screen/children/money_item.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'children/menu_item.dart';
@@ -32,12 +33,21 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(HomeScreenController(), tag: '');
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
+    final deviceWidth = MediaQuery.of(context).size.width;
     return SideMenu(
       key: controller.sideMenuKey,
       type: SideMenuType.slide,
+      //maxMenuWidth
+      maxMenuWidth: deviceWidth,
+      closeIcon: Icon(
+        Icons.close,
+        size: deviceWidth / 10,
+        color: Colors.white,
+      ),
       menu: Padding(
         padding: const EdgeInsets.only(left: 25.0),
-        child: Obx(() => MenuItem(
+        child: Obx(
+          () => MenuItem(
             onTapHome: controller.onTapHome,
             onTapNotification: controller.onTapNotification,
             onTapStar: controller.onTapStar,
@@ -46,7 +56,7 @@ class HomeScreen extends StatelessWidget {
             image: controller.image.value,
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
-            AdItem: AdWidget(ad: controller.banner.value),
+            //AdItem: AdWidget(ad: controller.banner.value),
           ),
         ),
       ),
@@ -56,19 +66,24 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: AppColor.grey3,
           appBar: (controller.todoList.isNotEmpty)
               ? PreferredSize(
-                  preferredSize: const Size.fromHeight(35.0),
+                  // preferredSize: const Size.fromHeight(35.0),
+                  preferredSize: Size.fromHeight(deviceWidth / 13),
                   child: AppBarItem(
                     color: AppColor.red2,
                     icon: IconButton(
                       onPressed: controller.toggleMenu,
                       icon: Icon(
                         Icons.menu,
-                        size: 32,
+                        // size: 32,
+                        size: deviceWidth / 16,
                         color: AppColor.white,
                       ),
                     ),
                   ),
                 )
+              // ? PreferredSize(
+              //     preferredSize: const Size.fromHeight(0.0),
+              //     child: AppBarItem(color: AppColor.red2))
               : PreferredSize(
                   preferredSize: const Size.fromHeight(40.0),
                   child: AppBarItem(color: AppColor.grey3)),
@@ -79,54 +94,12 @@ class HomeScreen extends StatelessWidget {
                     SafeArea(
                       child: Column(
                         children: [
-                          Container(
-                            color: AppColor.red2,
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 10, right: 10, left: 10, top: 10),
-                              child: Card(
-                                elevation: 20,
-                                shape: RoundedRectangleBorder(
-                                  side: BorderSide(
-                                      color: AppColor.white, width: 5),
-                                  borderRadius: BorderRadius.circular(20),
-                                ),
-                                child: ListTile(
-                                  title: Center(
-                                    child: Column(
-                                      children: [
-                                        Obx(
-                                          () => Padding(
-                                            padding: const EdgeInsets.only(
-                                                top: 15, bottom: 10),
-                                            child: MoneyLabel(
-                                              title: '合計',
-                                              exp: controller.expression.value +
-                                                  '円',
-                                            ),
-                                          ),
-                                        ),
-                                        Obx(
-                                          () => Padding(
-                                            padding: const EdgeInsets.only(
-                                                bottom: 15),
-                                            child: MoneyLabel(
-                                              title: '残り',
-                                              exp:
-                                                  controller.expression2.value +
-                                                      '円',
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                              ),
+                          Obx(
+                            () => MoneyItem(
+                              sumMoney: controller.expression.value,
+                              restMoney: controller.expression2.value,
                             ),
                           ),
-                          // Visibility(
-                          //     visible: !isFirst, child: ResetButton(onTap: reset)),
-                          //const SizedBox(height: 10),
                           Expanded(
                             child: StreamBuilder<List<Todo>>(
                               stream: _bloc.todoStream,
@@ -141,28 +114,22 @@ class HomeScreen extends StatelessWidget {
                                       controller.indexes.value = index;
                                       return Column(
                                         children: [
-                                          index % 10 == 0
-                                              ? Container(
-                                                  color: Colors.white,
-                                                  height: 64.0,
-                                                  width: double.infinity,
-                                                  child: AdmobBanner(
-                                                    adUnitId: AdMobService()
-                                                        .getBannerAdUnitId(),
-                                                    adSize: AdmobBannerSize(
-                                                      width:
-                                                          MediaQuery.of(context)
-                                                              .size
-                                                              .width
-                                                              .toInt(),
-                                                      height: AdMobService()
-                                                          .getHeight(context)
-                                                          .toInt(),
-                                                      name: 'SMART_BANNER',
-                                                    ),
-                                                  ),
-                                                )
-                                              : const SizedBox(),
+                                          // index % 10 == 0
+                                          //     ? Container(
+                                          //         color: Colors.red,
+                                          //         height: 64.0,
+                                          //         width: double.infinity,
+                                          //         child: AdmobBanner(
+                                          //           adUnitId: AdMobService()
+                                          //               .getBannerAdUnitId(),
+                                          //           adSize: AdmobBannerSize(
+                                          //             width: MediaQuery.of(context).size.width.toInt(),
+                                          //             height: AdMobService().getHeight(context).toInt(),
+                                          //             name: 'SMART_BANNER',
+                                          //           ),
+                                          //         ),
+                                          //       )
+                                          //     : const SizedBox(),
                                           Dismissible(
                                             key:
                                                 Key(controller.todoList[index]),

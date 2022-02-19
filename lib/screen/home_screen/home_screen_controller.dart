@@ -11,6 +11,7 @@ import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
+import 'package:money_calc_app/screen/push_notificaiton_screen/push_notifications_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
@@ -59,7 +60,7 @@ class HomeScreenController extends GetxController {
 
   //TODO 名前を変更する。
   final name = ''.obs;
-  final userName = 'Hello World'.obs;
+  final userName = 'Hello User'.obs;
 
   Future getImage() async {
     final pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
@@ -105,7 +106,6 @@ class HomeScreenController extends GetxController {
 
   void updateMoney() {
     if (!checkUpdate.value) {
-      dialogs();
       checkUpdate.value = true;
       preference.setBool(PreferenceKey.isUpdateCheck, true);
     }
@@ -115,33 +115,6 @@ class HomeScreenController extends GetxController {
     (isOpened) {
       isOpened = _isOpened;
     };
-  }
-
-  void dialogs() {
-    showDialog(
-      context: Get.context!,
-      builder: (_) => NetworkGiffDialog(
-        image: Image.asset('assets/images/dialog.gif'),
-        title: const Text(
-          '給料記録の更新を行います',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontSize: 22.0, fontWeight: FontWeight.w600),
-        ),
-        description: const Text(
-          'あけましておめでとうございます\n'
-          '今年も頑張っていきましょう!!\n'
-          'by 製作者',
-          textAlign: TextAlign.center,
-        ),
-        entryAnimation: EntryAnimation.bottomLeft,
-        onlyCancelButton: false,
-        onlyOkButton: true,
-        buttonOkColor: Colors.blueAccent,
-        onOkButtonPressed: () {
-          Get.back();
-        },
-      ),
-    );
   }
 
   void setMoney() {
@@ -267,7 +240,8 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapNotification() {
-    Get.to(() => const PushNotificationScreen());
+    //Get.to(() => const PushNotificationScreen());
+    Get.to(() => const PushNotificationsScreen());
     toggleMenu();
   }
 
