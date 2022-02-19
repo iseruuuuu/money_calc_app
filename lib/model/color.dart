@@ -8,5 +8,7 @@ class AppColor {
   static Color grey1 = const Color(0xFFCEEFF1);
   static Color grey2 = const Color(0xFFCFD8DC);
   static Color grey3 = const Color(0xFFECEFF1);
+  static Color transparent = const Color(0x00000000);
+  static Color white10 = const Color(0x1AFFFFFF);
 
 }
