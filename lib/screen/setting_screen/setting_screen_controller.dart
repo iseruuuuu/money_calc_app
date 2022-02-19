@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:money_calc_app/preference/preference.dart';
+import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_notification_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';

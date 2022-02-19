@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:money_calc_app/admob/admob_service.dart';
 import 'package:money_calc_app/model/color.dart';
 import 'package:get/get.dart';
+import 'package:money_calc_app/screen/setting_screen/children/setting_item.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen_controller.dart';
-import 'package:money_calc_app/admob/admob.dart';
 
 class SettingScreen extends StatelessWidget {
   const SettingScreen({
@@ -18,6 +18,7 @@ class SettingScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SettingScreenController(), tag: '');
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
       appBar: AppBar(
@@ -41,14 +42,14 @@ class SettingScreen extends StatelessWidget {
               child: AdItem,
             ),*/
 
-            AdmobBanner(
-              adUnitId: AdMobService().getBannerAdUnitId(),
-              adSize: AdmobBannerSize(
-                width: MediaQuery.of(context).size.width.toInt(),
-                height: AdMobService().getHeight(context).toInt(),
-                name: 'SMART_BANNER',
-              ),
-            ),
+            // AdmobBanner(
+            //   adUnitId: AdMobService().getBannerAdUnitId(),
+            //   adSize: AdmobBannerSize(
+            //     width: MediaQuery.of(context).size.width.toInt(),
+            //     height: AdMobService().getHeight(context).toInt(),
+            //     name: 'SMART_BANNER',
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Column(
@@ -57,7 +58,8 @@ class SettingScreen extends StatelessWidget {
                   Obx(
                     () => CircleAvatar(
                       backgroundColor: Colors.white,
-                      radius: 100,
+                      //radius: 100,
+                      radius: deviceWidth / 4,
                       child: controller.isSex.value
                           ? Image.asset('assets/images/icon_man.png')
                           : Image.asset('assets/images/icon_woman.png'),
@@ -72,19 +74,21 @@ class SettingScreen extends StatelessWidget {
                           controller.isSex.value
                               ? "Hello, Man!  "
                               : "Hello, Woman!",
-                          style: const TextStyle(
+                          style: TextStyle(
                             color: Colors.black,
                             fontWeight: FontWeight.bold,
-                            fontSize: 30,
+                            // fontSize: 30,
+                            fontSize: deviceWidth / 13,
                           ),
                         ),
                       ),
-                      IconButton(
-                        onPressed: controller.onTapChangeSex,
-                        icon: Icon(
+                      GestureDetector(
+                        onTap: controller.onTapChangeSex,
+                        child: Icon(
                           Icons.change_circle,
                           color: AppColor.red2,
-                          size: 35,
+                          // size: 35,
+                          size: deviceWidth / 8,
                         ),
                       ),
                     ],
@@ -93,144 +97,44 @@ class SettingScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: controller.onTapNotification,
-                leading: const Icon(
-                  Icons.notifications_active,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Notification",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
+
+            GestureDetector(
+              onTap: controller.onTapNotification,
+              child: const SettingItem(
+                icon: Icons.notifications_active,
+                title: "Notification",
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: () {},
-                leading: const Icon(
-                  Icons.star,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "App Review",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
+
+            GestureDetector(
+              onTap: controller.onTapContact,
+              child: const SettingItem(
+                icon: Icons.star,
+                title: "App Review",
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: controller.onTapContact,
-                leading: const Icon(
-                  Icons.mail_outline,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Contact",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
+
+            GestureDetector(
+              onTap: controller.onTapContact,
+              child: const SettingItem(
+                icon: Icons.mail_outline,
+                title: "Contact",
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: controller.onTapTwitter,
-                leading: const Icon(
-                  //Icons.developer_mode,
-                  EvaIcons.twitter,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Developer",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
+
+            GestureDetector(
+              onTap: controller.onTapTwitter,
+              child: const SettingItem(
+                icon: EvaIcons.twitter,
+                title: "Developer",
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListTile(
-                tileColor: Colors.black,
-                onTap: controller.showLicense,
-                leading: const Icon(
-                  Icons.local_police,
-                  size: 35.0,
-                  color: Colors.white,
-                ),
-                title: const Text(
-                  "Licence",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 20,
-                  ),
-                ),
-                trailing: Icon(
-                  Icons.arrow_forward_ios_sharp,
-                  color: AppColor.white,
-                  size: 30,
-                ),
-                textColor: Colors.white,
-                dense: true,
-                // padding: EdgeInsets.zero,
+
+            GestureDetector(
+              onTap: controller.showLicense,
+              child: const SettingItem(
+                icon: Icons.local_police,
+                title: "Licence",
               ),
             ),
             Padding(
@@ -267,14 +171,14 @@ class SettingScreen extends StatelessWidget {
                 ),
               ),
             ),
-            AdmobBanner(
-              adUnitId: AdMobService().getBannerAdUnitId(),
-              adSize: AdmobBannerSize(
-                width: MediaQuery.of(context).size.width.toInt(),
-                height: AdMobService().getHeight(context).toInt(),
-                name: 'SMART_BANNER',
-              ),
-            ),
+            // AdmobBanner(
+            //   adUnitId: AdMobService().getBannerAdUnitId(),
+            //   adSize: AdmobBannerSize(
+            //     width: MediaQuery.of(context).size.width.toInt(),
+            //     height: AdMobService().getHeight(context).toInt(),
+            //     name: 'SMART_BANNER',
+            //   ),
+            // ),
           ],
         ),
       ),
