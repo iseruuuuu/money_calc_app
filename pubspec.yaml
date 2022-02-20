@@ -63,6 +63,7 @@ flutter:
   uses-material-design: true
   assets:
    - assets/images/3.png
+   - assets/images/background.png
    - assets/images/gif.gif
    - assets/images/dialog.gif
    - assets/images/icon_man.png
