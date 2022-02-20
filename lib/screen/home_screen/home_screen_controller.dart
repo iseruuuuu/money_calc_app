@@ -2,35 +2,26 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:giff_dialog/giff_dialog.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
-import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/screen/add_screen/add_screen.dart';
-import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_notification_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
-import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
+import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter/painting.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreenController extends GetxController {
-  // List<String> todoList = [].obs;
-  //var todoList = [''].obs;
-
   RxList<String> todoList = RxList<String>();
-
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
   final InAppReview inAppReview = InAppReview.instance;
-
   Parser parse = Parser();
   Parser parse2 = Parser();
   final preference = Preference();
@@ -124,7 +115,7 @@ class HomeScreenController extends GetxController {
 
   Future<void> setPreference() async {
     final SharedPreferences prefs = await preferences;
-    prefs.setStringList('ke', todoList.value);
+    prefs.setStringList('ke', todoList);
     prefs.setString('ke2', expression.value);
     prefs.setString('ke3', expression2.value);
   }
@@ -161,14 +152,10 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapAddMoney(BuildContext context, TodoBloc _bloc) async {
-    //TODO 遷移をModalShowDialogにしたい
     final newListText = await Navigator.of(context).push(
       MaterialPageRoute(
         builder: (context) {
-          return AddScreen(
-            todo: Todo.newTodo(),
-            todoBloc: _bloc,
-          );
+          return const AddScreen();
         },
         fullscreenDialog: true,
       ),
@@ -197,7 +184,6 @@ class HomeScreenController extends GetxController {
           CupertinoDialogAction(
             child: const Text('OK'),
             onPressed: () async {
-              //Navigator.of(context).pop();
               Get.back();
               isFirst.value = await preference.getBool(PreferenceKey.isDelete);
               preference.setBool(PreferenceKey.isDelete, true);
@@ -240,7 +226,6 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapNotification() {
-    //Get.to(() => const PushNotificationScreen());
     Get.to(() => const PushNotificationScreen());
     toggleMenu();
   }
@@ -255,7 +240,6 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapChangeName() {
-    //print('sa');
     Get.dialog(
       AlertDialog(
         title: const Center(
