@@ -5,21 +5,22 @@ class NoList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         SizedBox(
           width: MediaQuery.of(context).size.width / 2,
           height: MediaQuery.of(context).size.width / 2,
-          child: Image.asset('assets/images/3.png'),
+          child: Image.asset('assets/images/background.png'),
         ),
         const SizedBox(height: 30),
-        const Center(
+        Center(
           child: Text(
             '給料の記録がありません',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 25,
+              fontSize: deviceWidth / 14,
               color: Colors.black,
               fontWeight: FontWeight.bold,
             ),
@@ -27,16 +28,16 @@ class NoList extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const [
+          children: [
             Icon(
               Icons.add_circle_outline,
-              size: 30,
+              size: deviceWidth / 12,
               color: Colors.black,
             ),
             Text(
               'で追加してください',
               style: TextStyle(
-                fontSize: 25,
+                fontSize: deviceWidth / 14,
                 color: Colors.black,
                 fontWeight: FontWeight.bold,
               ),
