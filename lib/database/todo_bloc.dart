@@ -1,13 +1,10 @@
 import 'dart:async';
 import 'package:money_calc_app/database/todo_provider.dart';
 import 'package:money_calc_app/model/todo.dart';
-import 'dart:async';
 import 'package:rxdart/rxdart.dart';
 
 class TodoBloc {
-  //final _todoController = StreamController<List<Todo>>();
   final _todoController = BehaviorSubject<List<Todo>>();
-
 
   Stream<List<Todo>> get todoStream => _todoController.stream;
 
