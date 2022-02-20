@@ -13,6 +13,7 @@ class MoneyItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         color: AppColor.red2,
@@ -20,7 +21,7 @@ class MoneyItem extends StatelessWidget {
         borderRadius: BorderRadius.circular(0),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(10),
+        padding: EdgeInsets.symmetric(vertical: deviceWidth / 30, horizontal: 10),
         child: Card(
           elevation: 20,
           shape: RoundedRectangleBorder(
@@ -56,10 +57,6 @@ class MoneyItem extends StatelessWidget {
                         ),
                       ],
                     ),
-                    // child: MoneyLabel(
-                    //   title: '合計',
-                    //   exp: sumMoney + '円',
-                    // ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 15),
