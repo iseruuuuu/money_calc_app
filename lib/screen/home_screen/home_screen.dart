@@ -1,15 +1,11 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:money_calc_app/admob/admob_service.dart';
 import 'package:money_calc_app/component/appbar/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/home_screen/floating_action_button_items.dart';
 import 'package:money_calc_app/component/home_screen/list_item.dart';
-import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/money_label.dart';
 import 'package:money_calc_app/component/home_screen/no_list.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/color.dart';
@@ -107,44 +103,48 @@ class HomeScreen extends StatelessWidget {
                                   AsyncSnapshot<List<Todo>> snapshot) {
                                 if (snapshot.hasData &&
                                     controller.todoList.isNotEmpty) {
-                                  return ListView.builder(
-                                    itemCount: controller.todoList.length,
-                                    itemBuilder: (context, index) {
-                                      Todo todo = snapshot.data![index];
-                                      controller.indexes.value = index;
-                                      return Column(
-                                        children: [
-                                          // index % 10 == 0
-                                          //     ? Container(
-                                          //         color: Colors.red,
-                                          //         height: 64.0,
-                                          //         width: double.infinity,
-                                          //         child: AdmobBanner(
-                                          //           adUnitId: AdMobService()
-                                          //               .getBannerAdUnitId(),
-                                          //           adSize: AdmobBannerSize(
-                                          //             width: MediaQuery.of(context).size.width.toInt(),
-                                          //             height: AdMobService().getHeight(context).toInt(),
-                                          //             name: 'SMART_BANNER',
-                                          //           ),
-                                          //         ),
-                                          //       )
-                                          //     : const SizedBox(),
-                                          Dismissible(
-                                            key:
-                                                Key(controller.todoList[index]),
-                                            onDismissed: (direction) {
-                                              controller.removeMoney(index);
-                                            },
-                                            child: ListItem(
-                                              title: '￥' +
-                                                  controller.todoList[index],
-                                              day: todo.dueDate.toString(),
+                                  return Obx(
+                                    () => ListView.builder(
+                                      itemCount: controller.todoList.length,
+                                      itemBuilder: (context, index) {
+                                        Todo todo = snapshot.data![index];
+                                        return Column(
+                                          children: [
+                                            // index % 10 == 0
+                                            //     ? Container(
+                                            //         color: Colors.red,
+                                            //         height: 64.0,
+                                            //         width: double.infinity,
+                                            //         child: AdmobBanner(
+                                            //           adUnitId: AdMobService()
+                                            //               .getBannerAdUnitId(),
+                                            //           adSize: AdmobBannerSize(
+                                            //             width: MediaQuery.of(context).size.width.toInt(),
+                                            //             height: AdMobService().getHeight(context).toInt(),
+                                            //             name: 'SMART_BANNER',
+                                            //           ),
+                                            //         ),
+                                            //       )
+                                            //     : const SizedBox(),
+                                            Obx(
+                                              () => Dismissible(
+                                                key: ObjectKey(
+                                                    controller.todoList[index]),
+                                                onDismissed: (direction) {
+                                                  controller.removeMoney(index);
+                                                },
+                                                child: ListItem(
+                                                  title: '￥' +
+                                                      controller
+                                                          .todoList[index],
+                                                  day: todo.dueDate.toString(),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      );
-                                    },
+                                          ],
+                                        );
+                                      },
+                                    ),
                                   );
                                 }
                                 return const Center(
