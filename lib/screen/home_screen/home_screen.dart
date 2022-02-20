@@ -33,7 +33,6 @@ class HomeScreen extends StatelessWidget {
     return SideMenu(
       key: controller.sideMenuKey,
       type: SideMenuType.slide,
-      //maxMenuWidth
       maxMenuWidth: deviceWidth,
       closeIcon: Icon(
         Icons.close,
@@ -62,7 +61,6 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: AppColor.grey3,
           appBar: (controller.todoList.isNotEmpty)
               ? PreferredSize(
-                  // preferredSize: const Size.fromHeight(35.0),
                   preferredSize: Size.fromHeight(deviceWidth / 13),
                   child: AppBarItem(
                     color: AppColor.red2,
@@ -70,7 +68,6 @@ class HomeScreen extends StatelessWidget {
                       onPressed: controller.toggleMenu,
                       icon: Icon(
                         Icons.menu,
-                        // size: 32,
                         size: deviceWidth / 16,
                         color: AppColor.white,
                       ),
