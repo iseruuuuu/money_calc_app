@@ -92,7 +92,6 @@ class AddScreen extends StatelessWidget {
                               style: TextStyle(
                                 fontSize:
                                     MediaQuery.of(context).size.width / 10,
-                                // fontSize: 50,
                               ),
                             ),
                           ),
