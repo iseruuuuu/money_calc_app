@@ -35,6 +35,7 @@ class AddScreen extends StatelessWidget {
           //     name: 'SMART_BANNER',
           //   ),
           // ),
+          const Spacer(),
           Container(
             width: MediaQuery.of(context).size.width * 0.9,
             padding: const EdgeInsets.all(0.0),
@@ -104,6 +105,7 @@ class AddScreen extends StatelessWidget {
             ),
           ),
           // const SizedBox(height: 10),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -151,6 +153,7 @@ class AddScreen extends StatelessWidget {
               ),
             ],
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -198,6 +201,7 @@ class AddScreen extends StatelessWidget {
               ),
             ],
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -245,6 +249,7 @@ class AddScreen extends StatelessWidget {
               ),
             ],
           ),
+          const Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
@@ -290,7 +295,8 @@ class AddScreen extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 8),
+          //const SizedBox(height: 8),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 70),
             child: SizedBox(
@@ -315,6 +321,7 @@ class AddScreen extends StatelessWidget {
               ),
             ),
           ),
+          const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 70),
             child: SizedBox(
@@ -331,7 +338,8 @@ class AddScreen extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(height: 20),
+          // const SizedBox(height: 20),
+          const Spacer(),
         ],
       ),
     );
