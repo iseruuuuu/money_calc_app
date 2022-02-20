@@ -27,28 +27,27 @@ class ListItem extends StatelessWidget {
           ),
           borderRadius: BorderRadius.circular(deviceWidth / 20),
         ),
-        child: ListTile(
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                day,
+        child: Row(
+          children: [
+            SizedBox(width: deviceWidth / 30),
+            Text(
+              day,
+              style: TextStyle(
+                fontSize: deviceWidth / 14,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(width: deviceWidth / 30),
+            Center(
+              child: Text(
+                title,
                 style: TextStyle(
-                  fontSize: deviceWidth / 14,
-                  fontWeight: FontWeight.bold,
+                  fontSize: deviceWidth / 11,
+                  color: Colors.black,
                 ),
               ),
-              Center(
-                child: Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: deviceWidth / 10,
-                    color: Colors.black,
-                  ),
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
