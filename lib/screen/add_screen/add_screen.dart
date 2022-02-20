@@ -1,84 +1,19 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:money_calc_app/database/todo_bloc.dart';
-import 'package:money_calc_app/model/todo.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
-import '../../model/color.dart';
-import '../../component/add_screen/number_calc_button.dart';
+import 'package:money_calc_app/component/add_screen/number_calc_button.dart';
+import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/screen/add_screen/add_screen_controller.dart';
 import 'package:holding_gesture/holding_gesture.dart';
-import 'package:intl/intl.dart';
+import 'package:get/get.dart';
 
-class AddScreen extends StatefulWidget {
-  final DateFormat _format = DateFormat("yyyy/MM/dd HH:mm");
-  final TodoBloc? todoBloc;
-  final Todo todo;
-  final Todo _newTodo = Todo.newTodo();
-
-  AddScreen({
+class AddScreen extends StatelessWidget {
+  const AddScreen({
     Key? key,
-    this.todoBloc,
-    required this.todo,
-  }) : super(key: key) {
-    //初期値
-    _newTodo.id = todo.id;
-    _newTodo.dueDate = todo.dueDate;
-  }
-
-  @override
-  _AddScreenState createState() => _AddScreenState();
-}
-
-class _AddScreenState extends State<AddScreen> {
-  String expression = '';
-  bool cancel = false;
-
-  void numClick(String text) {
-    if (expression.length >= 7) {
-    } else {
-      setState(() => expression += text);
-    }
-  }
-
-  void delete() {
-    setState(() {
-      if (expression.isEmpty) {
-      } else {
-        final pos = expression.length - 1;
-        expression = expression.substring(0, pos);
-      }
-    });
-  }
-
-  void allDelete() {
-    setState(() {
-      expression = '';
-    });
-  }
-
-  void alertSnackBar() {
-    showTopSnackBar(
-      context,
-      const CustomSnackBar.error(
-        message: "０以上の入力をお願いします!!",
-      ),
-    );
-  }
-
-  @override
-  void initState() {
-    super.initState();
-
-    DateTime now = DateTime.now();
-    DateFormat outputFormat = DateFormat('yyyy/MM');
-
-    String date = outputFormat.format(now);
-    widget._newTodo.dueDate = date;
-  }
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(AddScreenController(), tag: '');
     return Scaffold(
       backgroundColor: AppColor.white,
       appBar: PreferredSize(
@@ -116,12 +51,14 @@ class _AddScreenState extends State<AddScreen> {
                     fontSize: MediaQuery.of(context).size.width / 10,
                   ),
                 ),
-                Text(
-                  expression,
-                  style: TextStyle(
-                    color: Colors.black,
-                    // fontSize: 40,
-                    fontSize: MediaQuery.of(context).size.width / 10,
+                Obx(
+                  () => Text(
+                    controller.expression.value,
+                    style: TextStyle(
+                      color: Colors.black,
+                      // fontSize: 40,
+                      fontSize: MediaQuery.of(context).size.width / 10,
+                    ),
                   ),
                 ),
                 const Spacer(),
@@ -132,7 +69,7 @@ class _AddScreenState extends State<AddScreen> {
                     height: MediaQuery.of(context).size.height / 10,
                     child: HoldDetector(
                       onHold: () {
-                        delete();
+                        controller.delete();
                         HapticFeedback.mediumImpact();
                       },
                       child: Theme(
@@ -146,7 +83,7 @@ class _AddScreenState extends State<AddScreen> {
                               borderRadius: BorderRadius.circular(50),
                             ),
                             onPressed: () {
-                              delete();
+                              controller.delete();
                               HapticFeedback.selectionClick();
                             },
                             child: Text(
@@ -177,9 +114,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                //callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('7');
+                  controller.numClick('7');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -190,9 +128,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('8');
+                  controller.numClick('8');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -203,9 +142,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('9');
+                  controller.numClick('9');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -221,9 +161,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('4');
+                  controller.numClick('4');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -234,9 +175,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('5');
+                  controller.numClick('5');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -247,9 +189,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('6');
+                  controller.numClick('6');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -265,9 +208,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('1');
+                  controller.numClick('1');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -278,9 +222,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('2');
+                  controller.numClick('2');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -291,9 +236,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('3');
+                  controller.numClick('3');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -309,9 +255,10 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('0');
+                  controller.numClick('0');
                   HapticFeedback.selectionClick();
                 },
               ),
@@ -322,15 +269,16 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 11,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: numClick,
+                // callback: numClick,
+                callback: () {},
                 onTap: () {
-                  numClick('00');
+                  controller.numClick('00');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
                 onTap: () {
-                  allDelete();
+                  controller.allDelete();
                 },
                 number: 0,
                 text: 'AC',
@@ -338,7 +286,7 @@ class _AddScreenState extends State<AddScreen> {
                 textSize: MediaQuery.of(context).size.width / 11,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: allDelete,
+                callback: controller.allDelete,
               ),
             ],
           ),
@@ -355,30 +303,7 @@ class _AddScreenState extends State<AddScreen> {
                     borderRadius: BorderRadius.circular(30),
                   ),
                 ),
-                onPressed: () {
-                  if (expression == '') {
-                  } else if (expression == '0') {
-                    alertSnackBar();
-                  } else if (expression == '00') {
-                    alertSnackBar();
-                  } else if (expression == '000') {
-                    alertSnackBar();
-                  } else if (expression == '0000') {
-                    alertSnackBar();
-                  } else if (expression == '00000') {
-                    alertSnackBar();
-                  } else if (expression == '000000') {
-                    alertSnackBar();
-                  } else if (expression == '0000000') {
-                    alertSnackBar();
-                  } else {
-                    final post = '$expression';
-                    if (widget._newTodo.id != null) {
-                      Navigator.of(context).pop(post);
-                      widget.todoBloc?.create(widget._newTodo);
-                    }
-                  }
-                },
+                onPressed: controller.onTap,
                 child: Text(
                   'リスト追加',
                   style: TextStyle(
@@ -395,13 +320,10 @@ class _AddScreenState extends State<AddScreen> {
             child: SizedBox(
               width: double.infinity,
               child: TextButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                },
+                onPressed: controller.onTapBack,
                 child: Text(
                   'キャンセル',
                   style: TextStyle(
-                    // fontSize: 20,
                     fontSize: MediaQuery.of(context).size.width / 20,
                     color: AppColor.red2,
                   ),
