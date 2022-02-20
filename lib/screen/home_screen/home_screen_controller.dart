@@ -240,53 +240,78 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapChangeName() {
+    final deviceWidth = MediaQuery.of(Get.context!).size.width;
     Get.dialog(
       AlertDialog(
-        title: const Center(
-          child: Text(
-            '名前の変更',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 20,
-              color: Colors.black,
+        // insetPadding: EdgeInsets.all(deviceWidth / 5),
+        insetPadding: const EdgeInsets.all(10),
+        title: SizedBox(
+          width: deviceWidth / 1.5,
+          height: deviceWidth / 9,
+          child: Center(
+            child: Text(
+              '名前の変更',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: deviceWidth / 20,
+                color: Colors.black,
+              ),
             ),
           ),
         ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            TextField(
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'ユーザー名',
+        content: SizedBox(
+          width: deviceWidth / 1.5,
+          height: deviceWidth / 6,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              TextField(
+                textAlign: TextAlign.center,
+                decoration: InputDecoration(
+                  contentPadding: EdgeInsets.symmetric(
+                    vertical: deviceWidth / 20,
+                  ),
+                  border: const OutlineInputBorder(),
+                  // labelText: 'ユーザー名',
+                  label: const Center(child: Text('ユーザー名')),
+                  labelStyle: TextStyle(
+                    fontSize: deviceWidth / 20,
+                  ),
+                ),
+                onChanged: (text) => onChangeName(text: text),
               ),
-              onChanged: (text) => onChangeName(text: text),
-            ),
-          ],
+            ],
+          ),
         ),
         actionsAlignment: MainAxisAlignment.spaceAround,
         actions: [
-          TextButton(
-            child: const Text(
-              "Close",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.red,
+          SizedBox(
+            height: deviceWidth / 7,
+            child: TextButton(
+              child: Text(
+                "Close",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: deviceWidth / 20,
+                  color: Colors.red,
+                ),
               ),
+              onPressed: () => Get.back(),
             ),
-            onPressed: () => Get.back(),
           ),
-          TextButton(
-            child: const Text(
-              'OK',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.indigo,
+          SizedBox(
+            height: deviceWidth / 7,
+            child: TextButton(
+              child: Text(
+                'OK',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: deviceWidth / 20,
+                  color: Colors.indigo,
+                ),
               ),
+              onPressed: () => onSubmit(),
             ),
-            onPressed: () => onSubmit(),
           ),
         ],
       ),
