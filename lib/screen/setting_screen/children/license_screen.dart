@@ -6,7 +6,9 @@ import 'package:money_calc_app/admob/admob_service.dart';
 import 'package:money_calc_app/model/color.dart';
 
 class LicenseScreen extends StatefulWidget {
-  const LicenseScreen();
+  const LicenseScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   _LicenseScreenState createState() => _LicenseScreenState();
@@ -19,45 +21,57 @@ class _LicenseScreenState extends State<LicenseScreen> {
   void initState() {
     super.initState();
     LicenseRegistry.licenses.listen((license) {
-      // license.packagesとlicense.paragraphsの返り値がIterableなのでtoList()してる
       final packages = license.packages.toList();
       final paragraphs = license.paragraphs.toList();
       final packageName = packages.map((e) => e).join('');
       final paragraphText = paragraphs.map((e) => e.text).join('\n');
-      // この辺の状態更新とかは環境に合わせてお好みで
       licenses.add([packageName, paragraphText]);
       setState(() => licenses = licenses);
     });
   }
 
-  void onSearch() {
-    //TODO パッケージ内容を検索できるようにする？
-  }
-
   @override
   Widget build(BuildContext context) {
+    final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
-      appBar: AppBar(
-        backgroundColor: AppColor.red2,
-        title: const Text(
-          'ライセンス情報',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          deviceWidth / 8,
+        ),
+        child: AppBar(
+          backgroundColor: AppColor.red2,
+          toolbarHeight: deviceWidth / 8,
+          title: Text(
+            'ライセンス情報',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              //fontSize: 25,
+              fontSize: deviceWidth / 12,
+            ),
+          ),
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            iconSize: deviceWidth / 11,
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
           ),
         ),
       ),
       body: Column(
         children: [
-          AdmobBanner(
-            adUnitId: AdMobService().getBannerAdUnitId(),
-            adSize: AdmobBannerSize(
-              width: MediaQuery.of(context).size.width.toInt(),
-              height: AdMobService().getHeight(context).toInt(),
-              name: 'SMART_BANNER',
-            ),
-          ),
+          // AdmobBanner(
+          //   adUnitId: AdMobService().getBannerAdUnitId(),
+          //   adSize: AdmobBannerSize(
+          //     width: MediaQuery.of(context).size.width.toInt(),
+          //     height: AdMobService().getHeight(context).toInt(),
+          //     name: 'SMART_BANNER',
+          //   ),
+          // ),
           Expanded(
             child: ListView.builder(
               itemCount: licenses.length,
@@ -70,17 +84,17 @@ class _LicenseScreenState extends State<LicenseScreen> {
                     children: [
                       Text(
                         license[0],
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: deviceWidth / 15,
                           color: Colors.indigo,
                         ),
                       ),
                       const SizedBox(height: 5),
                       Text(
                         license[1],
-                        style: const TextStyle(
-                          fontSize: 13,
+                        style: TextStyle(
+                          fontSize: deviceWidth / 30,
                           fontWeight: FontWeight.normal,
                         ),
                       )
