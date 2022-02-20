@@ -2,8 +2,6 @@ import 'package:uuid/uuid.dart';
 
 class Todo {
   String? id;
-
-  // DateTime? dueDate;
   String? dueDate;
 
   Todo({
@@ -12,7 +10,6 @@ class Todo {
   });
 
   Todo.newTodo() {
-    //dueDate = DateTime.now();
     dueDate = '';
     id = const Uuid().v4();
   }
