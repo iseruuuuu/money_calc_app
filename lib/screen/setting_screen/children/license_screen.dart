@@ -46,8 +46,7 @@ class _LicenseScreenState extends State<LicenseScreen> {
             'ライセンス情報',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              //fontSize: 25,
-              fontSize: deviceWidth / 12,
+              fontSize: deviceWidth / 16,
             ),
           ),
           leading: IconButton(
