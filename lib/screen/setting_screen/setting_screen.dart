@@ -21,13 +21,34 @@ class SettingScreen extends StatelessWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: Colors.grey.shade300,
-      appBar: AppBar(
-        backgroundColor: AppColor.red2,
-        title: const Text(
-          '設定画面',
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(
+          deviceWidth / 8,
+        ),
+        child: AppBar(
+          backgroundColor: AppColor.red2,
+          toolbarHeight: deviceWidth / 8,
+          title: Text(
+            '設定画面',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: deviceWidth / 16,
+            ),
+          ),
+          leading: Padding(
+            padding: EdgeInsets.only(
+              left: deviceWidth / 40,
+            ),
+            child: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              iconSize: deviceWidth / 11,
+              icon: const Icon(
+                Icons.arrow_back_ios,
+                color: Colors.white,
+              ),
+            ),
           ),
         ),
       ),
@@ -37,28 +58,30 @@ class SettingScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            /* SizedBox(
-              height: 50,
-              child: AdItem,
-            ),*/
-
-            // AdmobBanner(
-            //   adUnitId: AdMobService().getBannerAdUnitId(),
-            //   adSize: AdmobBannerSize(
-            //     width: MediaQuery.of(context).size.width.toInt(),
-            //     height: AdMobService().getHeight(context).toInt(),
-            //     name: 'SMART_BANNER',
-            //   ),
+            // SizedBox(
+            //   height: 50,
+            //   child: AdItem,
             // ),
+
+            AdmobBanner(
+              adUnitId: AdMobService().getBannerAdUnitId(),
+              adSize: AdmobBannerSize(
+                width: MediaQuery.of(context).size.width.toInt(),
+                height: AdMobService().getHeight(context).toInt(),
+                name: 'SMART_BANNER',
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  SizedBox(
+                    height: deviceWidth / 20,
+                  ),
                   Obx(
                     () => CircleAvatar(
                       backgroundColor: Colors.white,
-                      //radius: 100,
                       radius: deviceWidth / 4,
                       child: controller.isSex.value
                           ? Image.asset('assets/images/icon_man.png')
@@ -138,35 +161,37 @@ class SettingScreen extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: EdgeInsets.symmetric(
+                vertical: deviceWidth / 60,
+                horizontal: deviceWidth / 50,
+              ),
               child: Container(
-                height: 70,
+                height: deviceWidth / 8,
                 width: MediaQuery.of(context).size.width,
                 color: Colors.black,
                 child: Row(
                   children: [
-                    const SizedBox(width: 30),
-                    const Text(
+                    SizedBox(width: deviceWidth / 20),
+                    Text(
                       'バージョン',
                       style: TextStyle(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
-                        fontSize: 25,
+                        fontSize: deviceWidth / 20,
                       ),
                     ),
                     const Spacer(),
                     Obx(
                       () => Text(
                         controller.version.value,
-                        // controller.packageInfo.version,
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.bold,
-                          fontSize: 25,
+                          fontSize: deviceWidth / 20,
                         ),
                       ),
                     ),
-                    const SizedBox(width: 30),
+                    SizedBox(width: deviceWidth / 20),
                   ],
                 ),
               ),
