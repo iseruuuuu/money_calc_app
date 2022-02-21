@@ -109,42 +109,30 @@ class AddScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
-                number: 7,
                 text: '7',
-                // textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                //callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('7');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 8,
                 text: '8',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('8');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 9,
                 text: '9',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('9');
                   HapticFeedback.selectionClick();
@@ -157,42 +145,30 @@ class AddScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
-                number: 4,
                 text: '4',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('4');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 5,
                 text: '5',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('5');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 6,
                 text: '6',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('6');
                   HapticFeedback.selectionClick();
@@ -205,42 +181,32 @@ class AddScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
-                number: 1,
                 text: '1',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('1');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 2,
                 text: '2',
                 //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
                 // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('2');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 3,
                 text: '3',
-                //textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('3');
                   HapticFeedback.selectionClick();
@@ -253,48 +219,34 @@ class AddScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               NumberCalcButton(
-                number: 0,
                 text: '0',
-                // textSize: 40,
                 textSize: MediaQuery.of(context).size.width / 8,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('0');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                number: 0,
                 text: '00',
-                //textSize: 35,
                 textSize: MediaQuery.of(context).size.width / 11,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                // callback: numClick,
-                callback: () {},
                 onTap: () {
                   controller.numClick('00');
                   HapticFeedback.selectionClick();
                 },
               ),
               NumberCalcButton(
-                onTap: () {
-                  controller.allDelete();
-                },
-                number: 0,
+                onTap: controller.allDelete,
                 text: 'AC',
-                //textSize: 30,
                 textSize: MediaQuery.of(context).size.width / 11,
                 fillColor: AppColor.grey3,
                 textColor: Colors.black,
-                callback: controller.allDelete,
               ),
             ],
           ),
-          //const SizedBox(height: 8),
           const Spacer(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 70),
@@ -313,7 +265,6 @@ class AddScreen extends StatelessWidget {
                   'リスト追加',
                   style: TextStyle(
                     color: Colors.white,
-                    // fontSize: 25,
                     fontSize: MediaQuery.of(context).size.width / 20,
                   ),
                 ),
@@ -337,7 +288,6 @@ class AddScreen extends StatelessWidget {
               ),
             ),
           ),
-          // const SizedBox(height: 20),
           const Spacer(),
         ],
       ),
