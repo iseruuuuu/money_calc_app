@@ -2,8 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/preference.dart';
@@ -32,36 +31,26 @@ class HomeScreenController extends GetxController {
   var indexes = 0.obs;
   var isOpened = false.obs;
   final isSex = false;
-  final banner = BannerAd(
-    adUnitId: Platform.isAndroid
-        ? 'ca-app-pub-3940256099942544/6300978111'
-        : 'ca-app-pub-3940256099942544/2934735716',
-    // : 'ca-app-pub-4066682931432506/4038530394',
-    //本番id
-    //return 'ca-app-pub-4066682931432506/4038530394';
-    //テスト広告
-    // return 'ca-app-pub-3940256099942544/2934735716';
-    size: AdSize.banner,
-    request: const AdRequest(),
-    listener: const AdListener(),
-  ).obs;
+
+  // final banner = BannerAd(
+  //   adUnitId: Platform.isAndroid
+  //       ? 'ca-app-pub-3940256099942544/6300978111'
+  //       : 'ca-app-pub-3940256099942544/2934735716',
+  //   // : 'ca-app-pub-4066682931432506/4038530394',
+  //   //本番id
+  //   //return 'ca-app-pub-4066682931432506/4038530394';
+  //   //テスト広告
+  //   // return 'ca-app-pub-3940256099942544/2934735716';
+  //   size: AdSize.banner,
+  //   request: const AdRequest(),
+  //   listener: const AdListener(),
+  // ).obs;
 
   var image = ''.obs;
-  final ImagePicker imagePicker = ImagePicker();
 
   //TODO 名前を変更する。
   final name = ''.obs;
   final userName = 'Hello User'.obs;
-
-  Future getImage() async {
-    final pickedFile = await imagePicker.getImage(source: ImageSource.gallery);
-    if (pickedFile != null) {
-      image.value = pickedFile.path;
-      setImage(image: image.value);
-    } else {
-      print('No image selected.');
-    }
-  }
 
   void setImage({required String image}) {
     preference.setString(PreferenceKey.image, image);
@@ -73,7 +62,7 @@ class HomeScreenController extends GetxController {
     getPreference();
     checkPreference();
     WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
-    banner.value.load();
+    //banner.value.load();
     setMoney();
   }
 

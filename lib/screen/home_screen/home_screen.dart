@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+// import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:money_calc_app/component/appbar/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/home_screen/floating_action_button_items.dart';
@@ -20,10 +20,10 @@ import 'package:get/get.dart';
 class HomeScreen extends StatelessWidget {
   HomeScreen({
     Key? key,
-    required this.flutterLocalNotificationsPlugin,
+    //required this.flutterLocalNotificationsPlugin,
   }) : super(key: key);
 
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
+  //FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,7 @@ class HomeScreen extends StatelessWidget {
             onTapNotification: controller.onTapNotification,
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
-            onTapChangePhoto: controller.getImage,
+            onTapChangePhoto: (){},
             image: controller.image.value,
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
