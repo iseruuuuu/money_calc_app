@@ -86,27 +86,21 @@ class PushNotificationScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           NumberButton(
-                            number: 7,
                             text: '7',
-                            //textSize: 40,
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
-                              // controller.numClick(7);
                               controller.numClick('7');
                               HapticFeedback.selectionClick();
                             },
                           ),
                           NumberButton(
-                            number: 8,
                             text: '8',
                             textSize: MediaQuery.of(context).size.width / 9,
                             // fillColor: AppColor.transparent,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               // controller.numClick(8);
                               controller.numClick('8');
@@ -114,12 +108,10 @@ class PushNotificationScreen extends StatelessWidget {
                             },
                           ),
                           NumberButton(
-                            number: 9,
                             text: '9',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: controller.numClick,
                             onTap: () {
                               //controller.numClick(9);
                               controller.numClick('9');
@@ -133,12 +125,10 @@ class PushNotificationScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           NumberButton(
-                            number: 4,
                             text: '4',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               //controller.numClick(4);
                               controller.numClick('4');
@@ -146,12 +136,10 @@ class PushNotificationScreen extends StatelessWidget {
                             },
                           ),
                           NumberButton(
-                            number: 5,
                             text: '5',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               // controller.numClick(5);
                               controller.numClick('5');
@@ -159,12 +147,10 @@ class PushNotificationScreen extends StatelessWidget {
                             },
                           ),
                           NumberButton(
-                            number: 6,
                             text: '6',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               //controller.numClick(6);
                               controller.numClick('6');
@@ -178,12 +164,10 @@ class PushNotificationScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           NumberButton(
-                            number: 1,
                             text: '1',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               //controller.numClick(1);
                               controller.numClick('1');
@@ -191,12 +175,10 @@ class PushNotificationScreen extends StatelessWidget {
                             },
                           ),
                           NumberButton(
-                            number: 2,
                             text: '2',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               //controller.numClick(2);
                               controller.numClick('2');
@@ -204,12 +186,10 @@ class PushNotificationScreen extends StatelessWidget {
                             },
                           ),
                           NumberButton(
-                            number: 3,
                             text: '3',
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               // controller.numClick(3);
                               controller.numClick('3');
@@ -223,13 +203,11 @@ class PushNotificationScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: <Widget>[
                           NumberButton(
-                            number: 0,
                             text: '0',
                             // textSize: 35,
                             textSize: MediaQuery.of(context).size.width / 9,
                             fillColor: AppColor.white10,
                             textColor: AppColor.white,
-                            callback: () {},
                             onTap: () {
                               //controller.numClick(0);
                               controller.numClick('0');
