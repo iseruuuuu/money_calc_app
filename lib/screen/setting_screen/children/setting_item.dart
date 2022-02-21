@@ -25,6 +25,7 @@ class SettingItem extends StatelessWidget {
         height: deviceWidth / 8,
         child: Row(
           children: [
+            SizedBox(width: deviceWidth / 40),
             Icon(
               icon,
               size: deviceWidth / 10,
