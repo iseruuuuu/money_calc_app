@@ -11,14 +11,14 @@ import 'package:money_calc_app/model/todo.dart';
 
 
 void main() {
-  group('listのテスト', () {
-    final Todo todo = Todo(
-      id: '0',
-      dueDate: '明日',
-    );
-
-    test('テスト', () {
-      expect(todo, 0);
-    });
-  });
+  // group('listのテスト', () {
+  //   final Todo todo = Todo(
+  //     id: '0',
+  //     dueDate: '明日',
+  //   );
+  //
+  //   test('テスト', () {
+  //     expect(todo, 0);
+  //   });
+  // });
 }
