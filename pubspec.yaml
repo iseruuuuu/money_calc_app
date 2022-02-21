@@ -9,6 +9,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # 追加
+    sdk: flutter
+
 
   cupertino_icons: ^1.0.2
   top_snackbar_flutter: ^1.0.2
@@ -33,6 +36,8 @@ dependencies:
   app_tracking_transparency: ^2.0.2+1
   sqflite: ^2.0.2
   path_provider: ^2.0.9
+
+
 
   #TODO 後で戻したいやつ
   # package_info_plus: ^1.2.0
