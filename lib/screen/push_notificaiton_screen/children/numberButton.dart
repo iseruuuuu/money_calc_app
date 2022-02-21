@@ -6,8 +6,6 @@ class NumberButton extends StatelessWidget {
   final Color fillColor;
   final Color textColor;
   final double textSize;
-  final Function callback;
-  final int number;
   final Function() onTap;
 
   const NumberButton({
@@ -16,8 +14,6 @@ class NumberButton extends StatelessWidget {
     required this.fillColor,
     required this.textColor,
     this.textSize = 28,
-    required this.callback,
-    required this.number,
     required this.onTap,
   }) : super(key: key);
 
