@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:money_calc_app/model/notification/user_birthday.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
-import '../add/birthday_for_calendar.dart';
+
+import 'birthday_for_calendar.dart';
 
 class CalendarDay extends StatefulWidget {
   final DateTime date;
@@ -47,17 +48,17 @@ class _CalendarDayState extends State<CalendarDay> {
         //選択した日付
         Preference().setInt(PreferenceKey.days, widget.date.day);
 
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) =>
-                BirthdaysForCalendarDayWidget(
-                  key: Key(widget.date.toString()),
-                  dateOfDay: widget.date,
-                  birthdays: _birthdays,
-                ),
-          ),
-        ).then((value) => _fetchBirthdaysFromStorage());
+        // Navigator.push(
+        //   context,
+        //   MaterialPageRoute(
+        //     builder: (context) =>
+        //         BirthdaysForCalendarDayWidget(
+        //           key: Key(widget.date.toString()),
+        //           dateOfDay: widget.date,
+        //           birthdays: _birthdays,
+        //         ),
+        //   ),
+        // ).then((value) => _fetchBirthdaysFromStorage());
       },
       child: FittedBox(
         fit: BoxFit.fitWidth,

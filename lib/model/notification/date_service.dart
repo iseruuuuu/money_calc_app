@@ -17,7 +17,7 @@ class DateService {
 
   String convertMonthToWord(int month) {
     String? monthName = months[month];
-    return monthName != null ? monthName : "";
+    return monthName ?? "";
   }
 
   String getCurrentMonthName() {
@@ -57,7 +57,7 @@ class DateService {
   }
 
   bool isLeapYear() {
-    DateTime now = new DateTime.now();
+    DateTime now = DateTime.now();
     int year = now.year;
     if (year % 4 == 0 && year % 100 != 0) {
       return true;
@@ -71,7 +71,8 @@ class DateService {
     return DateFormat('EEEE').format(date);
   }
 
-  DateTime constructDateTimeFromDayAndMonth({required int day, required int month}) {
+  DateTime constructDateTimeFromDayAndMonth(
+      {required int day, required int month}) {
     int year = DateTime.now().year;
     String paddedMonth = month < 10 ? "0" + month.toString() : month.toString();
     String paddedDay = day < 10 ? "0" + day.toString() : day.toString();
