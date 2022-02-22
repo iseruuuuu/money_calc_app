@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/admob/admob_service.dart';
-import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/constants/app_color.dart';
 
 class LicenseScreen extends StatefulWidget {
   const LicenseScreen({

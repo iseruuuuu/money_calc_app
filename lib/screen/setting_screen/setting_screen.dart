@@ -1,8 +1,7 @@
-import 'package:admob_flutter/admob_flutter.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/admob/admob_service.dart';
-import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/constants/app_color.dart';
 import 'package:get/get.dart';
 import 'package:money_calc_app/screen/setting_screen/children/setting_item.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen_controller.dart';
@@ -63,14 +62,14 @@ class SettingScreen extends StatelessWidget {
             //   child: AdItem,
             // ),
 
-            AdmobBanner(
-              adUnitId: AdMobService().getBannerAdUnitId(),
-              adSize: AdmobBannerSize(
-                width: MediaQuery.of(context).size.width.toInt(),
-                height: AdMobService().getHeight(context).toInt(),
-                name: 'SMART_BANNER',
-              ),
-            ),
+            // AdmobBanner(
+            //   adUnitId: AdMobService().getBannerAdUnitId(),
+            //   adSize: AdmobBannerSize(
+            //     width: MediaQuery.of(context).size.width.toInt(),
+            //     height: AdMobService().getHeight(context).toInt(),
+            //     name: 'SMART_BANNER',
+            //   ),
+            // ),
             Padding(
               padding: const EdgeInsets.only(left: 12.0),
               child: Column(
@@ -181,16 +180,20 @@ class SettingScreen extends StatelessWidget {
                       ),
                     ),
                     const Spacer(),
-                    Obx(
-                      () => Text(
-                        controller.version.value,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: deviceWidth / 20,
-                        ),
-                      ),
-                    ),
+
+                    //TODO 後で戻したい！！
+                    // Obx(
+                    //   () => Text(
+                    //     controller.version.value,
+                    //     style: TextStyle(
+                    //       color: Colors.white,
+                    //       fontWeight: FontWeight.bold,
+                    //       fontSize: deviceWidth / 20,
+                    //     ),
+                    //   ),
+                    // ),
+                    //
+
                     SizedBox(width: deviceWidth / 20),
                   ],
                 ),

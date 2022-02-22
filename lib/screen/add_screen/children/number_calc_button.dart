@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money_calc_app/model/color.dart';
+import 'package:money_calc_app/constants/app_color.dart';
 
 class NumberCalcButton extends StatelessWidget {
   final String text;
