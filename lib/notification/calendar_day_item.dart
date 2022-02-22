@@ -34,9 +34,9 @@ class _CalendarDayState extends State<CalendarDay> {
   }
 
   void _fetchBirthdaysFromStorage() {
-    setState(() {
-      _birthdays = SharedPrefs().getString(widget.date);
-    });
+    // setState(() {
+    //   _birthdays = SharedPrefs().getString(widget.date);
+    // });
   }
 
   @override

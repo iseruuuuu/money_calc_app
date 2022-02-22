@@ -20,7 +20,7 @@ class NotificationDialogState extends State<NotificationDialog> {
 
   @override
   void initState() {
-    birthdaysForDate = SharedPrefs().getString(widget.dateOfDay);
+    //birthdaysForDate = SharedPrefs().getString(widget.dateOfDay);
     super.initState();
   }
 
