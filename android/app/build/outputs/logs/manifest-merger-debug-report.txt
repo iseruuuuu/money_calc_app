@@ -8,12 +8,14 @@ MERGED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/Android
 MERGED from [:in_app_review] /Users/ryutaroiseki/work/money_calc_app/build/in_app_review/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:sqflite] /Users/ryutaroiseki/work/money_calc_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
+MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-28:12
 MERGED from [:webview_flutter_android] /Users/ryutaroiseki/work/money_calc_app/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:shared_preferences_android] /Users/ryutaroiseki/work/money_calc_app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] /Users/ryutaroiseki/work/money_calc_app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:2:1-23:12
 MERGED from [com.google.firebase:firebase-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3b7d5ea2c8581e319f943e595d963e7a/jetified-firebase-ads-19.1.0/AndroidManifest.xml:2:1-9:12
+MERGED from [androidx.media:media:1.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.webkit:webkit:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.gms:play-services-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/62c0569f6b8ba2cd7d051f859e94d1d2/jetified-play-services-ads-19.1.0/AndroidManifest.xml:17:1-25:12
 MERGED from [com.google.android.gms:play-services-gass:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/81d55213c4e04572de43d02e2fccae9e/jetified-play-services-gass-19.1.0/AndroidManifest.xml:2:1-9:12
@@ -48,13 +50,14 @@ MERGED from [androidx.customview:customview:1.0.0] /Users/ryutaroiseki/.gradle/c
 MERGED from [androidx.swiperefreshlayout:swiperefreshlayout:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/bb361c9951ec30a475ef40f80e89b874/swiperefreshlayout-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/57910a85af155c3103487e39ce23f678/asynclayoutinflater-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:17:1-26:12
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.lifecycle:lifecycle-livedata:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/fb333fb43575d8a3b51161295454427f/lifecycle-livedata-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/cad25976877a6ae855ef6821534f58a1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:17:1-24:12
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:17:1-27:12
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-components:16.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/4916ab65075d1ebaae2c55022c41877f/jetified-firebase-components-16.0.0/AndroidManifest.xml:15:1-23:12
@@ -83,6 +86,8 @@ INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/Andr
 		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:11-69
 application
 ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:5-35:19
+MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-26:19
+MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-26:19
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:10:3-21:17
@@ -125,6 +130,8 @@ MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/ryutar
 MERGED from [com.google.android.gms:play-services-basement:17.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3c8e7eb3d21ac94d08f658f6d8a1c9f3/jetified-play-services-basement-17.0.0/AndroidManifest.xml:22:5-26:19
 MERGED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:5-89
 MERGED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:5-89
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:7:5-20
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:24:5-25:19
 MERGED from [com.google.android.gms:play-services-ads-base:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/465b12927472ce1a19ebc120b2ace034/jetified-play-services-ads-base-19.1.0/AndroidManifest.xml:7:5-20
@@ -132,7 +139,7 @@ MERGED from [com.google.android.gms:play-services-ads-base:19.1.0] /Users/ryutar
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:6:9-39
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:6:9-29
 	android:icon
 		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:5:9-43
 activity#com.example.money_calc_app.MainActivity
@@ -191,6 +198,8 @@ MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob
 MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] /Users/ryutaroiseki/work/money_calc_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:sqflite] /Users/ryutaroiseki/work/money_calc_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] /Users/ryutaroiseki/work/money_calc_app/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:webview_flutter_android] /Users/ryutaroiseki/work/money_calc_app/build/webview_flutter_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:shared_preferences_android] /Users/ryutaroiseki/work/money_calc_app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
@@ -203,6 +212,8 @@ MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/ca
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:4:3-70
 MERGED from [com.google.firebase:firebase-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3b7d5ea2c8581e319f943e595d963e7a/jetified-firebase-ads-19.1.0/AndroidManifest.xml:5:5-44
 MERGED from [com.google.firebase:firebase-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3b7d5ea2c8581e319f943e595d963e7a/jetified-firebase-ads-19.1.0/AndroidManifest.xml:5:5-44
+MERGED from [androidx.media:media:1.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.media:media:1.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.webkit:webkit:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.webkit:webkit:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/cbbb6921b2521959953b0c781fe5c304/webkit-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.gms:play-services-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/62c0569f6b8ba2cd7d051f859e94d1d2/jetified-play-services-ads-19.1.0/AndroidManifest.xml:21:5-23:52
@@ -271,6 +282,8 @@ MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ryut
 MERGED from [androidx.asynclayoutinflater:asynclayoutinflater:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/57910a85af155c3103487e39ce23f678/asynclayoutinflater-1.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:20:5-22:41
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
+MERGED from [com.jakewharton.threetenabp:threetenabp:1.2.3] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/f2e73ae2c927c5e2323136b4ee464011/jetified-threetenabp-1.2.3/AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.lifecycle:lifecycle-runtime:2.2.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ca6b214160bd0909b103aa12202ef51c/lifecycle-runtime-2.2.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.savedstate:savedstate:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/2271d874344878e62b9a8e309af0c39d/jetified-savedstate-1.0.0/AndroidManifest.xml:20:5-22:41
@@ -281,10 +294,10 @@ MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ryutaroise
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/cad25976877a6ae855ef6821534f58a1/lifecycle-livedata-core-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.tracing:tracing:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1fdddb698f5b73fbeb212822ee0a08f1/jetified-tracing-1.0.0/AndroidManifest.xml:20:5-22:41
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
-MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/87cae496edf0d81af80ab48e3e89ecce/versionedparcelable-1.1.1/AndroidManifest.xml:20:5-22:41
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
+MERGED from [androidx.arch.core:core-runtime:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f606c30f064eed94124828de37fadc0/core-runtime-2.0.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/15792e6083b2b5b5a7ffa285d47daa24/lifecycle-viewmodel-2.1.0/AndroidManifest.xml:20:5-44
 MERGED from [androidx.interpolator:interpolator:1.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/b962778313a0e23f9ca3dbafc012c1af/interpolator-1.0.0/AndroidManifest.xml:20:5-44
@@ -331,6 +344,52 @@ MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /U
 MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/c225d1586e041f59064591d1309ec490/jetified-play-services-measurement-sdk-api-17.2.2/AndroidManifest.xml:23:5-67
 	android:name
 		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml:6:22-64
+uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:22-78
+uses-permission#android.permission.VIBRATE
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:8:5-66
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:8:22-63
+uses-permission#android.permission.USE_FULL_SCREEN_INTENT
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:9:22-78
+uses-permission#android.permission.SCHEDULE_EXACT_ALARM
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:10:22-76
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationReceiver
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:13:9-15:40
+	android:exported
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:15:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:14:13-97
+receiver#com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:16:9-25:20
+	android:exported
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:18:13-37
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:17:13-101
+intent-filter#action:name:android.intent.action.BOOT_COMPLETED+action:name:android.intent.action.MY_PACKAGE_REPLACED+action:name:android.intent.action.QUICKBOOT_POWERON+action:name:com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:19:13-24:29
+action#android.intent.action.BOOT_COMPLETED
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:20:17-79
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:20:25-76
+action#android.intent.action.MY_PACKAGE_REPLACED
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:21:17-84
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:21:25-81
+action#android.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:22:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:22:25-79
+action#com.htc.intent.action.QUICKBOOT_POWERON
+ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:23:17-82
+	android:name
+		ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:23:25-79
 activity#io.flutter.plugins.urllauncher.WebViewActivity
 ADDED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:8:9-11:74
 	android:exported
