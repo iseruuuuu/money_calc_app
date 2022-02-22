@@ -1,4 +1,21 @@
-# 給料計算・保存アプリ
+# 「給料明細」
+
+<img src="https://user-images.githubusercontent.com/67954894/155047959-f1a9e434-ae40-404d-89c3-a3379effc095.png" alt="画像" width="100%">
+
+
+
+# Download Link
+
+iOS: https://apps.apple.com/us/app/%E7%B5%A6%E6%96%99%E6%98%8E%E7%B4%B0/id1577905641
+
+Android: https://play.google.com/store/apps/details?id=com.money_calc_app
+
+
+# How to use?
+
+
+
+
 
 １０3万を超えたら、取得税が発生するのでそれを防止するために、毎回の給料の計算かつ合計給料の保存ができるアプリです。
 
