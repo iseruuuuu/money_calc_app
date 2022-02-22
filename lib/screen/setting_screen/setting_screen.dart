@@ -159,46 +159,43 @@ class SettingScreen extends StatelessWidget {
                 title: "Licence",
               ),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(
-                vertical: deviceWidth / 60,
-                horizontal: deviceWidth / 50,
-              ),
-              child: Container(
-                height: deviceWidth / 8,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.black,
-                child: Row(
-                  children: [
-                    SizedBox(width: deviceWidth / 20),
-                    Text(
-                      'バージョン',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold,
-                        fontSize: deviceWidth / 20,
-                      ),
-                    ),
-                    const Spacer(),
 
-                    //TODO 後で戻したい！！
-                    // Obx(
-                    //   () => Text(
-                    //     controller.version.value,
-                    //     style: TextStyle(
-                    //       color: Colors.white,
-                    //       fontWeight: FontWeight.bold,
-                    //       fontSize: deviceWidth / 20,
-                    //     ),
-                    //   ),
-                    // ),
-                    //
-
-                    SizedBox(width: deviceWidth / 20),
-                  ],
-                ),
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(
+            //     vertical: deviceWidth / 60,
+            //     horizontal: deviceWidth / 50,
+            //   ),
+            //   child: Container(
+            //     height: deviceWidth / 8,
+            //     width: MediaQuery.of(context).size.width,
+            //     color: Colors.black,
+            //     child: Row(
+            //       children: [
+            //         SizedBox(width: deviceWidth / 20),
+            //         Text(
+            //           'バージョン',
+            //           style: TextStyle(
+            //             color: Colors.white,
+            //             fontWeight: FontWeight.bold,
+            //             fontSize: deviceWidth / 20,
+            //           ),
+            //         ),
+            //         const Spacer(),
+            //         Obx(
+            //           () => Text(
+            //             controller.version.value,
+            //             style: TextStyle(
+            //               color: Colors.white,
+            //               fontWeight: FontWeight.bold,
+            //               fontSize: deviceWidth / 20,
+            //             ),
+            //           ),
+            //         ),
+            // SizedBox(width: deviceWidth / 20),
+            // ],
+            // ),
+            //   ),
+            // ),
             // AdmobBanner(
             //   adUnitId: AdMobService().getBannerAdUnitId(),
             //   adSize: AdmobBannerSize(
