@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 // import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
+import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
@@ -17,6 +18,8 @@ import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreenController extends GetxController {
   RxList<String> todoList = RxList<String>();
+  RxList<Todo> todoLists = RxList<Todo>();
+
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
@@ -78,9 +81,6 @@ class HomeScreenController extends GetxController {
     isFirst.value = await preference.getBool(PreferenceKey.isDelete);
     checkUpdate.value = await preference.getBool(PreferenceKey.isUpdateCheck);
     image.value = await preference.getString(PreferenceKey.image);
-    if (todoList.isEmpty) {
-      isFirst.value = true;
-    }
     updateMoney();
   }
 
