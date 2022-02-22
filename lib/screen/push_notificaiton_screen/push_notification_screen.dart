@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:glassmorphism/glassmorphism.dart';
-import 'package:money_calc_app/component/add_screen/number_calc_button.dart';
-import 'package:money_calc_app/model/color.dart';
 import 'package:get/get.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen_controller.dart';
-
+import 'package:money_calc_app/constants/app_color.dart';
 import 'children/numberButton.dart';
 
 class PushNotificationScreen extends StatelessWidget {

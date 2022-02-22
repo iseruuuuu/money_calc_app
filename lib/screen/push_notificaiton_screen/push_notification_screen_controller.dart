@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:money_calc_app/model/notification/date_service.dart';
 import 'package:money_calc_app/model/notification/push_notification.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:top_snackbar_flutter/custom_snack_bar.dart';
-import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class PushNotificationScreenController extends GetxController {
   int monthToPresent = -1;
@@ -22,7 +20,7 @@ class PushNotificationScreenController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    //getPreference();
+    getPreference();
     getMonth();
   }
 
@@ -37,16 +35,6 @@ class PushNotificationScreenController extends GetxController {
         );
   }
 
-  // void onTap(DateTime date) {
-  //   selectedDays.value = date.day;
-  //   //選択した日付
-  //   Preference().setInt(PreferenceKey.days, date.day);
-  //   //すでに登録されていたら、通知を全て消す。→上書きできていることが確認できた。
-  //   cancelAll();
-  //   //通知を出現する
-  //   scheduleNotification();
-  // }
-  //
   getPreference() async {
     final preference = await Preference().getInt(PreferenceKey.days);
     days.value = preference;
@@ -77,10 +65,16 @@ class PushNotificationScreenController extends GetxController {
     final days = await Preference().getInt(PreferenceKey.days);
     for (int i = 0; i < 12; i++) {
       int _id = i;
-      //DateTime _date = DateTime(now.year, now.month, now.day, 12, 54 + i, 00);
+      //DateTime _date = DateTime(now.year, now.month, now.day, 9, 26 + i, 00);
       DateTime _date = DateTime(now.year, now.month + i, days, 10, 00, 00);
       const detail = NotificationDetails(
-        android: AndroidNotificationDetails('id', 'name'),
+        android: AndroidNotificationDetails(
+          'id',
+          'name',
+          playSound: true,
+          importance: Importance.max,
+          priority: Priority.high,
+        ),
         iOS: IOSNotificationDetails(),
       );
       await flutterLocalNotificationsPlugin.schedule(
@@ -115,7 +109,8 @@ class PushNotificationScreenController extends GetxController {
     checkNumber();
     if (isCheck.value) {
       //選択した日付
-      Preference().setInt(PreferenceKey.days, days.value);
+      final checkNumber = int.parse(day.value);
+      Preference().setInt(PreferenceKey.days, checkNumber);
       //すでに登録されていたら、通知を全て消す。→上書きできていることが確認できた。
       cancelAll();
       //通知を出現する
@@ -142,7 +137,7 @@ class PushNotificationScreenController extends GetxController {
       "",
       titleText: Text(
         isSuccess ? '通知登録完了' : '通知登録失敗',
-        style: TextStyle(
+        style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 20,
           color: Colors.white,

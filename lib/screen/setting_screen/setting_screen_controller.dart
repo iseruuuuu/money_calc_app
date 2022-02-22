@@ -1,28 +1,27 @@
 import 'package:get/get.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/_%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84/push_notification_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
-import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'children/contact_screen.dart';
 import 'children/license_screen.dart';
 
 class SettingScreenController extends GetxController {
   var isSex = false.obs;
-  PackageInfo _packageInfo = PackageInfo(
-    appName: 'Unknown',
-    packageName: 'Unknown',
-    version: 'Unknown',
-    buildNumber: 'Unknown',
-    buildSignature: 'Unknown',
-  );
+  // PackageInfo _packageInfo = PackageInfo(
+  //   appName: 'Unknown',
+  //   packageName: 'Unknown',
+  //   version: 'Unknown',
+  //   buildNumber: 'Unknown',
+  //   buildSignature: 'Unknown',
+  // );
   final version = ''.obs;
 
   @override
   void onInit() {
     super.onInit();
     preference(preference: false);
-    initPackageInfo();
+    //TODO 後で戻したい！
+    // initPackageInfo();
   }
 
   void onTapChangeSex() {
@@ -38,11 +37,12 @@ class SettingScreenController extends GetxController {
     }
   }
 
-  Future<void> initPackageInfo() async {
-    final info = await PackageInfo.fromPlatform();
-    _packageInfo = info;
-    version.value = info.version;
-  }
+  // //TODO 後で戻したい！
+  // Future<void> initPackageInfo() async {
+  //   final info = await PackageInfo.fromPlatform();
+  //   _packageInfo = info;
+  //   version.value = info.version;
+  // }
 
   Future showLicense() async {
     Get.to(() => const LicenseScreen());
