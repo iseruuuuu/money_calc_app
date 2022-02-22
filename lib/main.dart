@@ -10,42 +10,43 @@ import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'constants/typography.dart';
 
-//
-// final FlutterLocalNotificationsPlugin notifications =
-//     FlutterLocalNotificationsPlugin();
-// NotificationDetails platformChannelSpecifics = const NotificationDetails();
+// import 'misc/appInfo.dart' as appInfo;
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  // await appInfo.init();
+  // WidgetsFlutterBinding.ensureInitialized();
 
-  //TODO 後で戻す！！
-  // final initFuture = MobileAds.instance.initialize();
-  // final adState = AdState(initFuture);
+//TODO 後で戻す！！
+// final initFuture = MobileAds.instance.initialize();
+// final adState = AdState(initFuture);
 
-  // final futureMobileAds = MobileAds.instance.initialize();
-  // final adSettings = AdSettings(
-  //     futureMobileAds,
-  //     testMode: true,
-  //     //isAmazonApp: kIsAmazonApp
-  //     );
+// final futureMobileAds = MobileAds.instance.initialize();
+// final adSettings = AdSettings(
+//     futureMobileAds,
+//     testMode: true,
+//     //isAmazonApp: kIsAmazonApp
+//     );
 
-  //TODO 後で戻す！！
-  Admob.initialize();
-  await SharedPrefs().init();
+//TODO 後で戻す！！
+  //Admob.initialize();
 
-  //
-  // runApp(
-  //   Provider.value(
-  //     value: adSettings,
-  //     builder: (context, child) => const App(),
-  //   ),
-  // );
 
-  // runApp(
-  //   Provider.value(
-  //     value: adState,
-  //     builder: (context, child) => const App(),
-  //   ),
+  //TODO 何に使うかわからないから後でもとす
+  //await SharedPrefs().init();
+
+//
+// runApp(
+//   Provider.value(
+//     value: adSettings,
+//     builder: (context, child) => const App(),
+//   ),
+// );
+
+// runApp(
+//   Provider.value(
+//     value: adState,
+//     builder: (context, child) => const App(),
+//   ),
 
   runApp(const App());
 }
