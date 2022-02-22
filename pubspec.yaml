@@ -41,7 +41,7 @@ dependencies:
 
   #TODO 後で戻したいやつ
   # package_info_plus: ^1.2.0
-  # flutter_local_notifications:
+  flutter_local_notifications:
 
 
 
