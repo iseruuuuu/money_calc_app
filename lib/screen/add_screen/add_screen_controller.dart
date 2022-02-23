@@ -19,7 +19,6 @@ class AddScreenController extends GetxController {
     DateFormat outputFormat = DateFormat('yyyy/MM');
 
     _newTodo.id = Todo.newTodo().id;
-    //_newTodo.dueDate = todo.dueDate;
     String date = outputFormat.format(now);
     _newTodo.dueDate = date;
   }
@@ -93,11 +92,8 @@ class AddScreenController extends GetxController {
     } else {
       final post = '$expression';
       if (_newTodo.id != null) {
-        // Get.back();
-        // print(expression);
-        // print(_newTodo.id);
-        // print(_newTodo.dueDate);
         Navigator.pop(Get.context!, expression.value);
+        _newTodo.number = expression.value;
         todoBloc.create(_newTodo);
         expression.value = '';
       }

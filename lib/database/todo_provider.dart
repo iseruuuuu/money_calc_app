@@ -18,18 +18,17 @@ class DBProvider {
   }
 
   Future<Database> initDB() async {
-    // Get a location using getDatabasesPath
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     String path = join(documentsDirectory.path, "TODODB.db");
     return await openDatabase(path, version: 1, onCreate: _createTable);
   }
 
   Future<void> _createTable(Database db, int version) async {
-    //わからん！！！
     return await db.execute("CREATE TABLE Todo ("
         "id TEXT PRIMARY KEY,"
         "title TEXT,"
         "dueDate TEXT,"
+        "number TEXT,"
         "note TEXT"
         ")");
   }
