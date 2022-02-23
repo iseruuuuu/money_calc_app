@@ -55,8 +55,8 @@ class SettingScreenController extends GetxController {
   }
 
   void onTapTwitter() async {
-    const url = 'twitter://user?screen_name=isekiryu';
-    const secondUrl = 'https://twitter.com/isekiryu';
+    const url = 'twitter://user?screen_name=23_student___';
+    const secondUrl = 'https://twitter.com/23_student___';
 
     if (await canLaunch(url)) {
       await launch(url);
