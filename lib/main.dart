@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:admob_flutter/admob_flutter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +7,7 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
 import 'package:money_calc_app/screen/home_screen/home_screen.dart';
+import 'package:money_calc_app/screen/home_screen/home_screen_android.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -29,7 +32,6 @@ Future<void> main() async {
 
 //TODO 後で戻す！！
   //Admob.initialize();
-
 
   //TODO 何に使うかわからないから後でもとす
   //await SharedPrefs().init();
@@ -70,7 +72,10 @@ class App extends StatelessWidget {
       locale: locale,
       home: Provider<TodoBloc>(
         create: (context) => TodoBloc(),
-        child: HomeScreen(),
+        // child: HomeScreen(),
+        // child: const HomeScreen(),
+        child:
+            Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreen(),
       ),
     );
   }
