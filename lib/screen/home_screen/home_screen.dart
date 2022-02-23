@@ -117,19 +117,16 @@ class HomeScreen extends StatelessWidget {
                                             //         ),
                                             //       )
                                             //     : const SizedBox(),
-                                            Obx(
-                                              () => Dismissible(
-                                                key: ObjectKey(
-                                                    controller.todoList[index]),
-                                                onDismissed: (direction) {
-                                                  controller.removeMoney(index);
-                                                },
-                                                child: ListItem(
-                                                  title: '￥' +
-                                                      controller
-                                                          .todoList[index],
-                                                  day: todo.dueDate.toString(),
-                                                ),
+                                            Dismissible(
+                                              key: ObjectKey(
+                                                  controller.todoList[index]),
+                                              onDismissed: (direction) {
+                                                controller.removeMoney(index);
+                                              },
+                                              child: ListItem(
+                                                title: '￥' +
+                                                    controller.todoList[index],
+                                                day: todo.dueDate.toString(),
                                               ),
                                             ),
                                           ],
