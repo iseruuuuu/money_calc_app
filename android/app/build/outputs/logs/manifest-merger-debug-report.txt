@@ -1,10 +1,10 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
-INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
-MERGED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
+INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
+INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
+INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
+MERGED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
 MERGED from [:in_app_review] /Users/ryutaroiseki/work/money_calc_app/build/in_app_review/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-9:12
 MERGED from [:sqflite] /Users/ryutaroiseki/work/money_calc_app/build/sqflite/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
@@ -13,6 +13,7 @@ MERGED from [:webview_flutter_android] /Users/ryutaroiseki/work/money_calc_app/b
 MERGED from [:shared_preferences_android] /Users/ryutaroiseki/work/money_calc_app/build/shared_preferences_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:path_provider_android] /Users/ryutaroiseki/work/money_calc_app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-7:12
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:2:1-14:12
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:2:1-23:12
 MERGED from [com.google.firebase:firebase-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3b7d5ea2c8581e319f943e595d963e7a/jetified-firebase-ads-19.1.0/AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.media:media:1.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/1ff4bcb3167a74d75651e794e1872ecc/media-1.1.0/AndroidManifest.xml:17:1-24:12
@@ -76,16 +77,66 @@ INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/Andr
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml
 	android:versionName
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml
 	android:versionCode
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-36:12
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:1-56:12
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml
 	xmlns:android
 		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:1:11-69
+uses-permission#android.permission.INTERNET
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:5-66
+MERGED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:5-66
+MERGED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:5-66
+MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5e33028d74dd4f999f8d25cbed01e44e/jetified-play-services-measurement-17.2.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5e33028d74dd4f999f8d25cbed01e44e/jetified-play-services-measurement-17.2.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/a580fa0fd53eedf7752d6a23e37b60eb/jetified-play-services-measurement-api-17.2.2/AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/a580fa0fd53eedf7752d6a23e37b60eb/jetified-play-services-measurement-api-17.2.2/AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/7ae8bfc464a93ddc899da57b7dbaccdf/jetified-play-services-measurement-impl-17.2.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/7ae8bfc464a93ddc899da57b7dbaccdf/jetified-play-services-measurement-impl-17.2.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ba908ba6e65d3bba424be38d4010d3c3/jetified-play-services-ads-lite-19.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-ads-lite:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ba908ba6e65d3bba424be38d4010d3c3/jetified-play-services-ads-lite-19.1.0/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:20.0.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/49f903a19ffa9e21a2b645095cafffe8/jetified-firebase-iid-20.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.firebase:firebase-iid:20.0.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/49f903a19ffa9e21a2b645095cafffe8/jetified-firebase-iid-20.0.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/c225d1586e041f59064591d1309ec490/jetified-play-services-measurement-sdk-api-17.2.2/AndroidManifest.xml:23:5-67
+MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/c225d1586e041f59064591d1309ec490/jetified-play-services-measurement-sdk-api-17.2.2/AndroidManifest.xml:23:5-67
+	android:name
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:22-64
+queries
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:5:5-22:15
+intent#action:name:android.intent.action.VIEW+data:scheme:https
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:6:9-9:18
+action#android.intent.action.VIEW
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:7:13-65
+	android:name
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:7:21-62
+data
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:8:13-44
+	android:scheme
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:8:19-41
+intent#action:name:android.intent.action.DIAL+data:scheme:tel
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:10:9-13:18
+action#android.intent.action.DIAL
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:11:13-65
+	android:name
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:11:21-62
+intent#action:name:android.intent.action.SENDTO+data:scheme:smsto
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:14:9-17:18
+action#android.intent.action.SENDTO
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:15:13-67
+	android:name
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:15:21-64
+intent#action:name:android.intent.action.SEND+data:mimeType:*/*
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:18:9-21:18
+action#android.intent.action.SEND
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:19:13-65
+	android:name
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:19:21-62
 application
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:4:5-35:19
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:24:5-55:19
 MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-26:19
 MERGED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:12:5-26:19
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-12:19
@@ -139,55 +190,55 @@ MERGED from [com.google.android.gms:play-services-ads-base:19.1.0] /Users/ryutar
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.6.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5f663b08eec19eef9a9d1af662d9025e/core-1.6.0/AndroidManifest.xml:24:18-86
 	android:label
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:6:9-29
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:26:9-29
 	android:icon
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:5:9-43
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:25:9-43
 activity#com.example.money_calc_app.MainActivity
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:7:9-27:20
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:27:9-47:20
 	android:turnScreenOn
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:12:13-40
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:32:13-40
 	android:showWhenLocked
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:11:13-42
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:31:13-42
 	android:hardwareAccelerated
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:10:13-47
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:30:13-47
 	android:configChanges
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:9:13-163
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:29:13-163
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:8:13-41
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:28:13-41
 meta-data#io.flutter.embedding.android.NormalTheme
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:16:13-18:57
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:36:13-38:57
 	android:resource
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:18:17-54
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:38:17-54
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:17:17-72
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:37:17-72
 meta-data#io.flutter.embedding.android.SplashScreenDrawable
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:19:13-21:66
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:39:13-41:66
 	android:resource
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:21:17-63
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:41:17-63
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:20:17-81
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:40:17-81
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:23:13-26:29
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:43:13-46:29
 action#android.intent.action.MAIN
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:24:17-69
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:24:25-66
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:44:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:25:17-77
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:45:17-77
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:25:27-74
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:45:27-74
 meta-data#flutterEmbedding
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:29:9-31:33
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:49:9-51:33
 	android:value
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:31:13-30
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:51:13-30
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:30:13-44
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:50:13-44
 meta-data#com.google.android.gms.ads.APPLICATION_ID
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:32:9-34:70
+ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:52:9-54:70
 	android:value
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:34:13-67
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:54:13-67
 	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:33:13-69
+		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml:53:13-69
 uses-sdk
 INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml
@@ -208,6 +259,8 @@ MERGED from [:path_provider_android] /Users/ryutaroiseki/work/money_calc_app/bui
 MERGED from [:path_provider_android] /Users/ryutaroiseki/work/money_calc_app/build/path_provider_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
 MERGED from [:url_launcher_android] /Users/ryutaroiseki/work/money_calc_app/build/url_launcher_android/intermediates/library_manifest/debug/AndroidManifest.xml:5:5-44
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:20:5-43
+MERGED from [androidx.multidex:multidex:2.0.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/e0c80cb72d282da5b4cd1966a30d3891/multidex-2.0.0/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:4:3-70
 MERGED from [com.google.android.play:core:1.10.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/10650cad2083cfad26ec47a8309023ea/jetified-core-1.10.0/AndroidManifest.xml:4:3-70
 MERGED from [com.google.firebase:firebase-ads:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/3b7d5ea2c8581e319f943e595d963e7a/jetified-firebase-ads-19.1.0/AndroidManifest.xml:5:5-44
@@ -326,24 +379,6 @@ INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/Andr
 	android:minSdkVersion
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/main/AndroidManifest.xml
 		INJECTED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml
-uses-permission#android.permission.INTERNET
-ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml:6:5-66
-MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
-MERGED from [:admob_flutter] /Users/ryutaroiseki/work/money_calc_app/build/admob_flutter/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-67
-MERGED from [com.google.android.gms:play-services-measurement:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5e33028d74dd4f999f8d25cbed01e44e/jetified-play-services-measurement-17.2.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-measurement:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/5e33028d74dd4f999f8d25cbed01e44e/jetified-play-services-measurement-17.2.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/a580fa0fd53eedf7752d6a23e37b60eb/jetified-play-services-measurement-api-17.2.2/AndroidManifest.xml:22:5-67
-MERGED from [com.google.android.gms:play-services-measurement-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/a580fa0fd53eedf7752d6a23e37b60eb/jetified-play-services-measurement-api-17.2.2/AndroidManifest.xml:22:5-67
-MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/7ae8bfc464a93ddc899da57b7dbaccdf/jetified-play-services-measurement-impl-17.2.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-measurement-impl:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/7ae8bfc464a93ddc899da57b7dbaccdf/jetified-play-services-measurement-impl-17.2.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-ads-lite:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ba908ba6e65d3bba424be38d4010d3c3/jetified-play-services-ads-lite-19.1.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-ads-lite:19.1.0] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/ba908ba6e65d3bba424be38d4010d3c3/jetified-play-services-ads-lite-19.1.0/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:20.0.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/49f903a19ffa9e21a2b645095cafffe8/jetified-firebase-iid-20.0.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.firebase:firebase-iid:20.0.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/49f903a19ffa9e21a2b645095cafffe8/jetified-firebase-iid-20.0.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/c225d1586e041f59064591d1309ec490/jetified-play-services-measurement-sdk-api-17.2.2/AndroidManifest.xml:23:5-67
-MERGED from [com.google.android.gms:play-services-measurement-sdk-api:17.2.2] /Users/ryutaroiseki/.gradle/caches/transforms-2/files-2.1/c225d1586e041f59064591d1309ec490/jetified-play-services-measurement-sdk-api-17.2.2/AndroidManifest.xml:23:5-67
-	android:name
-		ADDED from /Users/ryutaroiseki/work/money_calc_app/android/app/src/debug/AndroidManifest.xml:6:22-64
 uses-permission#android.permission.RECEIVE_BOOT_COMPLETED
 ADDED from [:flutter_local_notifications] /Users/ryutaroiseki/work/money_calc_app/build/flutter_local_notifications/intermediates/library_manifest/debug/AndroidManifest.xml:7:5-81
 	android:name
