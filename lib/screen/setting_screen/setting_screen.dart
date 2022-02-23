@@ -129,7 +129,7 @@ class SettingScreen extends StatelessWidget {
             ),
 
             GestureDetector(
-              onTap: controller.onTapContact,
+              onTap: controller.onTapReview,
               child: const SettingItem(
                 icon: Icons.star,
                 title: "App Review",

@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -15,6 +16,7 @@ class SettingScreenController extends GetxController {
   //   buildSignature: 'Unknown',
   // );
   final version = ''.obs;
+  final InAppReview inAppReview = InAppReview.instance;
 
   @override
   void onInit() {
@@ -66,7 +68,23 @@ class SettingScreenController extends GetxController {
     }
   }
 
-  void onTapContact() {
-    Get.to(() => const ContactScreen());
+  Future<void> onTapContact() async {
+    // Get.to(() => const ContactScreen());
+    const url = 'https://forms.gle/dcJyKYPFPN8wNTdN7';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else if (await canLaunch(url)) {
+      // 最初のURLが開けなかった場合かつセカンドURLが有って開けた場合
+      await launch(url);
+    } else {
+      // 任意のエラー処理
+    }
+
+  }
+
+  void onTapReview() async {
+    if (await inAppReview.isAvailable()) {
+      inAppReview.requestReview();
+    }
   }
 }
