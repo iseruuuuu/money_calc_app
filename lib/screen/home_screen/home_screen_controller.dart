@@ -2,6 +2,7 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 // import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
@@ -19,7 +20,6 @@ import 'package:math_expressions/math_expressions.dart';
 class HomeScreenController extends GetxController {
   RxList<String> todoList = RxList<String>();
   RxList<Todo> todoLists = RxList<Todo>();
-
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
@@ -29,8 +29,6 @@ class HomeScreenController extends GetxController {
   final preference = Preference();
   var expression = ''.obs;
   var expression2 = ''.obs;
-  var isFirst = false.obs;
-  var checkUpdate = false.obs;
   var indexes = 0.obs;
   var isOpened = false.obs;
   final isSex = false;
@@ -49,24 +47,17 @@ class HomeScreenController extends GetxController {
   //   listener: const AdListener(),
   // ).obs;
 
-  var image = ''.obs;
-
   //TODO 名前を変更する。
   final name = ''.obs;
   final userName = 'Hello User'.obs;
-
-  void setImage({required String image}) {
-    preference.setString(PreferenceKey.image, image);
-  }
 
   @override
   void onInit() {
     super.onInit();
     getPreference();
-    checkPreference();
+    sumMoney();
     WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
     //banner.value.load();
-    setMoney();
   }
 
   Future<void> initPlugin() async {
@@ -77,29 +68,10 @@ class HomeScreenController extends GetxController {
     }
   }
 
-  Future<void> checkPreference() async {
-    isFirst.value = await preference.getBool(PreferenceKey.isDelete);
-    checkUpdate.value = await preference.getBool(PreferenceKey.isUpdateCheck);
-    image.value = await preference.getString(PreferenceKey.image);
-    updateMoney();
-  }
-
-  void updateMoney() {
-    if (!checkUpdate.value) {
-      checkUpdate.value = true;
-      preference.setBool(PreferenceKey.isUpdateCheck, true);
-    }
-  }
-
   void onChanged(bool _isOpened) {
     (isOpened) {
       isOpened = _isOpened;
     };
-  }
-
-  void setMoney() {
-    setPreference();
-    sumMoney();
   }
 
   Future<void> setPreference() async {
@@ -137,7 +109,9 @@ class HomeScreenController extends GetxController {
 
   void removeMoney(int index) {
     todoList.removeAt(index);
-    setMoney();
+    setPreference();
+    sumMoney();
+    setPreference();
   }
 
   void onTapAddMoney(BuildContext context, TodoBloc _bloc) async {
@@ -151,7 +125,8 @@ class HomeScreenController extends GetxController {
     );
     if (newListText != null) {
       todoList.add(newListText);
-      setMoney();
+      sumMoney();
+      setPreference();
     }
   }
 
@@ -174,11 +149,10 @@ class HomeScreenController extends GetxController {
             child: const Text('OK'),
             onPressed: () async {
               Get.back();
-              isFirst.value = await preference.getBool(PreferenceKey.isDelete);
               preference.setBool(PreferenceKey.isDelete, true);
-              isFirst.value = true;
               todoList.clear();
-              setMoney();
+              sumMoney();
+              setPreference();
             },
           )
         ],
@@ -232,7 +206,6 @@ class HomeScreenController extends GetxController {
     final deviceWidth = MediaQuery.of(Get.context!).size.width;
     Get.dialog(
       AlertDialog(
-        // insetPadding: EdgeInsets.all(deviceWidth / 5),
         insetPadding: const EdgeInsets.all(10),
         title: SizedBox(
           width: deviceWidth / 1.5,
