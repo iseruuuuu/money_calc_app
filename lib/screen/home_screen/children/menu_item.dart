@@ -11,7 +11,6 @@ class MenuItem extends StatefulWidget {
     required this.onTapSetting,
     //required this.AdItem,
     required this.onTapChangePhoto,
-    required this.image,
     required this.onTapChangeName,
     required this.userName,
   }) : super(key: key);
@@ -23,7 +22,6 @@ class MenuItem extends StatefulWidget {
 
   //final Widget? AdItem;
   final Function() onTapChangePhoto;
-  final String image;
   final Function() onTapChangeName;
   final String userName;
 
