@@ -43,7 +43,6 @@ class HomeScreenAndroid extends StatelessWidget {
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
             onTapChangePhoto: () {},
-            image: controller.image.value,
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
             //AdItem: AdWidget(ad: controller.banner.value),
