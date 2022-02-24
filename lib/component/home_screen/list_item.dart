@@ -40,7 +40,7 @@ class ListItem extends StatelessWidget {
             SizedBox(width: deviceWidth / 30),
             Center(
               child: Text(
-                title,
+                '￥' + title,
                 style: TextStyle(
                   fontSize: deviceWidth / 11,
                   color: Colors.black,
