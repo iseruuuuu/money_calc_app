@@ -33,7 +33,7 @@ class DBProvider {
         ")");
   }
 
-  static final _tableName = "TODO";
+  static const _tableName = "TODO";
 
   createTodo(Todo todo) async {
     final db = await database;
@@ -41,7 +41,7 @@ class DBProvider {
     return res;
   }
 
-  getAllTodos() async {
+  getAllTodo() async {
     final db = await database;
     var res = await db.query(_tableName);
     List<Todo> list =

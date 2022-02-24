@@ -8,12 +8,12 @@ class TodoBloc {
 
   Stream<List<Todo>> get todoStream => _todoController.stream;
 
-  getTodos() async {
-    _todoController.sink.add(await DBProvider.db.getAllTodos());
+  getTodo() async {
+    _todoController.sink.add(await DBProvider.db.getAllTodo());
   }
 
   TodoBloc() {
-    getTodos();
+    getTodo();
   }
 
   dispose() {
@@ -24,21 +24,21 @@ class TodoBloc {
   create(Todo todo) {
     todo.assignUUID();
     DBProvider.db.createTodo(todo);
-    getTodos();
+    getTodo();
   }
 
   update(Todo todo) {
     DBProvider.db.updateTodo(todo);
-    getTodos();
+    getTodo();
   }
 
   delete(String id) {
     DBProvider.db.deleteTodo(id);
-    getTodos();
+    getTodo();
   }
 
   allDelete() {
     DBProvider.db.deleteAllTodo();
-    getTodos();
+    getTodo();
   }
 }
