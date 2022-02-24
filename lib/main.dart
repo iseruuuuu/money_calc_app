@@ -62,7 +62,13 @@ class App extends StatelessWidget {
     final themeData = ThemeData(typography: kTypography);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: themeData,
+      //theme: themeData,
+      theme: ThemeData(
+        brightness: Brightness.light,
+      ),
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -74,8 +80,7 @@ class App extends StatelessWidget {
         create: (context) => TodoBloc(),
         // child: HomeScreen(),
         // child: const HomeScreen(),
-        child:
-            Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreen(),
+        child: Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreen(),
       ),
     );
   }
