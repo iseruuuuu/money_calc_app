@@ -92,7 +92,8 @@ class AddScreenController extends GetxController {
     } else {
       final post = '$expression';
       if (_newTodo.id != null) {
-        Navigator.pop(Get.context!, expression.value);
+        var i = int.parse(expression.value);
+        Navigator.pop(Get.context!, i.toString());
         _newTodo.number = expression.value;
         todoBloc.create(_newTodo);
         expression.value = '';
