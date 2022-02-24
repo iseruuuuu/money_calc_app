@@ -79,7 +79,6 @@ class _MenuItemState extends State<MenuItem> {
             ),
           ),
         ),
-        const SizedBox(height: 16.0),
         Text(
           widget.userName,
           style: TextStyle(
@@ -95,38 +94,37 @@ class _MenuItemState extends State<MenuItem> {
           icon: Icons.home,
           text: "Home",
         ),
-        SizedBox(height: deviceWidth / 30),
+        SizedBox(height: deviceWidth / 35),
         MenuText(
           onTap: widget.onTapNotification,
           icon: Icons.notifications_active,
           text: "Notification",
         ),
-        SizedBox(height: deviceWidth / 30),
+        SizedBox(height: deviceWidth / 35),
         MenuText(
           onTap: widget.onTapStar,
           icon: Icons.star,
           text: "App Review",
         ),
-        SizedBox(height: deviceWidth / 30),
+        SizedBox(height: deviceWidth / 35),
         MenuText(
           onTap: widget.onTapSetting,
           icon: Icons.settings,
           text: "Settings",
         ),
-        SizedBox(height: deviceWidth / 30),
+        SizedBox(height: deviceWidth / 35),
         MenuText(
           onTap: onTapChangeSex,
           icon: Icons.person,
           text: "Change Icon",
         ),
-        SizedBox(height: deviceWidth / 30),
+        SizedBox(height: deviceWidth / 35),
         MenuText(
           onTap: widget.onTapChangeName,
           icon: Icons.adb,
           text: "Change Name",
         ),
-        SizedBox(height: deviceWidth / 30),
-        const SizedBox(height: 20),
+        SizedBox(height: deviceWidth / 35),
         // SizedBox(
         //   height: 50,
         //   child: widget.AdItem,
