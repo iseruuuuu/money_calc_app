@@ -42,7 +42,6 @@ class HomeScreen extends StatelessWidget {
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
             onTapChangePhoto: () {},
-            image: controller.image.value,
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
             //AdItem: AdWidget(ad: controller.banner.value),
@@ -56,6 +55,8 @@ class HomeScreen extends StatelessWidget {
           appBar: (controller.todoList.isNotEmpty)
               ? PreferredSize(
                   preferredSize: Size.fromHeight(deviceWidth / 13),
+
+                  //TODO ここは、後でcomponent化したい（ontapなどを引数に）
                   child: AppBarItem(
                     color: AppColor.red2,
                     icon: IconButton(
@@ -68,9 +69,6 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                 )
-              // ? PreferredSize(
-              //     preferredSize: const Size.fromHeight(0.0),
-              //     child: AppBarItem(color: AppColor.red2))
               : PreferredSize(
                   preferredSize: const Size.fromHeight(40.0),
                   child: AppBarItem(color: AppColor.grey3)),
@@ -94,45 +92,48 @@ class HomeScreen extends StatelessWidget {
                                   AsyncSnapshot<List<Todo>> snapshot) {
                                 if (snapshot.hasData &&
                                     controller.todoList.isNotEmpty) {
-                                  return Obx(
-                                    () => ListView.builder(
-                                      itemCount: controller.todoList.length,
-                                      itemBuilder: (context, index) {
-                                        Todo todo = snapshot.data![index];
-                                        return Column(
-                                          children: [
-                                            // index % 10 == 0
-                                            //     ? Container(
-                                            //         color: Colors.red,
-                                            //         height: 64.0,
-                                            //         width: double.infinity,
-                                            //         child: AdmobBanner(
-                                            //           adUnitId: AdMobService()
-                                            //               .getBannerAdUnitId(),
-                                            //           adSize: AdmobBannerSize(
-                                            //             width: MediaQuery.of(context).size.width.toInt(),
-                                            //             height: AdMobService().getHeight(context).toInt(),
-                                            //             name: 'SMART_BANNER',
-                                            //           ),
-                                            //         ),
-                                            //       )
-                                            //     : const SizedBox(),
-                                            Dismissible(
-                                              key: ObjectKey(
-                                                  controller.todoList[index]),
-                                              onDismissed: (direction) {
-                                                controller.removeMoney(index);
-                                              },
-                                              child: ListItem(
-                                                title: '￥' +
-                                                    controller.todoList[index],
-                                                day: todo.dueDate.toString(),
-                                              ),
+                                  return ListView.builder(
+                                    itemCount: controller.todoList.length,
+                                    itemBuilder: (context, index) {
+                                      Todo todo = snapshot.data![index];
+                                      return Column(
+                                        children: [
+                                          // index % 10 == 0
+                                          //     ? Container(
+                                          //         color: Colors.red,
+                                          //         height: 64.0,
+                                          //         width: double.infinity,
+                                          //         child: AdmobBanner(
+                                          //           adUnitId: AdMobService()
+                                          //               .getBannerAdUnitId(),
+                                          //           adSize: AdmobBannerSize(
+                                          //             width: MediaQuery.of(context).size.width.toInt(),
+                                          //             height: AdMobService().getHeight(context).toInt(),
+                                          //             name: 'SMART_BANNER',
+                                          //           ),
+                                          //         ),
+                                          //       )
+                                          //     : const SizedBox(),
+                                          Dismissible(
+                                            // key: ObjectKey(controller.todoList[index]),
+                                            //TODO どっちがいいのかわからない
+                                            key: Key(controller.todoList[index]),
+                                            onDismissed: (direction) {
+                                              controller.removeMoney(index);
+                                            },
+                                            child: ListItem(
+                                              title: '￥' +
+                                                  controller.todoList[index],
+                                              day: todo.dueDate.toString(),
                                             ),
-                                          ],
-                                        );
-                                      },
-                                    ),
+                                            // child: Idea1(
+                                            //   title: '￥' + controller.todoList[index],
+                                            //     day: todo.dueDate.toString(),
+                                            // ),
+                                          ),
+                                        ],
+                                      );
+                                    },
                                   );
                                 }
                                 return const Center(
