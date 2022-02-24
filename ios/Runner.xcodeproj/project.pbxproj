@@ -363,7 +363,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.28;
+				MARKETING_VERSION = 2.0.29;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryutaro.moneyCalcApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -495,7 +495,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.28;
+				MARKETING_VERSION = 2.0.29;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryutaro.moneyCalcApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -521,7 +521,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.0.28;
+				MARKETING_VERSION = 2.0.29;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ryutaro.moneyCalcApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
