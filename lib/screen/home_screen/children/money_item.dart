@@ -18,10 +18,17 @@ class MoneyItem extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColor.red2,
         border: Border.all(color: AppColor.red2),
-        borderRadius: BorderRadius.circular(0),
+        //borderRadius: BorderRadius.circular(0),
+        borderRadius: const BorderRadius.only(
+          topRight: Radius.circular(0),
+          topLeft: Radius.circular(0),
+          bottomLeft: Radius.circular(20),
+          bottomRight: Radius.circular(20),
+        ),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(vertical: deviceWidth / 30, horizontal: 10),
+        padding:
+            EdgeInsets.symmetric(vertical: deviceWidth / 30, horizontal: 10),
         child: Card(
           elevation: 20,
           shape: RoundedRectangleBorder(
