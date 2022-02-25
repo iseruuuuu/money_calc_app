@@ -27,14 +27,17 @@ class HomeScreenIOS extends StatelessWidget {
     return Obx(
       () => Scaffold(
         key: _key,
-        drawer: NavBar(
-          onTapHome: controller.onTapHome,
-          onTapNotification: controller.onTapNotification,
-          onTapStar: controller.onTapStar,
-          onTapSetting: controller.onTapSetting,
-          onTapChangePhoto: () {},
-          onTapChangeName: controller.onTapChangeName,
-          userName: controller.userName.value,
+        drawer: SizedBox(
+          width: 300.w,
+          child: NavBar(
+            onTapHome: controller.onTapHome,
+            onTapNotification: controller.onTapNotification,
+            onTapStar: controller.onTapStar,
+            onTapSetting: controller.onTapSetting,
+            onTapChangePhoto: () {},
+            onTapChangeName: controller.onTapChangeName,
+            userName: controller.userName.value,
+          ),
         ),
         drawerEdgeDragWidth: 0,
         backgroundColor: AppColor.grey3,
