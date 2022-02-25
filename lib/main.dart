@@ -8,6 +8,7 @@ import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/preference/shared_preferences.dart';
 import 'package:money_calc_app/screen/home_screen/home_screen.dart';
 import 'package:money_calc_app/screen/home_screen/home_screen_android.dart';
+import 'package:money_calc_app/screen/home_screen/home_screen_idea/home_screen_ios.dart';
 import 'package:money_calc_app/screen/home_screen/home_screenss.dart';
 import 'package:provider/provider.dart';
 import 'package:get/get.dart';
@@ -81,7 +82,7 @@ class App extends StatelessWidget {
         create: (context) => TodoBloc(),
         // child: HomeScreen(),
         // child: const HomeScreen(),
-        child: Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreen(),
+        child: Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreenIOS(),
         //child: HomeScreenAndroid(),
       ),
     );
