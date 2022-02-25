@@ -70,7 +70,7 @@ class _NavBarState extends State<NavBar> {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            accountEmail: Text(''),
+            accountEmail: const Text(''),
             currentAccountPicture: CircleAvatar(
               backgroundColor: AppColor.red2,
               child: ClipOval(
