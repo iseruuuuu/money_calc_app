@@ -11,9 +11,9 @@ import 'package:money_calc_app/screen/home_screen/children/item_idea/idea_1.dart
 import 'package:money_calc_app/screen/home_screen/children/money_item.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
-import 'children/menu_item.dart';
-import 'children/list_item/tab_bar.dart';
-import 'home_screen_controller.dart';
+import '../../screen/home_screen/children/menu_item.dart';
+import '../../screen/home_screen/children/list_item/tab_bar.dart';
+import '../../screen/home_screen/home_screen_controller.dart';
 import 'package:get/get.dart';
 
 class HomeScreen extends StatelessWidget {

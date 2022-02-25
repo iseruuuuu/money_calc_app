@@ -14,7 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:get/get.dart';
 
-import '../home_screen_controller.dart';
+import 'home_screen_controller.dart';
 
 class HomeScreenIOS extends StatelessWidget {
   const HomeScreenIOS({
