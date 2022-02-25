@@ -42,18 +42,18 @@ class Idea1 extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    day,
-                    style: TextStyle(
-                      fontWeight: FontWeight.normal,
-                      fontSize: deviceWidth / 25,
-                      color: Colors.grey,
-                    ),
-                  ),
+                  // Text(
+                  //   day,
+                  //   style: TextStyle(
+                  //     fontWeight: FontWeight.normal,
+                  //     fontSize: deviceWidth / 25,
+                  //     color: Colors.grey,
+                  //   ),
+                  // ),
                   Text(
                     title + '円',
                     style: TextStyle(
-                      fontSize: deviceWidth / 15,
+                      fontSize: deviceWidth / 10,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
