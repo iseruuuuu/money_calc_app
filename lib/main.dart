@@ -14,6 +14,7 @@ import 'package:provider/provider.dart';
 import 'package:get/get.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'constants/typography.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // import 'misc/appInfo.dart' as appInfo;
 
@@ -62,28 +63,35 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     const locale = Locale("ja", "JP");
     final themeData = ThemeData(typography: kTypography);
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      //theme: themeData,
-      theme: ThemeData(
-        brightness: Brightness.light,
-      ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-      ),
-      localizationsDelegates: const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [locale],
-      locale: locale,
-      home: Provider<TodoBloc>(
-        create: (context) => TodoBloc(),
-        // child: HomeScreen(),
-        // child: const HomeScreen(),
-        child: Platform.isAndroid ? const HomeScreenAndroid() : const HomeScreenIOS(),
-        //child: HomeScreenAndroid(),
+    return ScreenUtilInit(
+      designSize: Size(360, 690),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: () => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        //theme: themeData,
+        theme: ThemeData(
+          brightness: Brightness.light,
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+        ),
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [locale],
+        locale: locale,
+        home: Provider<TodoBloc>(
+          create: (context) => TodoBloc(),
+          // child: HomeScreen(),
+          // child: const HomeScreen(),
+          child: Platform.isAndroid
+              ? const HomeScreenAndroid()
+              : const HomeScreenIOS(),
+          //child: HomeScreenAndroid(),
+        ),
       ),
     );
   }
