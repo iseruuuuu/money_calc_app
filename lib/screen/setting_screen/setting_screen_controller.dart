@@ -8,6 +8,7 @@ import 'children/license_screen.dart';
 
 class SettingScreenController extends GetxController {
   var isSex = false.obs;
+
   // PackageInfo _packageInfo = PackageInfo(
   //   appName: 'Unknown',
   //   packageName: 'Unknown',
@@ -17,6 +18,7 @@ class SettingScreenController extends GetxController {
   // );
   final version = ''.obs;
   final InAppReview inAppReview = InAppReview.instance;
+  final isChange = false.obs;
 
   @override
   void onInit() {
@@ -46,12 +48,26 @@ class SettingScreenController extends GetxController {
   //   version.value = info.version;
   // }
 
-  Future showLicense() async {
+  Future onTapshowLicense() async {
     Get.to(() => const LicenseScreen());
   }
 
   void onTapNotification() {
     Get.to(() => const PushNotificationScreen());
+  }
+
+  void onTapGithub() async {
+    const url = 'https://github.com/iseruuuuu/money_calc_app';
+    const secondUrl = 'https://github.com/iseruuuuu/money_calc_app';
+
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else if (await canLaunch(secondUrl)) {
+      // 最初のURLが開けなかった場合かつセカンドURLが有って開けた場合
+      await launch(secondUrl);
+    } else {
+      // 任意のエラー処理
+    }
   }
 
   void onTapTwitter() async {
@@ -79,7 +95,6 @@ class SettingScreenController extends GetxController {
     } else {
       // 任意のエラー処理
     }
-
   }
 
   void onTapReview() async {
@@ -87,4 +102,5 @@ class SettingScreenController extends GetxController {
       inAppReview.requestReview();
     }
   }
+
 }

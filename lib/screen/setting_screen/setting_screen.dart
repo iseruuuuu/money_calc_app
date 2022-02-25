@@ -153,7 +153,7 @@ class SettingScreen extends StatelessWidget {
             ),
 
             GestureDetector(
-              onTap: controller.showLicense,
+              onTap: controller.onTapshowLicense,
               child: const SettingItem(
                 icon: Icons.local_police,
                 title: "Licence",
