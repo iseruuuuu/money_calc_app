@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 
 class Idea1 extends StatelessWidget {
@@ -18,13 +19,14 @@ class Idea1 extends StatelessWidget {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(
-          horizontal: deviceWidth / 20, vertical: deviceWidth / 70),
+        horizontal: 20.w,
+        vertical: 10.w,
+      ),
       child: Container(
-        //height: 90,
-        height: deviceWidth / 5,
+        height: 60.w,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(13),
+          borderRadius: BorderRadius.circular(13.w),
           boxShadow: const [
             BoxShadow(
               offset: Offset(0, 17),
@@ -36,24 +38,16 @@ class Idea1 extends StatelessWidget {
         ),
         child: Row(
           children: [
-            SizedBox(width: deviceWidth / 20),
+            SizedBox(width: 20.w),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Text(
-                  //   day,
-                  //   style: TextStyle(
-                  //     fontWeight: FontWeight.normal,
-                  //     fontSize: deviceWidth / 25,
-                  //     color: Colors.grey,
-                  //   ),
-                  // ),
                   Text(
                     title + '円',
                     style: TextStyle(
-                      fontSize: deviceWidth / 10,
+                      fontSize: 40.w,
                       fontWeight: FontWeight.bold,
                       color: Colors.black87,
                     ),
@@ -61,11 +55,10 @@ class Idea1 extends StatelessWidget {
                 ],
               ),
             ),
-            //Image.asset('assets/images/1.png'),
             isSex
                 ? Image.asset('assets/images/5.png')
                 : Image.asset('assets/images/4.png'),
-            SizedBox(width: deviceWidth / 30),
+            SizedBox(width: 10.w),
           ],
         ),
       ),
