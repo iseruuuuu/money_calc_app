@@ -16,6 +16,10 @@ class PushNotificationScreen extends StatelessWidget {
     final controller = Get.put(PushNotificationScreenController(), tag: '');
     final deviceWidth = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        backgroundColor: Colors.black87,
+      ),
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
@@ -32,7 +36,7 @@ class PushNotificationScreen extends StatelessWidget {
               child: Center(
                 child: GlassmorphicContainer(
                   width: MediaQuery.of(context).size.width - 20,
-                  height: MediaQuery.of(context).size.height - 70,
+                  height: MediaQuery.of(context).size.height - 180,
                   borderRadius: 20,
                   blur: 10,
                   alignment: Alignment.bottomCenter,

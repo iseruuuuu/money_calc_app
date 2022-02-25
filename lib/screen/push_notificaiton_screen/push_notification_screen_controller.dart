@@ -16,6 +16,7 @@ class PushNotificationScreenController extends GetxController {
   var day = ''.obs;
   var isCheck = false.obs;
   var days = 0.obs;
+  DateTime _date = new DateTime.now();
 
   @override
   void onInit() {
@@ -144,7 +145,7 @@ class PushNotificationScreenController extends GetxController {
         ),
       ),
       messageText: Text(
-        isSuccess ? '毎月${day.value}日に通知が来るようになりました' : '正しい日程を入力をしてください',
+        isSuccess ? '毎月${days.value}日に通知が来るようになりました' : '正しい日程を入力をしてください',
         style: const TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 15,
@@ -160,5 +161,29 @@ class PushNotificationScreenController extends GetxController {
       backgroundColor: isSuccess ? Colors.blue : Colors.red,
       snackPosition: SnackPosition.TOP,
     );
+  }
+
+
+
+
+
+  Future<void> onTapSelectDate(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+        context: context,
+        initialDate: _date,
+        firstDate: DateTime(2016),
+        lastDate: DateTime.now().add(const Duration(days: 360)));
+    if (picked != null) {
+      _date = picked;
+      days.value = _date.day;
+      Preference().setInt(PreferenceKey.days, days.value);
+      //すでに登録されていたら、通知を全て消す。→上書きできていることが確認できた。
+      cancelAll();
+      //通知を出現する
+      scheduleNotification();
+      //ダイアログを出現する
+      openDialog(isSuccess: true);
+    }
+
   }
 }
