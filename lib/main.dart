@@ -87,9 +87,10 @@ class App extends StatelessWidget {
           create: (context) => TodoBloc(),
           // child: HomeScreen(),
           // child: const HomeScreen(),
-          child: Platform.isAndroid
-              ? const HomeScreenAndroid()
-              : const HomeScreenIOS(),
+          // child: Platform.isAndroid
+          //     ? const HomeScreenAndroid()
+          //     : const HomeScreenIOS(),
+          child: const HomeScreenIOS(),
           //child: HomeScreenAndroid(),
         ),
       ),
