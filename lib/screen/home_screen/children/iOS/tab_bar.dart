@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 import 'package:money_calc_app/preference/preference.dart';
 
@@ -60,25 +61,25 @@ class _NavBarState extends State<NavBar> {
     final deviceWidth = MediaQuery.of(context).size.width;
     return Drawer(
       child: ListView(
-        // Remove padding
         padding: EdgeInsets.zero,
         children: [
           UserAccountsDrawerHeader(
-            accountName: Text(
+            accountName: const Text(''),
+            accountEmail: Text(
               widget.userName,
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.bold,
+                fontSize: 20.w,
               ),
             ),
-            accountEmail: const Text(''),
             currentAccountPicture: CircleAvatar(
               backgroundColor: AppColor.red2,
               child: ClipOval(
                 child: Image.asset(
                   isSex ? 'assets/images/1.png' : 'assets/images/2.png',
                   fit: BoxFit.cover,
-                  width: 90,
-                  height: 90,
+                  width: 90.w,
+                  height: 90.w,
                 ),
               ),
             ),
@@ -93,54 +94,103 @@ class _NavBarState extends State<NavBar> {
             ),
           ),
           ListTile(
-            leading: const Icon(Icons.home),
-            title: const Text('Home'),
+            leading: Icon(
+              Icons.home,
+              size: 25.w,
+              color: Colors.black,
+            ),
+            title: Text(
+              'Home',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
             onTap: () {
               Navigator.pop(context);
             },
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          const Divider(thickness: 2, color: Colors.black),
           ListTile(
-            leading: const Icon(
+            leading: Icon(
               Icons.notifications_active,
+              size: 25.w,
+              color: Colors.black,
             ),
-            title: const Text('Notification'),
+            title: Text(
+              'Notification',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
             onTap: widget.onTapNotification,
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          const Divider(thickness: 2, color: Colors.black),
           ListTile(
-            leading: const Icon(Icons.star),
-            title: const Text('App Review'),
+            leading: Icon(
+              Icons.star,
+              size: 25.w,
+              color: Colors.black,
+            ),
+            title: Text(
+              'App Review',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
             onTap: widget.onTapStar,
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          const Divider(thickness: 2, color: Colors.black),
           ListTile(
-            leading: const Icon(Icons.settings),
-            title: const Text('Settings'),
+            leading: Icon(
+              Icons.settings,
+              size: 25.w,
+              color: Colors.black,
+            ),
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
             onTap: widget.onTapSetting,
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          const Divider(thickness: 2, color: Colors.black),
           ListTile(
-            leading: const Icon(Icons.person),
-            title: const Text('Change Icon'),
+            leading: Icon(
+              Icons.person,
+              size: 25.w,
+              color: Colors.black,
+            ),
+            title: Text(
+              'Change Icon',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
             onTap: onTapChangeSex,
           ),
-          const Divider(
-            thickness: 2,
-          ),
+          const Divider(thickness: 2, color: Colors.black),
           ListTile(
-            title: const Text('Change Name'),
-            leading: const Icon(Icons.adb),
+            title: Text(
+              'Change Name',
+              style: TextStyle(
+                fontSize: 20.w,
+                color: Colors.black,
+              ),
+            ),
+            leading: Icon(
+              Icons.adb,
+              size: 25.w,
+              color: Colors.black,
+            ),
             onTap: widget.onTapChangeName,
           ),
+          const Divider(thickness: 2, color: Colors.black),
         ],
       ),
     );
