@@ -7,13 +7,13 @@ import 'package:money_calc_app/component/home_screen/no_list.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
-import 'package:money_calc_app/screen/home_screen/children/item_idea/idea_1.dart';
-import 'package:money_calc_app/screen/home_screen/children/list_item/tab_bar.dart';
+import 'package:money_calc_app/screen/home_screen/children/iOS/tab_bar.dart';
 import 'package:money_calc_app/screen/home_screen/children/money_item.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:get/get.dart';
 
+import 'children/iOS/cell_item.dart';
 import 'home_screen_controller.dart';
 
 class HomeScreenIOS extends StatelessWidget {
@@ -85,7 +85,7 @@ class HomeScreenIOS extends StatelessWidget {
                                       onDismissed: (direction) {
                                         controller.removeMoney(index);
                                       },
-                                      child: Idea1(
+                                      child: CellItem(
                                         title: controller.todoList[index],
                                         day: '',
                                         isSex: true,

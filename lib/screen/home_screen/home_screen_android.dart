@@ -7,11 +7,11 @@ import 'package:money_calc_app/component/home_screen/no_list.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
-import 'package:money_calc_app/screen/home_screen/children/list_item_android.dart';
+import 'package:money_calc_app/screen/home_screen/children/android/list_item_android.dart';
 import 'package:money_calc_app/screen/home_screen/children/money_item.dart';
 import 'package:provider/provider.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
-import 'children/menu_item.dart';
+import 'children/android/menu_item.dart';
 import 'home_screen_controller.dart';
 import 'package:get/get.dart';
 

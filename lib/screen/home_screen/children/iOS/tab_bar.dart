@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 import 'package:money_calc_app/preference/preference.dart';
 
-import '../menu_text.dart';
+import '../android/menu_text.dart';
 
 class NavBar extends StatefulWidget {
   const NavBar({

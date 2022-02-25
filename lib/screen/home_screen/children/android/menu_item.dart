@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/screen/home_screen/children/menu_text.dart';
+import 'package:money_calc_app/screen/home_screen/children/android/menu_text.dart';
 
 class MenuItem extends StatefulWidget {
   const MenuItem({

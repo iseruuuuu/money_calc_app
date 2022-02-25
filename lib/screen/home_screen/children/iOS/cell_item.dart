@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_calc_app/constants/app_color.dart';
 
-class Idea1 extends StatelessWidget {
-  const Idea1({
+class CellItem extends StatelessWidget {
+  const CellItem({
     Key? key,
     required this.title,
     required this.day,
