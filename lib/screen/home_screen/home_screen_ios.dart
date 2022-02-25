@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:money_calc_app/component/appbar/app_bar_item.dart';
 import 'package:money_calc_app/component/bottom_item/bottom_navigation_bar_items.dart';
 import 'package:money_calc_app/component/home_screen/floating_action_button_items.dart';
@@ -22,7 +23,6 @@ class HomeScreenIOS extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(HomeScreenController(), tag: '');
     final _bloc = Provider.of<TodoBloc>(context, listen: false);
-    final deviceWidth = MediaQuery.of(context).size.width;
     final GlobalKey<ScaffoldState> _key = GlobalKey<ScaffoldState>();
     return Obx(
       () => Scaffold(
@@ -40,14 +40,14 @@ class HomeScreenIOS extends StatelessWidget {
         backgroundColor: AppColor.grey3,
         appBar: (controller.todoList.isNotEmpty)
             ? PreferredSize(
-                preferredSize: Size.fromHeight(deviceWidth / 13),
+                preferredSize: Size.fromHeight(30.w),
                 child: AppBarItem(
                   color: AppColor.red2,
                   icon: IconButton(
                     onPressed: () => _key.currentState?.openDrawer(),
                     icon: Icon(
                       Icons.menu,
-                      size: deviceWidth / 16,
+                      size: 25.w,
                       color: AppColor.white,
                     ),
                   ),
