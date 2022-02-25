@@ -14,6 +14,7 @@ class SettingScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.put(SettingScreenController(), tag: '');
     final deviceWidth = MediaQuery.of(context).size.width;
+    final deviceHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: AppColor.red2,
       appBar: PreferredSize(
@@ -54,7 +55,7 @@ class SettingScreens extends StatelessWidget {
           Obx(
             () => CircleAvatar(
               backgroundColor: Colors.white,
-              radius: deviceWidth / 4,
+              radius: deviceHeight / 8,
               child: controller.isSex.value
                   ? Image.asset('assets/images/1.png')
                   : Image.asset('assets/images/2.png'),
@@ -87,7 +88,7 @@ class SettingScreens extends StatelessWidget {
           const Spacer(),
           Container(
             width: deviceWidth,
-            height: deviceWidth,
+            height: deviceHeight / 2.5,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(

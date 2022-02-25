@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SettingParts2 extends StatelessWidget {
   const SettingParts2({
@@ -40,7 +41,13 @@ class SettingParts2 extends StatelessWidget {
               color: color,
             ),
           ),
-          Text(text),
+          Text(
+            text,
+            style: TextStyle(
+              fontSize: 10.w,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
         ],
       ),
     );
