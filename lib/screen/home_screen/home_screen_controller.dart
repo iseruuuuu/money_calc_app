@@ -9,6 +9,8 @@ import 'package:money_calc_app/database/todo_bloc.dart';
 import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
+import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen_idea/push_notification_screen.dart';
+import 'package:money_calc_app/screen/setting_screen/setting_idea/setting_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
@@ -31,7 +33,7 @@ class HomeScreenController extends GetxController {
   var expression2 = ''.obs;
   var indexes = 0.obs;
   var isOpened = false.obs;
-  final isSex = false;
+  var isSex = false.obs;
 
   // final banner = BannerAd(
   //   adUnitId: Platform.isAndroid
@@ -86,6 +88,7 @@ class HomeScreenController extends GetxController {
     todoList.value = prefs.getStringList('ke') ?? [];
     expression.value = prefs.getString('ke2') ?? '';
     expression2.value = prefs.getString('ke3') ?? '';
+    isSex.value = prefs.getBool(PreferenceKey.isSex.toString()) ?? false;
   }
 
   void sumMoney() {
@@ -184,21 +187,26 @@ class HomeScreenController extends GetxController {
 
   void onTapStar() async {
     if (await inAppReview.isAvailable()) {
+      //TODO ローディングを入れたい！
       inAppReview.requestReview();
     }
   }
 
   void onTapNotification() {
-    Get.to(() => const PushNotificationScreen());
+    // Get.to(() => const PushNotificationScreen());
+
+    Get.to(() => const PushNotificationScreens());
     toggleMenu();
   }
 
   void onTapSetting() {
-    Get.to(
-      () => SettingScreen(
-        AdItem: Container(),
-      ),
-    );
+    // Get.to(
+    //   () => SettingScreen(
+    //     AdItem: Container(),
+    //   ),
+    // );
+
+    Get.to(() => const SettingScreens());
     toggleMenu();
   }
 
