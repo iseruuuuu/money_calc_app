@@ -13,7 +13,6 @@ class NavBar extends StatefulWidget {
     required this.onTapStar,
     required this.onTapSetting,
     //required this.AdItem,
-    required this.onTapChangePhoto,
     required this.onTapChangeName,
     required this.userName,
   }) : super(key: key);
@@ -22,9 +21,7 @@ class NavBar extends StatefulWidget {
   final Function() onTapNotification;
   final Function() onTapStar;
   final Function() onTapSetting;
-
   //final Widget? AdItem;
-  final Function() onTapChangePhoto;
   final Function() onTapChangeName;
   final String userName;
 
@@ -58,7 +55,6 @@ class _NavBarState extends State<NavBar> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -87,9 +83,7 @@ class _NavBarState extends State<NavBar> {
               color: AppColor.red2,
               image: const DecorationImage(
                 fit: BoxFit.fill,
-                image: NetworkImage(
-                  'https://oflutter.com/wp-content/uploads/2021/02/profile-bg3.jpg',
-                ),
+                image: AssetImage('assets/images/nemu.jpeg'),
               ),
             ),
           ),
@@ -104,6 +98,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onTap: () {
@@ -112,6 +107,7 @@ class _NavBarState extends State<NavBar> {
           ),
           const Divider(thickness: 2, color: Colors.black),
           ListTile(
+            selectedColor: Colors.black,
             leading: Icon(
               Icons.notifications_active,
               size: 25.w,
@@ -122,6 +118,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onTap: widget.onTapNotification,
@@ -138,6 +135,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onTap: widget.onTapStar,
@@ -154,6 +152,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onTap: widget.onTapSetting,
@@ -170,6 +169,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             onTap: onTapChangeSex,
@@ -181,6 +181,7 @@ class _NavBarState extends State<NavBar> {
               style: TextStyle(
                 fontSize: 20.w,
                 color: Colors.black,
+                fontWeight: FontWeight.bold,
               ),
             ),
             leading: Icon(
