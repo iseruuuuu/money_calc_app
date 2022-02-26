@@ -1,17 +1,11 @@
-import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-// import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:money_calc_app/database/todo_bloc.dart';
-import 'package:money_calc_app/model/todo.dart';
 import 'package:money_calc_app/preference/preference.dart';
-import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen.dart';
 import 'package:money_calc_app/screen/push_notificaiton_screen/push_notification_screen_idea/push_notification_screen.dart';
 import 'package:money_calc_app/screen/setting_screen/setting_idea/setting_screen.dart';
-import 'package:money_calc_app/screen/setting_screen/setting_screen.dart';
 import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
@@ -21,7 +15,6 @@ import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreenController extends GetxController {
   RxList<String> todoList = RxList<String>();
-  RxList<Todo> todoLists = RxList<Todo>();
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
   final GlobalKey<SideMenuState> sideMenuKey = GlobalKey<SideMenuState>();
   final GlobalKey<SideMenuState> endSideMenuKey = GlobalKey<SideMenuState>();
@@ -32,24 +25,7 @@ class HomeScreenController extends GetxController {
   var expression = ''.obs;
   var expression2 = ''.obs;
   var indexes = 0.obs;
-  var isOpened = false.obs;
   var isSex = false.obs;
-
-  // final banner = BannerAd(
-  //   adUnitId: Platform.isAndroid
-  //       ? 'ca-app-pub-3940256099942544/6300978111'
-  //       : 'ca-app-pub-3940256099942544/2934735716',
-  //   // : 'ca-app-pub-4066682931432506/4038530394',
-  //   //本番id
-  //   //return 'ca-app-pub-4066682931432506/4038530394';
-  //   //テスト広告
-  //   // return 'ca-app-pub-3940256099942544/2934735716';
-  //   size: AdSize.banner,
-  //   request: const AdRequest(),
-  //   listener: const AdListener(),
-  // ).obs;
-
-  //TODO 名前を変更する。
   final name = ''.obs;
   final userName = 'Hello User'.obs;
 
@@ -59,7 +35,6 @@ class HomeScreenController extends GetxController {
     getPreference();
     sumMoney();
     WidgetsBinding.instance?.addPostFrameCallback((_) => initPlugin());
-    //banner.value.load();
   }
 
   Future<void> initPlugin() async {
@@ -68,12 +43,6 @@ class HomeScreenController extends GetxController {
       await Future.delayed(const Duration(milliseconds: 200));
       await AppTrackingTransparency.requestTrackingAuthorization();
     }
-  }
-
-  void onChanged(bool _isOpened) {
-    (isOpened) {
-      isOpened = _isOpened;
-    };
   }
 
   Future<void> setPreference() async {
@@ -133,58 +102,6 @@ class HomeScreenController extends GetxController {
     }
   }
 
-  void reset() {
-    showDialog(
-      context: Get.context!,
-      builder: (_) => CupertinoAlertDialog(
-        title: const Text("更新の確認"),
-        content: const Text("給料の記録を2022年版に更新します。"),
-        actions: [
-          CupertinoDialogAction(
-            child: const Text('キャンセル'),
-            isDestructiveAction: true,
-            onPressed: () {
-              // Navigator.of(context).pop();
-              Get.back();
-            },
-          ),
-          CupertinoDialogAction(
-            child: const Text('OK'),
-            onPressed: () async {
-              Get.back();
-              preference.setBool(PreferenceKey.isDelete, true);
-              todoList.clear();
-              sumMoney();
-              setPreference();
-            },
-          )
-        ],
-      ),
-    );
-  }
-
-  void onTapHome() {
-    toggleMenu();
-  }
-
-  toggleMenu([bool end = false]) {
-    if (end) {
-      final _state = endSideMenuKey.currentState!;
-      if (_state.isOpened) {
-        _state.closeSideMenu();
-      } else {
-        _state.openSideMenu();
-      }
-    } else {
-      final _state = sideMenuKey.currentState!;
-      if (_state.isOpened) {
-        _state.closeSideMenu();
-      } else {
-        _state.openSideMenu();
-      }
-    }
-  }
-
   void onTapStar() async {
     if (await inAppReview.isAvailable()) {
       //TODO ローディングを入れたい！
@@ -193,21 +110,11 @@ class HomeScreenController extends GetxController {
   }
 
   void onTapNotification() {
-    // Get.to(() => const PushNotificationScreen());
-
     Get.to(() => const PushNotificationScreens());
-    toggleMenu();
   }
 
   void onTapSetting() {
-    // Get.to(
-    //   () => SettingScreen(
-    //     AdItem: Container(),
-    //   ),
-    // );
-
     Get.to(() => const SettingScreens());
-    toggleMenu();
   }
 
   void onTapChangeName() {
@@ -242,7 +149,6 @@ class HomeScreenController extends GetxController {
                     vertical: deviceWidth / 20,
                   ),
                   border: const OutlineInputBorder(),
-                  // labelText: 'ユーザー名',
                   label: const Center(child: Text('ユーザー名')),
                   labelStyle: TextStyle(
                     fontSize: deviceWidth / 20,
