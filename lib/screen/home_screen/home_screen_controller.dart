@@ -10,7 +10,6 @@ import 'package:shrink_sidemenu/shrink_sidemenu.dart';
 import 'package:money_calc_app/screen/add_screen/add_screen.dart';
 import 'package:app_tracking_transparency/app_tracking_transparency.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flutter/painting.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class HomeScreenController extends GetxController {
