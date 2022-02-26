@@ -10,8 +10,6 @@ import 'package:money_calc_app/screen/home_screen/children/android/list_item_and
 import 'package:money_calc_app/screen/home_screen/children/iOS/tab_bar.dart';
 import 'package:money_calc_app/screen/home_screen/children/money_item.dart';
 import 'package:provider/provider.dart';
-import 'package:shrink_sidemenu/shrink_sidemenu.dart';
-import 'children/android/menu_item.dart';
 import 'home_screen_controller.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +34,6 @@ class HomeScreenAndroid extends StatelessWidget {
             onTapNotification: controller.onTapNotification,
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
-            onTapChangePhoto: () {},
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
           ),
