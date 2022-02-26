@@ -34,7 +34,6 @@ class HomeScreenIOS extends StatelessWidget {
             onTapNotification: controller.onTapNotification,
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
-            onTapChangePhoto: () {},
             onTapChangeName: controller.onTapChangeName,
             userName: controller.userName.value,
           ),
