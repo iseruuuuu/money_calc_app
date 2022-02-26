@@ -30,7 +30,7 @@ class HomeScreenIOS extends StatelessWidget {
         drawer: SizedBox(
           width: 300.w,
           child: NavBar(
-            onTapHome: controller.onTapHome,
+            onTapHome: () => _key.currentState?.openDrawer(),
             onTapNotification: controller.onTapNotification,
             onTapStar: controller.onTapStar,
             onTapSetting: controller.onTapSetting,
